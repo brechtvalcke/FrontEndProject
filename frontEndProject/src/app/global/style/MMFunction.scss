@@ -1,0 +1,96 @@
+@mixin browserAccessibility($parameter,$val) {
+  -webkit-#{$parameter} : $val;
+  -moz-#{$parameter}: $val;
+  -ms-#{$parameter}: $val;
+  -o-#{$parameter} : $val;
+  #{$parameter} : $val;
+}
+
+@mixin flexBox($direction:row,$justify:space-between) {
+  display: flex;
+  flex-flow: $direction nowrap;
+  justify-content: $justify;
+  align-items: center;
+  text-align: center;
+}
+
+@mixin gridLayout($columnSize){
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax($columnSize, auto));
+
+  @media screen\9{
+    @include flexBox(row,space-between);
+    flex-wrap: wrap;
+  }
+  @media screen\0{
+    @include flexBox(row,space-between);
+    flex-wrap: wrap;
+  }
+}
+
+@mixin stylePlaceholderText($color){
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+  &::-moz-placeholder {
+    color: $color;
+  }
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+  &:-moz-placeholder {
+    color: $color;
+  }
+}
+
+@mixin boxSizing($x: border-box) {
+  @include browserAccessibility(box-sizing, $x);
+}
+
+@mixin transition($val){
+  @include browserAccessibility(transition, $val);
+}
+
+@mixin animation($val){
+  @include browserAccessibility(animation, $val);
+}
+
+@mixin squareSize($size){
+  width: $size;
+  height: $size;
+}
+
+@mixin bottomSlideAnimation($width:100%,$left:0,$bottom:0){
+  position: relative;
+
+  &:before {
+    width: 0;
+    left: 0;
+    bottom: -$bottom;
+    content: "";
+    position: absolute;
+    border-bottom: solid 2px;
+    pointer-events: none;
+    @include transition(0.1s);
+  }
+
+  &:hover:before {
+    @include transition(0.6s ease);
+    width: $width;
+  }
+}
+
+
+
+@mixin bottomBorder($width,$height,$left,$bottom){
+  position: relative;
+  &:before{
+    width: $width;
+    height: $height;
+    left: $left;
+    bottom: -$bottom;
+    content: " ";
+    position: absolute;
+    background-color: $kohaRed;
+  }
+}

@@ -1,0 +1,31 @@
+@import "../../global/style/MMStyle";
+
+$cellSize: 100px;
+$imgSize: 50px;
+$submitButtonHeight: 50px;
+
+section{
+  width: 100%;
+}
+
+section:nth-child(1){
+  height: calc(100% - #{$submitButtonHeight});
+  @include flexBox(column,flex-start);
+
+  article{
+    width: 100%;
+
+    @include flexBox(row,space-between);
+
+    figure{
+      @include squareSize($imgSize);
+      img{
+        @extend %userImage;
+      }
+    }
+  }
+}
+
+section:nth-child(2){
+  height: $submitButtonHeight;
+}

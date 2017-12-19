@@ -1,0 +1,70 @@
+@import "../../../global/style/MMStyle";
+
+$usersBoxSize: 200px;
+$userImageSize:50px;
+$timeSlotBoxSize: 200px;
+$timeSlotSize: 200px;
+$activityHeight: 50px;
+
+main {
+  @include squareSize(100%);
+
+  section {
+    width: 100%;
+    padding: $defaultPadding;
+
+    @include flexBox(column, space-between);
+
+    &:nth-child(1) article, &:nth-child(2) article{
+      @include flexBox(row, flex-start);
+      flex-wrap: wrap;
+
+      &:not(:nth-last-child(1)){
+        margin-right: $defaultPadding;
+      }
+    }
+
+    &:nth-child(1) {
+      height: $usersBoxSize;
+    }
+
+    &:nth-child(2) {
+      height: $timeSlotBoxSize;
+    }
+
+    &:nth-child(3) {
+      height: calc(100% - #{$usersBoxSize} - #{$timeSlotBoxSize});
+    }
+
+  }
+}
+
+main section:nth-child(1) article div figure {
+  @include squareSize($userImageSize);
+  img{
+    @extend %userImage;
+  }
+}
+
+
+main section:nth-child(2) article div{
+  position: relative;
+  border-radius: $defaultBorderRadius;
+
+  @include squareSize($timeSlotSize);
+  @include flexBox(column, center);
+
+  p{
+    top:90%;
+    left: 90%;
+    position: absolute;
+  }
+}
+
+main section:nth-child(2) article div{
+  width: 100%;
+  height: $activityHeight;
+  padding: $defaultPadding;
+
+  @include flexBox(row,space-between);
+}

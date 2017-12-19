@@ -1,0 +1,62 @@
+@import "../../../global/style/MMStyle";
+
+$inputBoxHeight:200px;
+$imgSize: 50px;
+$submitSize: 50px;
+
+main{
+  @include squareSize(100%);
+
+  section{
+    width: 100%;
+    padding: $defaultPadding;
+
+    @include flexBox(row,space-between);
+
+    &:nth-child(1){
+      height: calc(100% - #{$inputBoxHeight});
+    }
+
+    &:nth-child(2){
+      height: $inputBoxHeight;
+    }
+  }
+}
+
+section:nth-child(1) article{
+  figure{
+    @include squareSize($imgSize);
+
+    &.self{
+      display: none;
+    }
+
+    img{
+      %userImage;
+    }
+  }
+
+  .container{
+    @include flexBox(column,flex-start);
+
+    .userInfo, .content{
+      width: 100%;
+    }
+
+    .content{
+      background-color: $lightGray;
+      border-radius: $defaultBorderRadius;
+    }
+  }
+}
+
+section:nth-child(2){
+  background-color: $darkGray;
+  input{
+    width: calc(100% - #{$submitSize} - #{$defaultPadding});
+  }
+
+  input[type=submit]{
+    @include squareSize($submitSize);
+  }
+}

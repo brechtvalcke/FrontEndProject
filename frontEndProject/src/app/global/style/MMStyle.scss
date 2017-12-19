@@ -1,0 +1,34 @@
+@import "MMFunction";
+$headerColor: #1166CF;
+$lightGray: #CCCCCC;
+$darkGray: #333333;
+
+$defaultPadding: 10px;
+$defaultBorderRadius: 5px;
+
+%links{
+}
+
+%userImage{
+  @include squareSize(100%);
+}
+
+%title{
+
+}
+
+%subTitle{
+
+}
+
+%input{
+
+}
+
+/**
+ accessibility control
+ */
+
+img[alt=""], img[alt=" "], img:not([alt]) {
+  border: 1px solid red;
+}

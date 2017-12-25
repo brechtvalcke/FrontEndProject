@@ -1,0 +1,47 @@
+@import "../../global/style/MMStyle";
+
+$boxWidht: 40%;
+$boxHeight: 80%;
+$userImageSize: 50px;
+main{
+  width: 100%;
+  height: 100%;
+  padding-top: $headerHeight;
+
+  @include flexBox(column,center);
+
+  section{
+    width: $boxWidht;
+    height: $boxHeight;
+    padding: $defaultPadding;
+    overflow: scroll;
+    background-color: $lightGray;
+
+    h2{
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
+main section article{
+  padding: $defaultPadding 0;
+  @include flexBox(row,space-between);
+
+  figure{
+    @include squareSize($userImageSize);
+    img{
+      @include squareSize($userImageSize);
+      @extend %userImage;
+    }
+  }
+
+  h3{
+    width: 60%;
+    text-align: left;
+  }
+
+  &:not(:nth-last-child(1)){
+    border-bottom: 1px solid $gray;
+  }
+}

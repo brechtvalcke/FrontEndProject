@@ -1,46 +1,70 @@
 @import "../../../global/style/MMStyle";
 
-$inputBoxHeight:200px;
-$imgSize: 50px;
+$imgSize: 40px;
+$userNameWidth: 100px;
+$inputBoxHeight:50px;
 $submitSize: 50px;
 
 main{
   @include squareSize(100%);
 
-  section{
+  section, section form {
     width: 100%;
     padding: $defaultPadding;
+  }
 
-    @include flexBox(row,space-between);
-
+  section{
     &:nth-child(1){
       height: calc(100% - #{$inputBoxHeight});
+      border-left: 1px solid $lightGray;
+      border-right: 1px solid $lightGray;
+
+      @include flexBox(column,flex-start);
+      align-items: flex-start;
     }
 
     &:nth-child(2){
       height: $inputBoxHeight;
+      background-color: $lightGray;
+      @include flexBox(row,space-between);
     }
   }
 }
 
 section:nth-child(1) article{
+  max-width: 60%;
+  @include flexBox(row,flex-start);
+  align-items: flex-start;
+
+  &:not(:nth-last-child(1)){
+    margin-bottom: $defaultPadding;
+  }
+
+  &.me{
+    align-self: flex-end;
+
+    figure,.container .userInfo{
+      display: none;
+    }
+  }
+
   figure{
     @include squareSize($imgSize);
 
-    &.self{
-      display: none;
-    }
-
     img{
-      %userImage;
+      @extend %userImage;
+      @include squareSize($imgSize);
     }
   }
 
   .container{
+    margin-left: $defaultPadding;
     @include flexBox(column,flex-start);
+    align-items: flex-start;
 
-    .userInfo, .content{
-      width: 100%;
+    .userInfo{
+      width: $userNameWidth;
+      @include flexBox(row,space-between);
     }
 
     .content{
@@ -50,13 +74,15 @@ section:nth-child(1) article{
   }
 }
 
-section:nth-child(2){
-  background-color: $darkGray;
-  input{
+main section:nth-child(2) form{
+
+  input[type=text]{
+    @extend %input;
     width: calc(100% - #{$submitSize} - #{$defaultPadding});
   }
 
   input[type=submit]{
+    @extend %buttons;
     @include squareSize($submitSize);
   }
 }

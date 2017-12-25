@@ -1,24 +1,23 @@
 <main>
     <section>
-        <article>
+        <article *ngFor="let item of [1,2,3,4]" [ngClass]="{'me': item == 2}">
             <figure>
-                <img src="" alt="" />
+                <img src="https://static.pexels.com/photos/355164/pexels-photo-355164.jpeg" alt="" />
             </figure>
             <div class="container">
                 <div class="userInfo">
-                    <p></p>
-                    <time></time>
+                    <p>user name</p>
                 </div>
                 <div class="content">
-                    <p></p>
+                    <p>content tekstcontent tekstcontent tekstcontent tekstcontent tekst</p>
                 </div>
             </div>
         </article>
     </section>
-    <section>
+    <section class="chatBox">
         <form>
             <input type="text" />
-            <input type="submit" />
+            <input type="submit" value="send" />
         </form>
     </section>
 </main>

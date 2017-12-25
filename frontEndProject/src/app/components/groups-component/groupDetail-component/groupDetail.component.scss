@@ -1,10 +1,9 @@
 @import "../../../global/style/MMStyle";
 
-$usersBoxSize: 200px;
-$userImageSize:50px;
-$timeSlotBoxSize: 200px;
-$timeSlotSize: 200px;
-$activityHeight: 50px;
+$usersBoxSize: 100px;
+$userImageSize: 40px;
+$timeSlotBoxSize: 80px;
+$activityBoxHeight: 25px;
 
 main {
   @include squareSize(100%);
@@ -15,56 +14,86 @@ main {
 
     @include flexBox(column, space-between);
 
-    &:nth-child(1) article, &:nth-child(2) article{
+    h2:nth-child(1) {
+      width: 100%;
+      text-align: left;
+      margin-bottom: $defaultPadding;
+    }
+
+    &:nth-child(1) article, &:nth-child(2) article {
+      width: 100%;
       @include flexBox(row, flex-start);
       flex-wrap: wrap;
+      align-items: flex-start;
 
-      &:not(:nth-last-child(1)){
+      &:not(:nth-last-child(1)) {
         margin-right: $defaultPadding;
       }
     }
 
-    &:nth-child(1) {
-      height: $usersBoxSize;
+    &:nth-child(1) article, &:nth-child(3) article {
+      width: 100%;
+      overflow: scroll;
     }
 
-    &:nth-child(2) {
-      height: $timeSlotBoxSize;
-    }
+    &:nth-child(1) article div, &:nth-child(2) article div, &:nth-child(3) article div {
+      cursor: pointer;
+      @include flexBox(column, center);
 
-    &:nth-child(3) {
-      height: calc(100% - #{$usersBoxSize} - #{$timeSlotBoxSize});
-    }
+      button {
+        @extend %smallButton;
+      }
 
+      &:not(:nth-last-child(1)) {
+        margin-right: $defaultPadding;
+        margin-bottom: $defaultPadding;
+      }
+    }
   }
 }
 
-main section:nth-child(1) article div figure {
+main section:nth-child(1) article div {
   @include squareSize($userImageSize);
-  img{
-    @extend %userImage;
+
+  figure {
+    @include squareSize(100%);
+    img {
+      @extend %userImage;
+    }
+  }
+
+  &:nth-last-child(1){
+    border-radius: 100%;
+    background-color: $gray;
   }
 }
 
-
-main section:nth-child(2) article div{
-  position: relative;
+main section:nth-child(2) article div, main section:nth-child(3) article div {
+  background-color: $gray;
   border-radius: $defaultBorderRadius;
+}
 
-  @include squareSize($timeSlotSize);
-  @include flexBox(column, center);
+main section:nth-child(2) article div {
+  position: relative;
+  @include squareSize($timeSlotBoxSize);
 
-  p{
-    top:90%;
-    left: 90%;
+  p {
+    text-align: right;
+    font-size: 1rem;
+    bottom: 2px;
+    right: 2px;
     position: absolute;
   }
 }
 
-main section:nth-child(2) article div{
+main section:nth-child(3) article div {
   width: 100%;
-  height: $activityHeight;
+  height: $activityBoxHeight;
   padding: $defaultPadding;
 
-  @include flexBox(row,space-between);
+  flex-flow: row;
+
+  &:not(:nth-last-child(1)) {
+    justify-content: space-between;
+  }
 }

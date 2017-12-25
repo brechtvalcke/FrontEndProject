@@ -1,18 +1,20 @@
 @import "../../../global/style/MMStyle";
 
-$sectionHeight: 200px;
-$imgSize: 50px;
+$sectionHeight: 120px;
+$imgSize: 40px;
 
 section {
   width: 100%;
   height: $sectionHeight;
   padding: $defaultPadding;
+  border-bottom: 1px solid $lightGray;
 
   article {
     width: 100%;
     height: 50%;
 
     &:nth-child(2) {
+      width: 100%;
       @include flexBox(row, center);
       overflow: scroll;
     }
@@ -23,7 +25,13 @@ section {
 
     figure {
       @include squareSize($imgSize);
+
+      &:not(:nth-last-child(1)){
+        margin-right: $defaultPadding;
+      }
+
       img {
+        @include squareSize($imgSize);
         @extend %userImage;
       }
     }

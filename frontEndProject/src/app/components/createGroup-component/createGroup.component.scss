@@ -1,31 +1,64 @@
 @import "../../global/style/MMStyle";
 
+$headerHeight: 30px;
 $cellSize: 100px;
 $imgSize: 50px;
+$checkBoxSize: 10px;
 $submitButtonHeight: 50px;
 
-section{
-  width: 100%;
-}
+main{
+  @include squareSize(100%);
+  padding-top: $headerHeight;
 
-section:nth-child(1){
-  height: calc(100% - #{$submitButtonHeight});
-  @include flexBox(column,flex-start);
-
-  article{
+  header,form{
     width: 100%;
+    padding: $headerHeight;
+  }
 
-    @include flexBox(row,space-between);
+  header{
+    height: $headerHeight;
+    background-color: $lightGray;
+  }
 
-    figure{
-      @include squareSize($imgSize);
-      img{
-        @extend %userImage;
-      }
+  section{
+    @include flexBox(column,flex-start);
+
+    p{
+      width: 100%;
+      margin-bottom: $defaultPadding;
+      text-align: left;
+    }
+
+    &:nth-child(2){
+      align-items: flex-start;
+    }
+
+    &:nth-last-child(1){
+      align-items: flex-end;
+    }
+
+    input[type=submit]{
+      @extend %buttons;
     }
   }
+
 }
 
-section:nth-child(2){
-  height: $submitButtonHeight;
+main section article{
+  @include flexBox(row,space-between);
+
+  figure{
+    @include squareSize($imgSize);
+    img{
+      @extend %userImage;
+    }
+  }
+
+  h3{
+    width: 70%;
+  }
+
+  input[type=checkbox]{
+    @include squareSize($checkBoxSize);
+  }
 }

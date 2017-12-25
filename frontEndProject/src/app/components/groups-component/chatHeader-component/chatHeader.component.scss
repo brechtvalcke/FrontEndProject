@@ -1,0 +1,15 @@
+@import "../../../global/style/MMStyle";
+
+$iconSize: 20px;
+
+header{
+  width: 100%;
+  height: $headerHeight;
+  padding: $defaultPadding;
+  background-color: $lightGray;
+  @include flexBox(row,space-between);
+
+  figure{
+    @include squareSize($iconSize);
+  }
+}

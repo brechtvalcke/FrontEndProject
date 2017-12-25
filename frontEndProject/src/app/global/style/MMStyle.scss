@@ -1,28 +1,41 @@
 @import "MMFunction";
 $headerColor: #1166CF;
 $lightGray: #CCCCCC;
+$gray: #AAAAAA;
 $darkGray: #333333;
 
 $defaultPadding: 10px;
 $defaultBorderRadius: 5px;
+$headerHeight: 50px;
 
 %links{
+  color: black;
 }
 
 %userImage{
   @include squareSize(100%);
+  border-radius: 100%;
 }
 
 %title{
-
+  color: black;
 }
 
 %subTitle{
-
+  color: black;
 }
 
 %input{
+  color: black;
+}
 
+%buttons{
+  color: black;
+}
+
+%smallButton{
+  background-color: transparent;
+  border: none;
 }
 
 /**

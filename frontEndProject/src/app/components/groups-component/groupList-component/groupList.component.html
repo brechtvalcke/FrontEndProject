@@ -1,11 +1,11 @@
-<section>
+<section *ngFor="let item of [1,2,3,4,5,6,7,8,9]">
     <article>
         <h2>title</h2>
         <p>members</p>
     </article>
     <article>
-        <figure>
-            <img src="" alt="" />
+        <figure *ngFor="let item of [1,2,3,4,5,6,7]">
+            <img src="https://static.pexels.com/photos/355164/pexels-photo-355164.jpeg" alt="" />
         </figure>
     </article>
 </section>

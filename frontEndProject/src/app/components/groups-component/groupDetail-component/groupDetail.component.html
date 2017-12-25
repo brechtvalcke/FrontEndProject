@@ -1,38 +1,41 @@
 <main>
     <section>
-        <h2>title</h2>
+        <h2>Users</h2>
         <article>
-            <div>
+            <div *ngFor="let item of [1,2,3,4,5]">
                 <figure>
-                    <img src="" alt=""/>
+                    <img src="https://static.pexels.com/photos/355164/pexels-photo-355164.jpeg" alt="" />
                 </figure>
+            </div>
+            <div>
+                <button>Add</button>
             </div>
         </article>
     </section>
 
     <section>
-        <h2>title</h2>
+        <h2>Time slots</h2>
         <article>
-            <div>
+            <div *ngFor="let item of [1,2,3,4,5]">
                 <h3>time</h3>
                 <p>vote</p>
             </div>
             <div>
-                <p>Add</p>
+                <button>Add</button>
             </div>
         </article>
 
     </section>
 
     <section>
-        <h2>title</h2>
+        <h2>Activities</h2>
         <article>
-            <div>
+            <div *ngFor="let item of [1,2,3,4,5,6,7,8,9]">
                 <h3>activity</h3>
                 <p>vote</p>
             </div>
             <div>
-                <p>Add</p>
+                <button>Add</button>
             </div>
         </article>
     </section>

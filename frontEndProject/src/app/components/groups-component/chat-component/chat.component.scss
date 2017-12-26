@@ -19,8 +19,11 @@ main{
       border-left: 1px solid $lightGray;
       border-right: 1px solid $lightGray;
 
-      @include flexBox(column,flex-start);
+      @include flexBox(column);
       align-items: flex-start;
+
+      overflow-y: auto;
+      overflow-x: hidden;
     }
 
     &:nth-child(2){
@@ -46,6 +49,7 @@ section:nth-child(1) article{
     figure,.container .userInfo{
       display: none;
     }
+
   }
 
   figure{

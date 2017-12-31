@@ -4,6 +4,7 @@ $usersBoxSize: 100px;
 $userImageSize: 40px;
 $timeSlotBoxSize: 80px;
 $activityBoxHeight: 25px;
+$timeSlotVoteSize:20px;
 
 main {
   @include squareSize(100%);
@@ -45,8 +46,8 @@ main {
       }
 
       &:not(:nth-last-child(1)) {
-        margin-right: $defaultPadding;
-        margin-bottom: $defaultPadding;
+        margin-right: $smallPadding;
+        margin-bottom: $smallPadding;
       }
     }
   }
@@ -64,13 +65,21 @@ main section:nth-child(1) article div {
 
   &:nth-last-child(1){
     border-radius: 100%;
-    background-color: $gray;
+    background-color: $pinkishGrey;
+
+    button{
+      color: $white;
+    }
   }
 }
 
 main section:nth-child(2) article div, main section:nth-child(3) article div {
-  background-color: $gray;
+  background-color: $pinkishGrey;
   border-radius: $defaultBorderRadius;
+
+  h3,p,button{
+    color: $white;
+  }
 }
 
 main section:nth-child(2) article div {
@@ -78,22 +87,38 @@ main section:nth-child(2) article div {
   @include squareSize($timeSlotBoxSize);
 
   p {
+    @include squareSize($timeSlotVoteSize);
     text-align: right;
     font-size: 1rem;
-    bottom: 2px;
-    right: 2px;
+    bottom: 5px;
+    left: calc(100% - #{$timeSlotVoteSize} - 5px);
     position: absolute;
+
+    color: $pinkishGrey;
+    background-color: $white;
+    border-radius: 100%;
+
+    @include flexBox(row,center);
   }
 }
 
-main section:nth-child(3) article div {
-  width: 100%;
-  height: $activityBoxHeight;
-  padding: $defaultPadding;
+main section:nth-child(3) article{
 
-  flex-flow: row;
+  div {
+    width: 100%;
+    height: $activityBoxHeight;
+    padding: $defaultPadding;
 
-  &:not(:nth-last-child(1)) {
-    justify-content: space-between;
+    flex-flow: row;
+
+    &:not(:nth-last-child(1)) {
+      justify-content: space-between;
+    }
+
+    &:nth-last-child(1){
+      width: 200px;
+      background-color: $lightBlue;
+
+    }
   }
 }

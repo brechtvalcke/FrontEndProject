@@ -2,102 +2,27 @@
 
 $boxWidht: 40%;
 $boxHeight: 80%;
-$headerHeight: 40px;
 $userImageSize: 50px;
-$friendsHeight: 80%;
-
-main, form article{
-  @include flexBox(column,center);
-}
-
 main{
   width: 100%;
   height: 100%;
   padding-top: $headerHeight;
+
+  @include flexBox(column,center);
 
   section{
     width: $boxWidht;
     height: $boxHeight;
     padding: $defaultPadding;
     overflow: scroll;
-    background-color: $gray;
+    box-shadow: $boxShadow;
 
-    .header{
-      height: $headerHeight;
-      background-color: $lightGray;
-
-      h2{
-        width: 100%;
-        text-align: center;
-      }
-    }
-
-    form{
+    h2{
       width: 100%;
-      height: calc(100% - #{$headerHeight});
-
-      article{
-        width: 100%;
-      }
-    }
-
-    form article h3 {
-      width: 100%;
-      margin-bottom: $defaultPadding;
-      text-align: left;
+      text-align: center;
     }
   }
 }
-
-main section form article:nth-child(1){
-  height: $friendsHeight;
-  overflow: scroll;
-  justify-content: flex-start;
-
-  div{
-    width: 100%;
-    @include flexBox(row,flex-start);
-
-    figure{
-      @include squareSize($userImageSize);
-      margin-right: $defaultPadding;
-      img{
-        @include squareSize($userImageSize);
-        @extend %userImage;
-      }
-    }
-
-    p{
-      width: 75%;
-      text-align: left;
-    }
-
-    input[type=checkbox]{
-      justify-self: flex-end;
-    }
-
-    &:not(:nth-last-child(1)){
-      border-bottom: 1px solid $gray;
-    }
-  }
-}
-
-main section form article{
-  button{
-    @extend %buttons;
-  }
-
-  &:nth-child(2){
-    align-items: flex-start;
-  }
-
-  &:nth-child(3){
-    align-items: flex-end;
-  }
-}
-
-
-/*
 main section article{
   padding: $defaultPadding 0;
   @include flexBox(row,space-between);
@@ -115,73 +40,11 @@ main section article{
     text-align: left;
   }
 
+  button{
+    @extend %buttons;
+  }
+
   &:not(:nth-last-child(1)){
     border-bottom: 1px solid $gray;
   }
 }
-
-
-
-$headerHeight: 30px;
-$cellSize: 100px;
-$imgSize: 50px;
-$checkBoxSize: 10px;
-$submitButtonHeight: 50px;
-
-main{
-  @include squareSize(100%);
-  padding-top: $headerHeight;
-
-  header,form{
-    width: 100%;
-    padding: $headerHeight;
-  }
-
-  header{
-    height: $headerHeight;
-    background-color: $lightGray;
-  }
-
-  section{
-    @include flexBox(column,flex-start);
-
-    p{
-      width: 100%;
-      margin-bottom: $defaultPadding;
-      text-align: left;
-    }
-
-    &:nth-child(2){
-      align-items: flex-start;
-    }
-
-    &:nth-last-child(1){
-      align-items: flex-end;
-    }
-
-    input[type=submit]{
-      @extend %buttons;
-    }
-  }
-
-}
-
-main section article{
-  @include flexBox(row,space-between);
-
-  figure{
-    @include squareSize($imgSize);
-    img{
-      @extend %userImage;
-    }
-  }
-
-  h3{
-    width: 70%;
-  }
-
-  input[type=checkbox]{
-    @include squareSize($checkBoxSize);
-  }
-}
-*/

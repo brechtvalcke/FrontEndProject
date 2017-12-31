@@ -1,12 +1,33 @@
 @import "MMFunction";
+@import url('https://fonts.googleapis.com/css?family=Lato|Open+Sans');
+
+/* Color palette */
+
+$dodgerBlue: #32b6fc;
+$lightBlue: #69c5f6;
+$white: #ffffff;
+$white-two: #eeeeee;
+$black: #000000;
+$pinkishGrey: #bfbfbf;
+
+//Deprecated colors
 $headerColor: #1166CF;
 $lightGray: #CCCCCC;
 $gray: #AAAAAA;
 $darkGray: #333333;
 
-$defaultPadding: 10px;
+/* font family */
+$Lato: 'Lato', sans-serif;
+$OpenSans: 'Open Sans', sans-serif;
+
+$defaultMargin: 20px;
+$defaultPadding: 20px;
+$smallPadding: 10px;
 $defaultBorderRadius: 5px;
-$headerHeight: 50px;
+$smallBorderRadius: 2px;
+$headerHeight: 80px;
+
+$boxShadow: 0 0 7px 1px transparentize($black, 0.9);
 
 %links{
   color: black;
@@ -17,26 +38,85 @@ $headerHeight: 50px;
   border-radius: 100%;
 }
 
-%title{
-  color: black;
-}
-
-%subTitle{
-  color: black;
-}
-
 %input{
+  padding:$smallPadding;
+  border-radius: $defaultBorderRadius ;
   color: black;
+  border: none;
+
+  &:active, &:focus{
+    outline: none;
+  }
 }
 
 %buttons{
-  color: black;
+  padding: $smallPadding;
+  border-radius: $smallBorderRadius;
+  color: $white;
+  background-color: $lightBlue;
+  border-style: none;
+
+  cursor: pointer;
+
+  &:active, &:focus{
+    outline: none;
+    border-style: none;
+  }
+
+  &:active{
+    box-shadow: 0 1px 7px 0 transparentize($black, 0.8);
+  }
 }
 
 %smallButton{
   background-color: transparent;
   border: none;
 }
+
+/* Text styles */
+
+%title {
+  font-size: 4rem;
+  font-family: $Lato;
+  text-align: center;
+}
+
+%subTitle  {
+  font-size: 3rem;
+  font-family: $OpenSans;
+  text-align: center;
+}
+
+%heading {
+  font-size: 2rem;
+  font-family: $OpenSans;
+  text-align: center;
+}
+
+%paragraph {
+  font-size: 1.5rem;
+  font-family: $Lato;
+  text-align: center;
+}
+
+
+h1 {
+  @extend %title;
+}
+
+h2 {
+  @extend %subTitle;
+}
+
+h3 {
+
+  @extend %heading;
+}
+
+p,a {
+  @extend %paragraph;
+}
+
 
 /**
  accessibility control

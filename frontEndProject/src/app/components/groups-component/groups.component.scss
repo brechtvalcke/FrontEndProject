@@ -12,7 +12,7 @@ main {
   }
 
   chat-component, group-detail-component {
-    height: calc(100% - #{$headerHeight});
+    height: calc(100% - 50px);
     overflow: scroll;
   }
 
@@ -27,7 +27,7 @@ main {
 
     chat-header-component {
       width: 100%;
-      height: $headerHeight;
+      height: 50px;
     }
 
     chat-component ,group-detail-component {

@@ -1,10 +1,6 @@
 @import "../../global/style/MMStyle";
 
-$logoWidth:100px;
-$linksBoxWidth: 200px;
-$iconSize: 25px;
-$userLogoSize: 40px;
-$maxUsernameWidth:100px;
+$logoHeight: 100%;
 
 header, article {
   @include flexBox(row, space-between);
@@ -14,49 +10,11 @@ header {
   width: 100%;
   height: $headerHeight;
   padding: $defaultPadding;
-  background-color: $headerColor;
+  background-color: $dodgerBlue;
   position: fixed;
 
-  article {
-    justify-content: space-around;
+  figure, &:nth-child(1) figure a, &:nth-child(1) figure a img {
+    height: $logoHeight;
 
-
-    &:nth-child(1) figure{
-      width: $logoWidth;
-      img{
-        @extend %userImage;
-      }
-    }
-
-    div{
-      width: $linksBoxWidth;
-      height: 100%;
-
-      @include flexBox(row,space-around);
-
-      a{
-        @extend %links;
-      }
-    }
-  }
-
-  article:nth-child(2){
-
-    img:nth-child(1), div img{
-      @include squareSize($iconSize);
-    }
-
-    figure:nth-child(2){
-      @include squareSize($userLogoSize);
-      img{
-        @extend %userImage;
-      }
-    }
-
-    div{
-      max-width: $maxUsernameWidth;
-      @include flexBox(row,space-between);
-
-    }
   }
 }

@@ -1,0 +1,82 @@
+@import "../../../../global/style/MMStyle";
+
+$imgSize: 40px;
+$userNameWidth: 60%;
+$maxContentWidth: 75%;
+$contentBubblesTopMargin: 5px;
+
+main {
+  width: 100%;
+
+  @include flexBox(column, flex-start);
+
+  time,section{
+    width: 100%;
+  }
+
+  time p {
+    font-size: 1rem;
+    color: $pinkishGrey;
+  }
+
+}
+
+main section{
+  margin-top: $smallPadding;
+  @include flexBox(row,flex-start);
+  align-items: flex-start;
+
+  figure {
+    @include squareSize($imgSize);
+    img {
+      @extend %userImage;
+    }
+  }
+
+  article{
+    margin:0 $defaultPadding;
+    @include flexBox(column,flex-start);
+    align-items: flex-start;
+
+    div:nth-child(1){
+      width: $userNameWidth;
+      text-align: left;
+      @include flexBox(row,space-between);
+
+      p{
+        color: $lightGray;
+        font-size: 1.2rem;
+      }
+    }
+
+    .content{
+      max-width: $maxContentWidth;
+      margin-top: $contentBubblesTopMargin;
+      padding: 5px $smallPadding;
+      border-radius: $defaultBorderRadius;
+      background-color: $white-two;
+
+      p{
+        text-align: left;
+      }
+    }
+
+  }
+
+  &.me{
+    @include flexBox(row,flex-end);
+
+    figure, article div:nth-child(1){
+      display: none;
+    }
+
+    article {
+      align-items: flex-end;
+      .content{
+        color: $white;
+        background-color: $lightBlue;
+      }
+    }
+
+  }
+}

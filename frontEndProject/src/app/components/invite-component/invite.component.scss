@@ -15,7 +15,7 @@ main{
     height: $boxHeight;
     padding: $defaultPadding;
     overflow: scroll;
-    background-color: $lightGray;
+    box-shadow: $boxShadow;
 
     h2{
       width: 100%;
@@ -23,7 +23,6 @@ main{
     }
   }
 }
-
 main section article{
   padding: $defaultPadding 0;
   @include flexBox(row,space-between);
@@ -39,6 +38,10 @@ main section article{
   h3{
     width: 60%;
     text-align: left;
+  }
+
+  button{
+    @extend %buttons;
   }
 
   &:not(:nth-last-child(1)){

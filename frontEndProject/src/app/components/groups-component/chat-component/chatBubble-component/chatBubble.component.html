@@ -1,16 +1,16 @@
 <main>
-    <time><p>15:25 12/12/2017</p></time>
+    <time>{{message.time}}</time>
 
-    <section [ngClass]="{'me': 0 == 1}">
+    <section [ngClass]="{'me': message.user.id == 'me'}">
         <figure>
-            <img src="https://static.pexels.com/photos/355164/pexels-photo-355164.jpeg" alt="" />
+            <img [src]="message.user.image" [alt]="message.user.name" />
         </figure>
         <article>
             <div>
-                <p>Voornaam Achternaam</p>
+                <p>{{message.user.name}}</p>
             </div>
-            <div class="content">
-                <p>content tekstcontent tekstcontent tekstcontent tekstcontent tekst</p>
+            <div class="content" *ngFor="let content of message.messages">
+                <p>{{content}}</p>
             </div>
         </article>
     </section>

@@ -1,277 +1,22 @@
-//@import "../../global/style/MMStyle";
-//
-///* screen sizes */
-//$tablet: 450px;
-//$desktop: 700px;
-//
-//$sectionHeaderHeight: 100px;
-//$howToImageWidth: 500px;
-//$smallImageSize: 100px;
-//$bottomSectionHeight: 400px;
-//
-///*section height*/
-//$primarySectionHeight: 55vh;
-//$tertiarySectionHeight: 120vh;
-//$bottomSectionHeight: 70vh;
-//
-//$howToArticleWidth: 100%;
-//$planArticleWidth: 100%;
-//
-///* icon and image size*/
-//$logoWidth: 123px;
-//$logoHeight: 75px;
-//
-//$googlePlayStoreWidth: 127px;
-//$googlePlayStoreHeight: 42px;
-//
-//$planIconsSize: 150px;
-//
-//@media all and (min-width: $tablet) {
-//  /*section height*/
-//  $primarySectionHeight: 65vh;
-//  $howToArticleWidth: 40%;
-//
-//  /* icon and image size*/
-//  $howToImageWidth: 40%;
-//}
-//
-//@media all and (min-width: $desktop) {
-//  /*section height*/
-//  $primarySectionHeight: 85vh;
-//  $tertiarySectionHeight: 90vh;
-//
-//  $planArticleWidth: 40%;
-//
-//  /* icon and image size*/
-//  $logoWidth: 173px;
-//  $logoHeight: 105px;
-//
-//  $howToImageWidth: 40%;
-//}
-//
-//  main {
-//
-//    padding-top: $headerHeight;
-//
-//    section, header {
-//      padding: $defaultPadding;
-//    }
-//
-//    section {
-//      width: 100%;
-//
-//      &:nth-child(1), &:nth-child(4) {
-//        @include flexBox(column, space-around);
-//
-//        article {
-//          @include flexBox(column, space-between);
-//
-//          h1, h3, a {
-//            color: $white;
-//          }
-//        }
-//      }
-//
-//      header {
-//        width: 100%;
-//        height: $sectionHeaderHeight;
-//        margin: $defaultMargin 0;
-//
-//        h1 {
-//          width: 100%;
-//          text-align: center;
-//        }
-//      }
-//    }
-//  }
-//
-//  main section:nth-child(1) {
-//    height: $primarySectionHeight;
-//    background: url("../../../assets/png/mainBackground@3x.png") no-repeat;
-//    background-size: cover;
-//
-//    article:nth-child(2) {
-//      figure, figure img {
-//        width: $logoWidth;
-//        height: $logoHeight;
-//      }
-//
-//      h1 {
-//        font-size: 3rem;
-//        margin-top: $defaultMargin;
-//      }
-//    }
-//
-//    article:nth-child(3) {
-//      figure, figure img {
-//        width: $googlePlayStoreWidth;
-//        height: $googlePlayStoreHeight;
-//      }
-//      a:nth-child(2) {
-//        position: relative;
-//        margin-top: $defaultPadding;
-//
-//        &:after {
-//          width: 100%;
-//          left: 0;
-//          bottom: 0;
-//          position: absolute;
-//          content: ' ';
-//          border-bottom: solid 1px;
-//        }
-//      }
-//    }
-//  }
-//
-//  main section:nth-child(2) {
-//    padding: 2.5% 5%;
-//
-//    article {
-//      width: 100%;
-//      margin: $defaultMargin 0;
-//
-//      @include flexBox(row, space-between);
-//
-//      figure {
-//        width: $howToImageWidth;
-//        height: auto;
-//        display: none;
-//        img {
-//          @include squareSize(100%);
-//        }
-//      }
-//
-//      div {
-//        width: $howToArticleWidth;
-//        @include flexBox(column, space-around);
-//
-//        h2 {
-//          font-size: 2rem;
-//          margin-bottom: $defaultPadding;
-//        }
-//
-//        p {
-//          font-size: 1.2rem;
-//          width: 80%;
-//        }
-//      }
-//    }
-//  }
-//
-//  main section:nth-child(3) {
-//    height: $tertiarySectionHeight;
-//    background-color: $lightBlue;
-//
-//    @include flexBox(row, space-around);
-//    flex-wrap: wrap;
-//
-//    h1, h2, p {
-//      color: $white;
-//    }
-//
-//    article {
-//      width: $planArticleWidth;
-//      height: 45vh;
-//      align-self: flex-start;
-//
-//      @include flexBox(column, space-between);
-//
-//      h2, p {
-//        width: 80%;
-//        text-align: center;
-//      }
-//
-//      figure {
-//        @include squareSize($planIconsSize);
-//        img {
-//          @include squareSize($planIconsSize);
-//        }
-//      }
-//    }
-//  }
-//
-//  main section:nth-child(4) {
-//    height: $bottomSectionHeight;
-//    background: url("../../../assets/png/background@3x.png") no-repeat;
-//    background-size: cover;
-//
-//    h1 {
-//      margin-bottom: $defaultMargin;
-//    }
-//
-//    article a {
-//      width: $googlePlayStoreWidth;
-//      height: $googlePlayStoreHeight;
-//      border-radius: $defaultBorderRadius;
-//      color: $black;
-//      background-color: $white;
-//      @include flexBox(row, center);
-//    }
-//  }
-//
-//
-//@media all and (min-width: 700px) {
-//  main section:nth-child(2) {
-//    figure {
-//      display: flex;
-//    }
-//
-//    div p {
-//      width: 100%;
-//    }
-//  }
-//
-//  main section:nth-child(3) {
-//    article {
-//      height: 50%;
-//    }
-//  }
-//
-//}
-//
-//@media all and (min-width: $desktop) {
-//  main section:nth-child(1), main section:nth-child(2) {
-//    h1 {
-//      font-size: 4rem;
-//    }
-//  }
-//  main section:nth-child(2) {
-//    h2 {
-//      font-size: 2rem;
-//      margin-bottom: $defaultMargin;
-//    }
-//
-//    p {
-//      font-size: 1.5rem;
-//    }
-//  }
-//
-//  main section:nth-child(3) {
-//    article {
-//      height: 50%;
-//    }
-//  }
-//
-//}
-
 @import "../../global/style/MMStyle";
 
 /* screen sizes */
 $tablet: 450px;
-$desktop: 700px;
+$smallDesktop: 800px;
+$desktop: 1200px;
 
 $sectionHeaderHeight: 100px;
-$howToImageWidth: 500px;
 $smallImageSize: 100px;
 $bottomSectionHeight: 400px;
 
 /*section height*/
-$primarySectionHeight: 85vh;
-$tertiarySectionHeight: 90vh;
+$primarySectionHeight: 50vh;
+$tertiarySectionHeight: 120vh;
 $bottomSectionHeight: 70vh;
 
-$howToArticleWidth: 40%;
-$planArticleWidth: 40%;
+$howToArticleWidth: 100%;
+$howToArticleHeight: 70vh;
+$planArticleWidth: 100%;
 
 /* icon and image size*/
 $logoWidth: 173px;
@@ -280,158 +25,273 @@ $logoHeight: 105px;
 $googlePlayStoreWidth: 127px;
 $googlePlayStoreHeight: 42px;
 
-$howToImageWidth: 40%;
+$howToImageWidth: 100%;
 $planIconsSize: 150px;
 
+main {
 
-  main {
+  padding-top: $headerHeight;
 
-    padding-top: $headerHeight;
+  section, header {
+    padding: $defaultPadding;
+  }
 
-    section, header {
-      padding: $defaultPadding;
-    }
+  section {
+    width: 100%;
 
-    section {
-      width: 100%;
+    &:nth-child(1), &:nth-child(4) {
+      @include flexBox(column, space-around);
 
-      &:nth-child(1), &:nth-child(4) {
-        @include flexBox(column, space-around);
+      article {
+        @include flexBox(column, space-between);
 
-        article {
-          @include flexBox(column, space-between);
-
-          h1, h3, a {
-            color: $white;
-          }
+        h1, h3, a {
+          color: $white;
         }
       }
+    }
 
-      header {
+    header {
+      width: 100%;
+      height: $sectionHeaderHeight;
+      margin: $defaultMargin 0;
+
+      h1 {
         width: 100%;
-        height: $sectionHeaderHeight;
-        margin: $defaultMargin 0;
-
-        h1 {
-          width: 100%;
-          text-align: center;
-        }
+        text-align: center;
       }
     }
   }
+}
+
+main section:nth-child(1) {
+  height: $primarySectionHeight;
+  background: url("../../../assets/png/mainBackground@3x.png") no-repeat center;
+  background-size: cover;
+
+  article:nth-child(2) {
+    figure, figure img {
+      width: $logoWidth;
+      height: $logoHeight;
+    }
+
+    h1 {
+      margin-top: $defaultMargin;
+    }
+  }
+
+  article:nth-child(3) {
+    figure, figure img {
+      width: $googlePlayStoreWidth;
+      height: $googlePlayStoreHeight;
+    }
+    a:nth-child(2) {
+      position: relative;
+      margin-top: $defaultPadding;
+
+      &:after {
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        position: absolute;
+        content: ' ';
+        border-bottom: solid 1px;
+      }
+    }
+  }
+}
+
+main section:nth-child(2) {
+  padding: 2.5% 5%;
+
+  article {
+    width: 100%;
+    max-height: $howToArticleHeight;
+    margin: $defaultMargin 0;
+
+    @include flexBox(column, space-between);
+    flex-wrap: wrap;
+
+    figure {
+      width: $howToImageWidth;
+      height: auto;
+      order: 2;
+      img {
+        @include squareSize(100%);
+      }
+    }
+
+    h2, p {
+      width: $howToArticleWidth;
+      margin-bottom: $defaultPadding;
+    }
+
+    h2 {
+      margin-top: 5%;
+      order: 1;
+    }
+
+    p{
+      margin-top: $defaultMargin;
+      order: 3;
+    }
+  }
+}
+
+main section:nth-child(3) {
+  height: $tertiarySectionHeight;
+  background-color: $lightBlue;
+
+  @include flexBox(row, space-around);
+  flex-wrap: wrap;
+
+  h1, h2, p {
+    color: $white;
+  }
+
+  article {
+    width: $planArticleWidth;
+    height: 35%;
+    align-self: flex-start;
+
+    @include flexBox(column, space-between);
+
+    h2, p {
+      width: 80%;
+      text-align: center;
+    }
+
+    figure {
+      @include squareSize($planIconsSize);
+      img {
+        @include squareSize($planIconsSize);
+      }
+    }
+  }
+}
+
+main section:nth-child(4) {
+  height: $bottomSectionHeight;
+  background: url("../../../assets/png/background@3x.png") no-repeat center;
+  background-size: cover;
+
+  h1 {
+    margin-bottom: $defaultMargin;
+  }
+
+  article a {
+    width: $googlePlayStoreWidth;
+    height: $googlePlayStoreHeight;
+    border-radius: $defaultBorderRadius;
+    color: $black;
+    background-color: $white;
+    @include flexBox(row, center);
+  }
+}
+
+@media all and (min-width: $tablet) {
+  /*section height*/
+  $primarySectionHeight: 65vh;
+
+  $howToImageWidth: 60%;
 
   main section:nth-child(1) {
     height: $primarySectionHeight;
-    background: url("../../../assets/png/mainBackground@3x.png") no-repeat;
-    background-size: cover;
+  }
 
-    article:nth-child(2) {
-      figure, figure img {
-        width: $logoWidth;
-        height: $logoHeight;
-      }
+  main section:nth-child(2) article {
+    figure {
+      width: $howToImageWidth;
+    }
+  }
+}
 
-      h1 {
-        margin-top: $defaultMargin;
-      }
+@media all and (min-width: $smallDesktop) {
+  $howToArticleHeight: 35vh;
+  $howToArticleWidth: 40%;
+  /* icon and image size*/
+  $howToImageWidth: 40%;
+
+  main section:nth-child(2) article {
+    max-height: $howToArticleHeight;
+
+    h2, p {
+      width: $howToArticleWidth;
     }
 
-    article:nth-child(3) {
-      figure, figure img {
-        width: $googlePlayStoreWidth;
-        height: $googlePlayStoreHeight;
-      }
-      a:nth-child(2) {
-        position: relative;
-        margin-top: $defaultPadding;
+    h2 {
+      font-size: 2rem;
+      margin-bottom: $defaultMargin;
+    }
 
-        &:after {
-          width: 100%;
-          left: 0;
-          bottom: 0;
-          position: absolute;
-          content: ' ';
-          border-bottom: solid 1px;
-        }
+    figure {
+      width: $howToImageWidth;
+    }
+
+    p {
+      font-size: 1.5rem;
+    }
+
+    &:nth-child(even) {
+      h2{
+        order: 1;
+      }
+      figure {
+        order: 3;
+      }
+      p {
+        order: 2;
+      }
+    }
+    &:nth-child(odd) {
+      figure {
+        order: 1;
+      }
+      h2 {
+        order: 2;
+      }
+      p {
+        order: 3;
       }
     }
   }
+}
 
-  main section:nth-child(2) {
-    padding: 2.5% 5%;
+@media all and (min-width: $desktop) {
+  /*section height*/
+  $primarySectionHeight: 85vh;
+  $tertiarySectionHeight: 90vh;
+  $planArticleWidth: 45%;
+  $howToArticleHeight: 45vh;
 
-    article {
-      width: 100%;
-      margin: $defaultMargin 0;
+  /* icon and image size*/
+  $logoWidth: 173px;
+  $logoHeight: 105px;
 
-      @include flexBox(row, space-between);
+  main section:nth-child(1) {
+    height: $primarySectionHeight;
 
-      figure {
-        width: $howToImageWidth;
-        height: auto;
-        img {
-          @include squareSize(100%);
-        }
-      }
-
-      div {
-        width: $howToArticleWidth;
-        @include flexBox(column, space-around);
-
-        h2 {
-          margin-bottom: $defaultPadding;
-        }
-      }
+    article:nth-child(2) figure, article:nth-child(2) figure img {
+      width: $logoWidth;
+      height: $logoHeight;
     }
+  }
+
+  main section:nth-child(1), main section:nth-child(2) {
+    h1 {
+      font-size: 4rem;
+    }
+  }
+
+  main section:nth-child(2) article {
+    max-height: $howToArticleHeight;
   }
 
   main section:nth-child(3) {
     height: $tertiarySectionHeight;
-    background-color: $lightBlue;
-
-    @include flexBox(row, space-around);
-    flex-wrap: wrap;
-
-    h1, h2, p {
-      color: $white;
-    }
-
     article {
       width: $planArticleWidth;
       height: 50%;
-      align-self: flex-start;
-
-      @include flexBox(column, space-between);
-
-      h2, p {
-        width: 80%;
-        text-align: center;
-      }
-
-      figure {
-        @include squareSize($planIconsSize);
-        img {
-          @include squareSize($planIconsSize);
-        }
-      }
     }
   }
-  main section:nth-child(4) {
-    height: $bottomSectionHeight;
-    background: url("../../../assets/png/background@3x.png") no-repeat;
-    background-size: cover;
-
-    h1 {
-      margin-bottom: $defaultMargin;
-    }
-
-    article a {
-      width: $googlePlayStoreWidth;
-      height: $googlePlayStoreHeight;
-      border-radius: $defaultBorderRadius;
-      color: $black;
-      background-color: $white;
-      @include flexBox(row, center);
-    }
-  }
-
+}

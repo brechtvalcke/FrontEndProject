@@ -1,4 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Group} from '../../../models/group';
+import {GroupService} from '../../../services/group.service';
 
 @Component({
     selector: 'group-list-component',
@@ -6,5 +8,16 @@ import {Component} from '@angular/core';
     styleUrls: ['groupList.component.scss']
 })
 
-export class GroupListComponent {
+export class GroupListComponent implements OnInit {
+    groups: [Group];
+    constructor(private groupService: GroupService) { }
+
+    ngOnInit() {
+        this.getGroups();
+    }
+    private getGroups() {
+        this.groupService.getAllGroups()
+            .then(groups => this.groups = groups)
+            .catch(error => console.log(error));
+    }
 }

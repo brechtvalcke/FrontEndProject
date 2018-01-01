@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<main>
+    <section>
+        <article>
+            <a href="">Groups</a>
+            <a href="">Start event</a>
+        </article>
+    </section>
+    <section>
+        <figure>
+            <img src="https://png.icons8.com/android/50/ffffff/appointment-reminders.png" alt="notifications" />
+            <figcaption *ngIf="notifications">
+                <p>{{notifications}}</p>
+            </figcaption>
+        </figure>
+        <article>
+            <figure>
+                <img [src]="user.image" alt="{{user.name}}" />
+            </figure>
+            <p>{{user.name}}</p>
+            <figure>
+                <img src="https://png.icons8.com/android/50/ffffff/expand-arrow.png" alt="drop down arrow" />
+            </figure>
+        </article>
+    </section>
+</main>

@@ -9,12 +9,8 @@ $white: #ffffff;
 $white-two: #eeeeee;
 $black: #000000;
 $pinkishGrey: #bfbfbf;
-
-//Deprecated colors
-$headerColor: #1166CF;
-$lightGray: #CCCCCC;
-$gray: #AAAAAA;
-$darkGray: #333333;
+$facebook: #3b5998;
+$neonRed: #ff0033;
 
 /* font family */
 $Lato: 'Lato', sans-serif;
@@ -113,7 +109,7 @@ h3 {
   @extend %heading;
 }
 
-p,a {
+p,a,label {
   @extend %paragraph;
 }
 

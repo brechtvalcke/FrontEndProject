@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Group} from '../../../models/group';
 
 @Component({
     selector: 'chat-component',
@@ -7,4 +8,5 @@ import {Component} from '@angular/core';
 })
 
 export class ChatComponent {
+    @Input()group: Group;
 }

@@ -1,0 +1,23 @@
+@import "../../../global/style/MMStyle";
+
+$activeBorderHeight: 5px;
+
+section{
+  @include squareSize(100%);
+  background-color: $lightBlue;
+
+  @include flexBox(row);
+
+  article{
+    width: 50%;
+    height: 100%;
+    color: $white;
+    cursor: pointer;
+
+    @include flexBox(column,center);
+
+    &.active{
+      border-bottom:$activeBorderHeight solid $facebook;
+    }
+  }
+}

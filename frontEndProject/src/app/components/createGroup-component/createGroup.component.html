@@ -6,21 +6,21 @@
         <form>
             <article>
                 <h3>Select friends</h3>
-                <div>
+                <div *ngFor="let user of users">
                     <figure>
-                        <img src="https://static.pexels.com/photos/355164/pexels-photo-355164.jpeg" alt="" />
+                        <img [src]="user.image" [alt]="user.name" />
                     </figure>
-                    <p>
-                        user name
-                    </p>
-                    <input type="checkbox"/>
+                    <label for="checkBox_{{user.id}}">
+                        {{user.name}}
+                    </label>
+                    <input type="checkbox" id="checkBox_{{user.id}}"/>
                 </div>
             </article>
 
             <article>
                 <h3>Invite friends to MeetMe</h3>
                 <div>
-                    <input type="submit" value="Facebook"/>
+                    <button>Share</button>
                 </div>
             </article>
             <article>

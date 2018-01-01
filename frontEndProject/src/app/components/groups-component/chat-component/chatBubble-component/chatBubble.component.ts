@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Message} from '../../../../models/message';
 
 @Component({
     selector: 'chat-bubble-component',
@@ -7,4 +8,6 @@ import {Component} from '@angular/core';
 })
 
 export class ChatBubbleComponent {
+    message: Message;
+    @Input() messages;
 }

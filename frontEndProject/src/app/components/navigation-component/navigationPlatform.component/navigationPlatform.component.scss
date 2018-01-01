@@ -1,0 +1,72 @@
+@import "../../../global/style/MMStyle";
+
+$linksWidth: 250px;
+$userWidth: 300px;
+$notificationSize:20px;
+$imgSize: 30px;
+$dropDownSize: 20px;
+
+main, main section, main section article{
+  @include flexBox(row,space-between)
+}
+
+main{
+  width: 100%;
+  section{
+
+    &:nth-child(1){
+      width: $linksWidth;
+    }
+
+    &:nth-child(2){
+      width: $userWidth;
+
+    }
+
+    article{
+      width: 100%;
+      a{
+        color: $white;
+      }
+    }
+
+
+    figure{
+      @include squareSize($imgSize);
+      position: relative;
+      cursor: pointer;
+
+      img{
+        @include squareSize(100%);
+      }
+      figcaption{
+        @include squareSize($notificationSize);
+        top: 70%;
+        left: 60%;
+        border-radius: 100%;
+        position: absolute;
+        color: $white;
+        background-color: $neonRed;
+      }
+    }
+  }
+}
+
+main section article{
+  width: 75%;
+  color: $white;
+
+  figure{
+    &:nth-child(1){
+      @include squareSize($imgSize);
+    }
+
+    &:nth-child(3){
+      @include squareSize($dropDownSize);
+    }
+    img{
+      @extend %userImage;
+    }
+  }
+
+}

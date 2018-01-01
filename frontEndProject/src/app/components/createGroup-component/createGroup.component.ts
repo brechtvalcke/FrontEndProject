@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {User} from '../../models/user';
 
 @Component({
     selector: 'create-group-component',
@@ -7,4 +8,5 @@ import {Component} from '@angular/core';
 })
 
 export class CreateGroupComponent {
+    users: [User];
 }

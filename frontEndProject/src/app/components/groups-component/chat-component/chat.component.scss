@@ -5,6 +5,8 @@ $userNameWidth: 100px;
 $inputBoxHeight: 50px;
 $submitSize: 50px;
 
+$isTypingHeight: 20px;
+
 main {
   width: 100%;
   height: 100%;
@@ -17,8 +19,8 @@ main {
     &:nth-child(1) {
       height: calc(100% - #{$inputBoxHeight});
       padding: $defaultPadding;
-      border-left: 1px solid $lightGray;
-      border-right: 1px solid $lightGray;
+      border-left: 1px solid $pinkishGrey;
+      border-right: 1px solid $pinkishGrey;
 
       overflow-y: auto;
     }
@@ -28,6 +30,28 @@ main {
       height: $inputBoxHeight;
       padding: $smallPadding;
       background-color: $lightBlue;
+    }
+  }
+}
+
+main section:nth-child(1){
+  position: relative;
+  article{
+    height: $isTypingHeight;
+    padding: $smallPadding;
+
+    top: calc(100% - (#{$isTypingHeight} * 1.5));
+    left: 50%;
+    position: absolute;
+
+    border-radius: $defaultBorderRadius;
+    background-color: $white-two;
+
+    @include flexBox(column,center);
+    @include browserAccessibility(transform, translate(-50%, 0));
+
+    p{
+      font-size: 1.2rem;
     }
   }
 }

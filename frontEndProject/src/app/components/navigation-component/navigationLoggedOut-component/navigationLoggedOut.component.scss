@@ -1,0 +1,11 @@
+@import "../../../global/style/MMStyle";
+
+$buttonWidth:150px;
+
+button{
+  @extend %buttons;
+  font-size: 2rem;
+  width: $buttonWidth;
+  color: $lightBlue;
+  background-color: $white;
+}

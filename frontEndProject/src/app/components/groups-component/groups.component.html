@@ -1,8 +1,11 @@
 <main>
-    <group-list-component></group-list-component>
+    <group-list-component [ngClass]="{'active':  activeTab == 0}"></group-list-component>
     <section>
-        <chat-header-component></chat-header-component>
-        <chat-component></chat-component>
-        <group-detail-component></group-detail-component>
+        <article>
+            <chat-header-component [groupName]="group.name"></chat-header-component>
+            <chat-tab-component (selectedTab)="changeTab($event)"></chat-tab-component>
+        </article>
+        <chat-component [group]="group" [ngClass]="{'active': activeTab == 1}"></chat-component>
+        <group-detail-component [group]="group" [ngClass]="{'active':  activeTab == 2}"></group-detail-component>
     </section>
 </main>

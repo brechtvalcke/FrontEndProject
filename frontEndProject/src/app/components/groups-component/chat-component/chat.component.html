@@ -1,10 +1,13 @@
 <main>
     <section>
-        <chat-bubble-component></chat-bubble-component>
+        <chat-bubble-component *ngFor="let message of group.messages" [messages]="message"></chat-bubble-component>
+        <article>
+            <p>john doe is typing</p>
+        </article>
     </section>
     <section class="chatBox">
         <form>
-            <input type="text" />
+            <input type="text" placeholder="Type a message ..."/>
             <input type="submit" value="send" />
         </form>
     </section>

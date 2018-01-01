@@ -1,5 +1,9 @@
 @import "../../global/style/MMStyle";
 
+$desktop: 1000px;
+$tablet: 700px;
+$chatHeaderHeight:50px;
+
 main {
   width: 100%;
   height: 100%;
@@ -11,27 +15,72 @@ main {
     overflow: scroll;
   }
 
-  chat-component, group-detail-component {
-    height: calc(100% - 50px);
-    overflow: scroll;
-  }
-
   group-list-component {
     width: 20%;
   }
 
+  group-list-component, chat-component, group-detail-component{
+    width: 100%;
+    display: none;
+
+    &.active{
+      display: flex;
+    }
+  }
+
+  chat-component ,group-detail-component {
+    height: calc(100% - (#{$chatHeaderHeight} * 2));
+    overflow: scroll;
+  }
+
   section {
-    width: 80%;
+    width: 100%;
     @include flexBox(row, flex-start);
     flex-wrap: wrap;
 
-    chat-header-component {
+    article, chat-header-component, chat-tab-component {
       width: 100%;
-      height: 50px;
     }
 
-    chat-component ,group-detail-component {
-      width: 50%;
+    article{
+      height: 100px;
+      @include flexBox(column,flex-start);
+
+      chat-header-component, chat-tab-component{
+        height: $chatHeaderHeight;
+      }
     }
   }
+}
+
+@media all and (min-width: $tablet) {
+  main group-list-component{
+    width: 40%;
+    display: flex;
+  }
+
+  section{
+    width: 60%;
+  }
+
+}
+
+@media all and (min-width: $desktop) {
+
+  main{
+    chat-component, group-detail-component {
+      width: 50%;
+      height: calc(100% - #{$chatHeaderHeight});
+      display: flex;
+    }
+
+    section article{
+      height: $chatHeaderHeight;
+
+      chat-tab-component{
+        display: none;
+      }
+    }
+  }
+
 }

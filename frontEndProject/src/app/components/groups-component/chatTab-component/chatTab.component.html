@@ -1,0 +1,8 @@
+<section>
+    <article [ngClass]="{'active': activeTab === 0}" (click)="changeTab(0)">
+        <h3>Chat</h3>
+    </article>
+    <article [ngClass]="{'active':activeTab == 1}" (click)="changeTab(1)">
+        <h3>Planning</h3>
+    </article>
+</section>

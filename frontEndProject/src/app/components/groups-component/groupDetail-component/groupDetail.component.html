@@ -2,9 +2,9 @@
     <section>
         <h2>Users</h2>
         <article>
-            <div *ngFor="let item of [1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7]">
+            <div *ngFor="let user of group.users">
                 <figure>
-                    <img src="https://static.pexels.com/photos/355164/pexels-photo-355164.jpeg" alt="" />
+                    <img [src]="user.image" [alt]="user.name" />
                 </figure>
             </div>
             <div>
@@ -16,9 +16,9 @@
     <section>
         <h2>Time slots</h2>
         <article>
-            <div *ngFor="let item of [1,2,3,4,5]">
-                <h3>time</h3>
-                <p>10</p>
+            <div *ngFor="let timeSlot of group.timeSlots">
+                <h3>{{timeSlot.timeSlot}}</h3>
+                <p>{{timeSlot.votes.length}}</p>
             </div>
             <div>
                 <button>Add</button>
@@ -30,9 +30,9 @@
     <section>
         <h2>Activities</h2>
         <article>
-            <div *ngFor="let item of [1,2,3,4,5,6,7,8,9]">
-                <h3>activity</h3>
-                <p>vote</p>
+            <div *ngFor="let activity of group.activities">
+                <h3>{{activity.name}}</h3>
+                <p>{{activity.votes}}</p>
             </div>
             <div>
                 <button>Add</button>

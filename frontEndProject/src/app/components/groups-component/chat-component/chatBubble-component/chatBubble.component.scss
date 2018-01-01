@@ -14,7 +14,7 @@ main {
     width: 100%;
   }
 
-  time p {
+  time {
     font-size: 1rem;
     color: $pinkishGrey;
   }
@@ -44,7 +44,7 @@ main section{
       @include flexBox(row,space-between);
 
       p{
-        color: $lightGray;
+        color: $pinkishGrey;
         font-size: 1.2rem;
       }
     }

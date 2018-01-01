@@ -1,6 +1,6 @@
 @import "../../global/style/MMStyle";
 
-$boxWidht: 40%;
+$boxWidht: 500px;
 $boxHeight: 80%;
 $userImageSize: 50px;
 main{
@@ -45,6 +45,6 @@ main section article{
   }
 
   &:not(:nth-last-child(1)){
-    border-bottom: 1px solid $gray;
+    border-bottom: 1px solid $pinkishGrey;
   }
 }

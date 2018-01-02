@@ -20,10 +20,13 @@ import {InviteComponent} from './components/invite-component/invite.component';
 import {LoggedInGuard} from './guards/loggedInGuard';
 import {LoginService} from './services/login.service';
 import {GroupService} from './services/group.service';
+import { FbService } from './services/Fb.service';
+
 // Modules
 import {CustomHttpModule} from './../coreClasses/CustomHttpModule';
 import {AppRoutingModule} from './routing/app.routing.module';
 import {HttpModule} from '@angular/http';
+import { FacebookModule } from 'ngx-facebook';
 
 @NgModule({
     declarations: [
@@ -46,7 +49,8 @@ import {HttpModule} from '@angular/http';
     imports: [
         BrowserModule,
         HttpModule,
-        AppRoutingModule
+        AppRoutingModule,
+        FacebookModule.forRoot()
     ],
     providers: [
         {
@@ -54,7 +58,8 @@ import {HttpModule} from '@angular/http';
         },
         LoginService,
         LoggedInGuard,
-        GroupService
+        GroupService,
+        FbService
     ],
     bootstrap: [AppComponent]
 })

@@ -9,9 +9,8 @@ import 'rxjs/add/operator/catch';
 export class CustomHttpModule extends Http {
 
   constructor (backend: XHRBackend, options: RequestOptions, router: Router) {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('acces_token');
     options.headers.set('acces_token', `${token}`);
-
     super(backend, options);
     this.router = router;
   }

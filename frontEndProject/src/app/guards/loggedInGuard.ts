@@ -7,7 +7,7 @@ import {LoginService} from '../services/login.service';
 export class LoggedInGuard implements CanActivate {
     constructor(private fbService: FbService, private router: Router) {}
 
-    canActivate() {
+    canActivate(): boolean {
         const LoggedIn = this.fbService.isLoggedIn();
         return LoggedIn;
     }

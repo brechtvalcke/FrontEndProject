@@ -37,7 +37,7 @@ export class FbService {
                 .catch(error => reject(error));
             });
         }
-        isLoggedIn(): Boolean {
+        isLoggedIn(): boolean {
             const token = localStorage.getItem('acces_token');
             if (token === undefined || token === null || token === '' ) {
                 return false;

@@ -24,7 +24,7 @@ export class FbService {
             return new Promise<any>((resolve, reject) => {
                 this.fb.login(this.loginOptions)
                 .then((response: LoginResponse) => {
-                    localStorage.setItem('acces_token', response.authResponse.accessToken);
+                    localStorage.setItem('access_token', response.authResponse.accessToken);
                     resolve(response);
                 })
                 .catch(error => reject(error));
@@ -38,7 +38,7 @@ export class FbService {
             });
         }
         isLoggedIn(): boolean {
-            const token = localStorage.getItem('acces_token');
+            const token = localStorage.getItem('access_token');
             if (token === undefined || token === null || token === '' ) {
                 return false;
               }

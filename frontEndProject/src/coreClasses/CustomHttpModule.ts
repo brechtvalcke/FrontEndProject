@@ -9,22 +9,22 @@ import 'rxjs/add/operator/catch';
 export class CustomHttpModule extends Http {
 
   constructor (backend: XHRBackend, options: RequestOptions, router: Router) {
-    const token = localStorage.getItem('acces_token');
-    options.headers.set('acces_token', `${token}`);
+    const token = localStorage.getItem('access_token');
+    options.headers.set('access_token', `${token}`);
     super(backend, options);
     this.router = router;
   }
   router: Router;
   request(url: string|Request, options?: RequestOptionsArgs): Observable<Response> {
-    const token = localStorage.getItem('acces_token');
+    const token = localStorage.getItem('access_token');
     if (typeof url === 'string') {
       if (!options) {
 
         options = {headers: new Headers()};
       }
-      options.headers.set('acces_token', `${token}`);
+      options.headers.set('access_token', `${token}`);
     } else {
-      url.headers.set('acces_token', `${token}`);
+      url.headers.set('access_token', `${token}`);
     }
     return super.request(url, options).catch(this.catchAuthError(this));
   }

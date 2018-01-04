@@ -1,5 +1,5 @@
 export class NetworkCalls {
-    public baseURL: 'https://howestmeetme.herokuapp.com';
+    public baseURL= '';
     public getGroups() {
         return this.baseURL + '/api/group';
     }

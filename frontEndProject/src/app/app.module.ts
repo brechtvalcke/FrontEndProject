@@ -20,6 +20,7 @@ import {InviteComponent} from './components/invite-component/invite.component';
 import {LoggedInGuard} from './guards/loggedInGuard';
 import {LoginService} from './services/login.service';
 import {GroupService} from './services/group.service';
+import {UserService} from './services/user.service';
 import { FbService } from './services/fb.service';
 
 // Modules
@@ -59,6 +60,7 @@ import { FacebookModule } from 'ngx-facebook';
         LoginService,
         LoggedInGuard,
         GroupService,
+        UserService,
         FbService
     ],
     bootstrap: [AppComponent]

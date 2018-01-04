@@ -8,5 +8,4 @@ export const PROTECTED_ROUTES: Routes = [
     {path: '', component : GroupsComponent},
     {path: 'create', component : CreateGroupComponent},
     {path: 'invite', component : InviteComponent},
-    {path: '', component: NavigationPlatformComponent, outlet: 'header'},
 ];

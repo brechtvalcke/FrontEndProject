@@ -24,6 +24,13 @@ export class GroupService {
             .then(res => res.json())
             .catch(this.handleError);
     }
+    getInvites(): Promise<[Group]> {
+        return this.http
+            .get(this.networkCalls.getInvites())
+            .toPromise()
+            .then(res => res.json())
+            .catch(this.handleError);
+    }
 
     handleError(error: any): Promise < any > {
         console.error('An error occurred', error); // TODO remove console

@@ -18,10 +18,7 @@ export class CreateGroupComponent implements OnInit{
     }
     private getUsers() {
         this.userService.getAllFriends()
-            .then(users => {
-                console.log(users);
-                this.users = users;
-            })
+            .then(users => this.users = users['userList'])
             .catch(error => console.log(error));
     }
 }

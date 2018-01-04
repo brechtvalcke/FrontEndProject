@@ -8,7 +8,7 @@
                 <h3>Select friends</h3>
                 <div *ngFor="let user of users">
                     <figure>
-                        <img [src]="user.image" [alt]="user.name" />
+                        <img [src]="user.photoUrl" [alt]="user.name" />
                     </figure>
                     <label for="checkBox_{{user.id}}">
                         {{user.name}}

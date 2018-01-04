@@ -19,7 +19,7 @@ export class FbService {
         private loginOptions: LoginOptions = {
             scope: 'email,user_friends'
         };
-
+        
         login(): Promise<any> {
             return new Promise<any>((resolve, reject) => {
                 this.fb.login(this.loginOptions)

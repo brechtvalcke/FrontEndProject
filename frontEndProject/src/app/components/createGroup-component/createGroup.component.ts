@@ -1,5 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from '../../models/user';
+import {UserService} from '../../services/user.service';
+
 
 @Component({
     selector: 'create-group-component',
@@ -7,6 +9,19 @@ import {User} from '../../models/user';
     styleUrls: ['createGroup.component.scss']
 })
 
-export class CreateGroupComponent {
+export class CreateGroupComponent implements OnInit{
     users: [User];
+
+    constructor(private userService: UserService) {}
+    ngOnInit() {
+        this.getUsers();
+    }
+    private getUsers() {
+        this.userService.getAllFriends()
+            .then(users => {
+                console.log(users);
+                this.users = users;
+            })
+            .catch(error => console.log(error));
+    }
 }

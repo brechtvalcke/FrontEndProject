@@ -3,6 +3,7 @@ import {CustomHttpModule} from '../../coreClasses/CustomHttpModule';
 import {Router} from '@angular/router';
 import {Group} from '../models/group';
 import {NetworkCalls} from '../global/networkCalls';
+import {User} from '../models/user';
 
 @Injectable()
 export class UserService {
@@ -10,7 +11,7 @@ export class UserService {
     private headers = new Headers({ 'Content-Type' : 'application/json' });
     constructor(private http: CustomHttpModule, private router: Router ) {}
 
-    getAllFriends(): Promise<[Group]> {
+    getAllFriends(): Promise<[User]> {
         return this.http
             .get(this.networkCalls.getFriends())
             .toPromise()

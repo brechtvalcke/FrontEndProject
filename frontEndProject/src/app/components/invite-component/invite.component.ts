@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from '../../models/user';
-import {Group} from '../../models/group';
+import {UserService} from '../../services/user.service';
 
 @Component({
     selector: 'invite-component',
@@ -8,6 +8,11 @@ import {Group} from '../../models/group';
     styleUrls: ['invite.component.scss']
 })
 
-export class InviteComponent {
-    groups: [Group];
+export class InviteComponent implements OnInit{
+    users:[]
+
+    constructor(private userService: UserService) {}
+    ngOnInit() {
+        this.isLoggedIn = this.loginService.isLoggedIn();
+    }
 }

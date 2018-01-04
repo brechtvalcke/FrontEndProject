@@ -4,6 +4,6 @@
             <img src="../../../assets/png/meetMeLogoWhite.png" alt="Meet Me logo"/>
         </a>
     </figure>
-    <navigation-platform-component></navigation-platform-component>
-    <navigation-logged-out-component></navigation-logged-out-component>
+    <navigation-platform-component *ngIf="isLoggedIn"></navigation-platform-component>
+    <navigation-logged-out-component *ngIf="!isLoggedIn"></navigation-logged-out-component>
 </header>

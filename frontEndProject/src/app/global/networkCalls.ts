@@ -15,4 +15,7 @@ export class NetworkCalls {
     public getGroup(id: String) {
         return '/api/group/' + id;
     }
+    public getFriends() {
+        return '/api/user';
+    }
 }

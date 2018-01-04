@@ -21,7 +21,7 @@ import {LoggedInGuard} from './guards/loggedInGuard';
 import {LoginService} from './services/login.service';
 import {GroupService} from './services/group.service';
 import {UserService} from './services/user.service';
-import { FbService } from './services/Fb.service';
+import { FbService } from './services/fb.service';
 
 // Modules
 import {CustomHttpModule} from './../coreClasses/CustomHttpModule';

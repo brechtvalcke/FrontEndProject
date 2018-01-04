@@ -1,3 +1,4 @@
+import { FbService } from './../../services/fb.service';
 import {Component, OnInit} from '@angular/core';
 import {LoginService} from '../../services/login.service';
 
@@ -9,8 +10,8 @@ import {LoginService} from '../../services/login.service';
 
 export class NavigationComponent implements OnInit {
     isLoggedIn: Boolean = false;
-    constructor(private loginService: LoginService) {}
+    constructor(private fbService: FbService) {}
     ngOnInit() {
-        this.isLoggedIn = this.loginService.isLoggedIn();
+        this.isLoggedIn = this.fbService.isLoggedIn();
     }
 }

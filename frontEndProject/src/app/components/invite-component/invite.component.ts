@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../../models/user';
-import {UserService} from '../../services/user.service';
 
 @Component({
     selector: 'invite-component',
@@ -8,11 +7,8 @@ import {UserService} from '../../services/user.service';
     styleUrls: ['invite.component.scss']
 })
 
-export class InviteComponent implements OnInit{
-    users:[]
+export class InviteComponent implements OnInit {
 
-    constructor(private userService: UserService) {}
     ngOnInit() {
-        this.isLoggedIn = this.loginService.isLoggedIn();
     }
 }

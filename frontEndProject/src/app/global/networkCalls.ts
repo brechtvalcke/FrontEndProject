@@ -16,6 +16,6 @@ export class NetworkCalls {
         return '/api/group/' + id;
     }
     public getFriends() {
-        return '/api/user';
+        return '/api/user/';
     }
 }

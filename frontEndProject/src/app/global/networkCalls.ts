@@ -8,6 +8,7 @@ export class NetworkCalls {
         headers.append('Content-Type', 'application/json');
         return {'headers': headers};
     };
+
     public getGroups() {
         return '/api/group';
     }

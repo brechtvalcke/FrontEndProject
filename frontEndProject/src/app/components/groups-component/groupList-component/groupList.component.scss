@@ -3,6 +3,10 @@
 $sectionHeight: 140px;
 $imgSize: 40px;
 
+main{
+  @include flexBox(column,flex-start);
+}
+
 section {
   width: 100%;
   height: $sectionHeight;

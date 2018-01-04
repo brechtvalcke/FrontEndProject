@@ -9,7 +9,7 @@ export class LoggedInGuard implements CanActivate {
 
     canActivate(): boolean {
         const LoggedIn = this.fbService.isLoggedIn();
-        return LoggedIn;
+        return this.fbService.isLoggedIn();
     }
 }
 

@@ -14,7 +14,7 @@ export class NavigationLoggedOutComponent {
 
     LogInClicked(event: any): void {
         this.fbService.login().then(result => {
-            this.router.navigate(['dashboard']);
+            this.router.navigate(['']);
         });
     }
 

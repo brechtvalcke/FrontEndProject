@@ -17,7 +17,13 @@ export class GroupListComponent implements OnInit {
     }
     private getGroups() {
         this.groupService.getAllGroups()
-            .then(groups => this.groups = groups)
+            .then(groups => {
+                console.log(groups['groupList']);
+                this.groups = groups['groupList'];
+            })
             .catch(error => console.log(error));
+    }
+    log(iets:any) {
+        console.log(iets);
     }
 }

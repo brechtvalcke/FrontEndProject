@@ -5,8 +5,7 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'navigation-logged-out-component',
     templateUrl: 'navigationLoggedOut.component.html',
-    styleUrls: ['navigationLoggedOut.component.scss'],
-    providers: [FbService]
+    styleUrls: ['navigationLoggedOut.component.scss']
 })
 
 export class NavigationLoggedOutComponent {

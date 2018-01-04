@@ -20,7 +20,7 @@ import {InviteComponent} from './components/invite-component/invite.component';
 import {LoggedInGuard} from './guards/loggedInGuard';
 import {LoginService} from './services/login.service';
 import {GroupService} from './services/group.service';
-import { FbService } from './services/Fb.service';
+import { FbService } from './services/fb.service';
 
 // Modules
 import {CustomHttpModule} from './../coreClasses/CustomHttpModule';

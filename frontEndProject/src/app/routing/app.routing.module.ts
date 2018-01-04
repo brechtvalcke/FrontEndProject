@@ -12,9 +12,10 @@ import {LoggedInGuard} from '../guards/loggedInGuard';
 // routing Const
 
 const routes: Routes = [
-    {path: 'dashboard', component: MainComponent , children: PROTECTED_ROUTES}, // , canActivate: [LoggedInGuard]},
+    {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
+    {path: 'dashboard', component: MainComponent , children: PROTECTED_ROUTES, canActivate: [LoggedInGuard]},
     {path: '', component: NavigationLoggedOutComponent, outlet: 'header'},
-    {path: '', component:  LandingComponent, pathMatch: 'full'}
+    {path: 'landing', component:  LandingComponent, pathMatch: 'full'}
 ];
 
 @NgModule({

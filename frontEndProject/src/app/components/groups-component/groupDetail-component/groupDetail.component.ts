@@ -1,5 +1,6 @@
 import { Group } from './../../../models/group';
 import { Component, Input, OnInit } from '@angular/core';
+import { TimeSlot } from '../../../models/timeSlot';
 
 @Component({
     selector: 'group-detail-component',
@@ -9,6 +10,12 @@ import { Component, Input, OnInit } from '@angular/core';
 
 export class GroupDetailComponent implements OnInit {
     @Input() group: Group;
+    voteTimeslot(timeslot: TimeSlot): void {
+
+    }
+    addTimeslot(): void {
+
+    }
     ngOnInit() {
     }
 }

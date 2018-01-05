@@ -24,7 +24,7 @@ import {GroupService} from './services/group.service';
 import {UserService} from './services/user.service';
 import { FbService } from './services/fb.service';
 import {StoreUserInfo} from './global/storeUserInfo';
-import { SocketService } from './services/socket.service';
+import {SocketService} from './services/socket.service'
 
 // Modules
 import {CustomHttpModule} from './../coreClasses/CustomHttpModule';

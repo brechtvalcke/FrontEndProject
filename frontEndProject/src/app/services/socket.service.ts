@@ -5,6 +5,7 @@ import {Injectable} from '@angular/core';
 import * as io from 'socket.io-client';
 import { Observer } from 'rxjs/Observer';
 import 'rxjs/add/operator/share';
+
 @Injectable()
 export class SocketService {
     private socket;
@@ -16,8 +17,6 @@ export class SocketService {
         this.MessageObservable = new Observable<Message>(observer =>
         this._messageObserver = observer).share();
     }
-
-
     connect(): void {
         this.socket = io(this.networkCalls.socketConnect());
         this.initListeners();

@@ -1,4 +1,5 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Group } from '../../../models/group';
 
 @Component({
     selector: 'chat-header-component',
@@ -6,7 +7,8 @@ import {Component, Input} from '@angular/core';
     styleUrls: ['ChatHeader.component.scss']
 })
 
-export class ChatHeaderComponent {
-    @Input() groupName;
-
+export class ChatHeaderComponent implements OnInit {
+    @Input() group;
+    ngOnInit() {
+    }
 }

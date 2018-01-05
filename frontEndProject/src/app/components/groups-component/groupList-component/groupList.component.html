@@ -1,5 +1,5 @@
 <main>
-    <section *ngFor="let group of groups">
+    <section *ngFor="let group of groups" (click)='groupClicked.emit(group)'>
         <article >
             <h3>{{group.name}}</h3>
             <p>members</p>

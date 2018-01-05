@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {Group} from '../../../models/group';
-import {GroupService} from '../../../services/group.service';
+import { Group } from './../../../models/group';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
 
 @Component({
     selector: 'group-list-component',
@@ -9,21 +9,10 @@ import {GroupService} from '../../../services/group.service';
 })
 
 export class GroupListComponent implements OnInit {
-    groups: [Group];
-    constructor(private groupService: GroupService) { }
-
+    @Input() groups: [Group];
+    @Output() groupClicked = new EventEmitter<Group>();
+    constructor() { }
     ngOnInit() {
-        this.getGroups();
     }
-    private getGroups() {
-        this.groupService.getAllGroups()
-            .then(groups => {
-                console.log(groups['groupList']);
-                this.groups = groups['groupList'];
-            })
-            .catch(error => console.log(error));
-    }
-    log(iets:any) {
-        console.log(iets);
-    }
+
 }

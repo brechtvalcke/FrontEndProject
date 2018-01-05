@@ -1,5 +1,5 @@
-import {Component, Input} from '@angular/core';
-import {Group} from '../../../models/group';
+import { Group } from './../../../models/group';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
     selector: 'group-detail-component',
@@ -7,6 +7,8 @@ import {Group} from '../../../models/group';
     styleUrls: ['groupDetail.component.scss']
 })
 
-export class GroupDetailComponent {
+export class GroupDetailComponent implements OnInit {
     @Input() group: Group;
+    ngOnInit() {
+    }
 }

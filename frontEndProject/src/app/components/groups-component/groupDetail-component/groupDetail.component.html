@@ -4,7 +4,7 @@
         <article>
             <div *ngFor="let user of group.users">
                 <figure>
-                    <img [src]="user.image" [alt]="user.name" />
+                    <img [src]="user.photoUrl" [alt]="user.name" />
                 </figure>
             </div>
             <div>
@@ -16,8 +16,8 @@
     <section>
         <h2>Time slots</h2>
         <article>
-            <div *ngFor="let timeSlot of group.timeSlots">
-                <h3>{{timeSlot.timeSlot}}</h3>
+            <div *ngFor="let timeSlot of group.timeSlot">
+                <h3>{{timeSlot.time | date:'hh:mm'}}</h3>
                 <p>{{timeSlot.votes.length}}</p>
             </div>
             <div>
@@ -30,9 +30,9 @@
     <section>
         <h2>Activities</h2>
         <article>
-            <div *ngFor="let activity of group.activities">
+            <div *ngFor="let activity of group.activity">
                 <h3>{{activity.name}}</h3>
-                <p>{{activity.votes}}</p>
+                <p>{{activity.votes.length}}</p>
             </div>
             <div>
                 <button>Add</button>

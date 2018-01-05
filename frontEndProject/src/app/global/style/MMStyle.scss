@@ -113,6 +113,19 @@ p,a,label {
   @extend %paragraph;
 }
 
+a.active{
+  position: relative;
+
+  &:after {
+    width: 150%;
+    left: -25%;
+    bottom: -5px;
+    position: absolute;
+    content: ' ';
+    border-bottom: solid 2px;
+  }
+}
+
 
 /**
  accessibility control

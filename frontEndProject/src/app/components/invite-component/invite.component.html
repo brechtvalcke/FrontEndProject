@@ -2,9 +2,6 @@
     <section>
         <h2>All invites</h2>
         <article *ngFor="let group of groups">
-            <figure>
-                <!--<img [src]="user.image" [alt]="user.name" />-->
-            </figure>
             <h3>{{group.name}}</h3>
             <div>
                 <button (click)="acceptInvite(group._id)">accept</button>

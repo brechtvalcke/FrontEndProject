@@ -1,20 +1,22 @@
 <main>
     <section>
         <article>
-            <a routerLink="/dashboard">Groups</a>
-            <a routerLink="/dashboard/create">Start event</a>
+            <a routerLink="/dashboard" routerLinkActive="active">Groups</a>
+            <a routerLink="/dashboard/create" routerLinkActive="active">Start event</a>
         </article>
     </section>
     <section>
         <figure>
-            <img src="https://png.icons8.com/android/50/ffffff/appointment-reminders.png" alt="notifications" />
-            <figcaption *ngIf="notifications">
-                <p>{{notifications}}</p>
-            </figcaption>
+            <a routerLink="/dashboard/invite">
+                <img src="https://png.icons8.com/android/50/ffffff/appointment-reminders.png" alt="notifications" />
+                <figcaption *ngIf="notifications">
+                    <p>{{notifications}}</p>
+                </figcaption>
+            </a>
         </figure>
         <article *ngIf="user">
             <figure >
-                <img [src]="user.image" alt="{{user.name}}" />
+                <img [src]="user.photoUrl" alt="{{user.name}}" />
             </figure>
             <p>{{user.name}}</p>
             <figure>

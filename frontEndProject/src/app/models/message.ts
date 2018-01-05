@@ -1,8 +1,9 @@
 import {User} from './user';
 
 export class Message {
-    public id: String;
-    public messages: [String];
+    public senderId: String;
+    public message: String;
     public dateSent: Date;
-    public user: User;
+    public usersViewed: User[];
+    public groupId: String;
 }

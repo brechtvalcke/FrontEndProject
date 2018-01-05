@@ -1,3 +1,4 @@
+import { NetworkCalls } from './global/networkCalls';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 // components
@@ -22,6 +23,7 @@ import {LoginService} from './services/login.service';
 import {GroupService} from './services/group.service';
 import {UserService} from './services/user.service';
 import { FbService } from './services/fb.service';
+import { SocketService } from './services/socket.service';
 
 // Modules
 import {CustomHttpModule} from './../coreClasses/CustomHttpModule';
@@ -61,7 +63,9 @@ import { FacebookModule } from 'ngx-facebook';
         LoggedInGuard,
         GroupService,
         UserService,
-        FbService
+        FbService,
+        SocketService,
+        NetworkCalls
     ],
     bootstrap: [AppComponent]
 })

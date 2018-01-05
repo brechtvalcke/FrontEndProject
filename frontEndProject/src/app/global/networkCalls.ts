@@ -21,4 +21,7 @@ export class NetworkCalls {
     public getInvites() {
         return 'api/group/invites';
     }
+    public socketConnect() {
+        return 'http://localhost:80';
+    }
 }

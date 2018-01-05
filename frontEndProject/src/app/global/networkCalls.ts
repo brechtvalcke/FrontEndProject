@@ -21,4 +21,10 @@ export class NetworkCalls {
     public getInvites() {
         return 'api/group/invites';
     }
+    public acceptInvite(id: String) {
+        return 'api/group/invites/' + id + '/accepted';
+    }
+    public declineInvite(id: String) {
+        return 'api/group/invites/' + id + '/decline';
+    }
 }

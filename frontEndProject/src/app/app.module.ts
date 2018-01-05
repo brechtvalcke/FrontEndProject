@@ -28,6 +28,7 @@ import {CustomHttpModule} from './../coreClasses/CustomHttpModule';
 import {AppRoutingModule} from './routing/app.routing.module';
 import {HttpModule} from '@angular/http';
 import { FacebookModule } from 'ngx-facebook';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -51,6 +52,7 @@ import { FacebookModule } from 'ngx-facebook';
         BrowserModule,
         HttpModule,
         AppRoutingModule,
+        FormsModule,
         FacebookModule.forRoot()
     ],
     providers: [

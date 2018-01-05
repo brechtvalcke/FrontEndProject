@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+
 import {User} from '../../models/user';
 import {UserService} from '../../services/user.service';
-
 
 @Component({
     selector: 'create-group-component',
@@ -11,7 +11,7 @@ import {UserService} from '../../services/user.service';
 
 export class CreateGroupComponent implements OnInit{
     users: [User];
-
+    selectedUsers: [String];
     constructor(private userService: UserService) {}
     ngOnInit() {
         this.getUsers();
@@ -20,5 +20,9 @@ export class CreateGroupComponent implements OnInit{
         this.userService.getAllFriends()
             .then(users => this.users = users['userList'])
             .catch(error => console.log(error));
+    }
+    createGroup() {
+    }
+    changedSelectState(userId: String) {
     }
 }

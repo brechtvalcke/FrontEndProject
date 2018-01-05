@@ -7,8 +7,8 @@
             </figure>
             <h3>{{group.name}}</h3>
             <div>
-                <button>accept</button>
-                <button>decline</button>
+                <button (click)="acceptInvite(group._id)">accept</button>
+                <button (click)="declineInvite(group._id)">decline</button>
             </div>
         </article>
     </section>

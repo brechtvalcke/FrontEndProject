@@ -9,7 +9,7 @@ import {GroupService} from '../../services/group.service';
 })
 
 export class InviteComponent implements OnInit {
-    groups: [Group];
+    groups: Group[];
     constructor(private groupService: GroupService) { }
 
     ngOnInit() {
@@ -17,7 +17,20 @@ export class InviteComponent implements OnInit {
     }
     private getInvites() {
         this.groupService.getInvites()
-            .then(groups => {this.groups = groups['groupList']; console.log(groups);})
+            .then(groups => this.groups = groups['groupList'])
             .catch(error => console.log(error));
+    }
+    acceptInvite(groupID: String) {
+        this.groupService.acceptInvite(groupID)
+            .then(result => this.removeGroup(groupID))
+            .catch(error => {});
+    }
+    declineInvite(groupID: String) {
+        this.groupService.declineInvite(groupID)
+            .then(result => this.removeGroup(groupID))
+            .catch(error => {});
+    }
+    removeGroup(groupID: String) {
+        this.groups = this.groups.filter(group => group._id !== groupID);
     }
 }

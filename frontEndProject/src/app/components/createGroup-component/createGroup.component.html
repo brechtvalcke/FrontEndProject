@@ -3,7 +3,7 @@
         <article class="header">
             <h2>Start event</h2>
         </article>
-        <form>
+        <form #groupForm="ngForm" novalidate (submit)="createGroup()">
             <article>
                 <h3>Select friends</h3>
                 <div *ngFor="let user of users">
@@ -13,7 +13,7 @@
                     <label for="checkBox_{{user.id}}">
                         {{user.name}}
                     </label>
-                    <input type="checkbox" id="checkBox_{{user.id}}"/>
+                    <input type="checkbox" id="checkBox_{{user.id}}" (change)="changedSelectState(user.id)"/>
                 </div>
             </article>
 
@@ -24,7 +24,7 @@
                 </div>
             </article>
             <article>
-                <input type="submit" value="Create event"/>
+                <input type="submit" value="Create event" [disabled]="selectedUsers !== null && selectedUsers.length > 0" />
             </article>
         </form>
     </section>

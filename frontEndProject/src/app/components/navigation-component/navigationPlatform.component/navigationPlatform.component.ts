@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from '../../../models/user';
+import {StoreUserInfo} from '../../../global/storeUserInfo';
 
 @Component({
     selector: 'navigation-platform-component',
@@ -7,7 +8,11 @@ import {User} from '../../../models/user';
     styleUrls: ['navigationPlatform.component.scss']
 })
 
-export class NavigationPlatformComponent {
+export class NavigationPlatformComponent implements OnInit{
     user: User;
     notifications: number;
+    constructor(private storeUserInfo: StoreUserInfo) {}
+    ngOnInit() {
+        this.user = this.storeUserInfo.MyUser;
+    }
 }

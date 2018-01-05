@@ -26,6 +26,7 @@ main{
     article{
       width: 100%;
       a{
+        font-size: 1.8rem;
         color: $white;
       }
     }
@@ -63,6 +64,10 @@ main section article{
 
     &:nth-child(3){
       @include squareSize($dropDownSize);
+    }
+
+    a{
+      @include squareSize(100%);
     }
     img{
       @extend %userImage;

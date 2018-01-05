@@ -1,16 +1,16 @@
 <main>
-    <time>{{message.time}}</time>
+    <time *ngIf='showTime'>{{message.dateSent | date:'hh:mm dd/mm/yyyy'}}</time>
 
-    <section [ngClass]="{'me': message.user.id == 'me'}">
+    <section [ngClass]="{'me': message.senderId == myUser._id}">
         <figure>
-            <img [src]="message.user.image" [alt]="message.user.name" />
+            <img [src]="getUserById(message.senderId).photoUrl" [alt]="getUserById(message.senderId).name" />
         </figure>
         <article>
             <div>
-                <p>{{message.user.name}}</p>
+                <p>{{getUserById(message.senderId).name}}</p>
             </div>
-            <div class="content" *ngFor="let content of message.messages">
-                <p>{{content}}</p>
+            <div class="content" >
+                <p>{{message.message}}</p>
             </div>
         </article>
     </section>

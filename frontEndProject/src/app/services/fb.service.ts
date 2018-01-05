@@ -1,3 +1,5 @@
+import { StoreUserInfo } from './../global/storeUserInfo';
+import { UserService } from './user.service';
 import { FacebookService, InitParams, LoginResponse, LoginStatus, LoginOptions } from 'ngx-facebook';
 import {Injectable} from '@angular/core';
 import {CustomHttpModule} from '../../coreClasses/CustomHttpModule';
@@ -8,7 +10,10 @@ export class FbService {
     private headers = new Headers({ 'Content-Type' : 'application/json' });
     constructor(
         private http: CustomHttpModule,
-        private fb: FacebookService ) {
+        private fb: FacebookService,
+        private userService: UserService,
+        private storeUserInfo: StoreUserInfo,
+    ) {
               fb.init(this.initParams);
         }
         private initParams: InitParams = {
@@ -19,12 +24,14 @@ export class FbService {
         private loginOptions: LoginOptions = {
             scope: 'email,user_friends'
         };
-        
         login(): Promise<any> {
             return new Promise<any>((resolve, reject) => {
                 this.fb.login(this.loginOptions)
                 .then((response: LoginResponse) => {
                     localStorage.setItem('access_token', response.authResponse.accessToken);
+                    this.userService.getUserInfo()
+                    .then(user => this.storeUserInfo.MyUser = user)
+                    .catch(error => console.log(error));
                     resolve(response);
                 })
                 .catch(error => reject(error));

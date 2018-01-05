@@ -1,14 +1,14 @@
 <main>
     <section>
-        2
+        <chat-bubble-component *ngFor='let message of group.messages' [message]='message' [users]='group.users' [showTime]='showTimeAboveMessage(message)'></chat-bubble-component>
         <article>
             <p>john doe is typing</p>
         </article>
     </section>
     <section class="chatBox">
         <form>
-            <input type="text" placeholder="Type a message ..."/>
-            <input type="submit" value="send" />
+            <input placeholder="Type a message ..." type="text" [value]="MessageSendString" (input)="MessageSendString = $event.target.value" (keydown.enter)="sendMessage()"/>
+            <input type="submit" value="send" (click)='sendMessage()' />
         </form>
     </section>
 </main>

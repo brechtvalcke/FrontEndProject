@@ -21,7 +21,7 @@ export class GroupService {
         return this.http
             .get(this.networkCalls.getGroup(groupID))
             .toPromise()
-            .then(res => res.json())
+            .then(res => res.json().groupList[0])
             .catch(this.handleError);
     }
     getInvites(): Promise<[Group]> {

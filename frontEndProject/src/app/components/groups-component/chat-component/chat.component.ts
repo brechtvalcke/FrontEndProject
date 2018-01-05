@@ -8,5 +8,5 @@ import {Group} from '../../../models/group';
 })
 
 export class ChatComponent {
-    @Input()group: Group;
+    @Input() group: Group;
 }

@@ -1,3 +1,4 @@
+import { SocketService } from './../../services/socket.service';
 import {Component, OnInit} from '@angular/core';
 
 @Component({
@@ -6,5 +7,9 @@ import {Component, OnInit} from '@angular/core';
     styleUrls: ['main.component.scss']
 })
 
-export class MainComponent {
+export class MainComponent implements OnInit {
+    constructor(private socketService: SocketService){}
+    ngOnInit() {
+        this.socketService.connect();
+    }
 }

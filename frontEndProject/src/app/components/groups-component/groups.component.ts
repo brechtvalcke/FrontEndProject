@@ -1,5 +1,6 @@
+import { Router , ActivatedRoute} from '@angular/router';
+import { Group } from './../../models/group';
 import {Component, OnInit} from '@angular/core';
-import {Group} from '../../models/group';
 import {GroupService} from '../../services/group.service';
 
 @Component({
@@ -9,17 +10,34 @@ import {GroupService} from '../../services/group.service';
 })
 
 export class GroupsComponent implements OnInit {
-    group: Group;
-    groupID: string;
+    groups: [Group];
+    selectedGroup: Group = new Group();
     activeTab = 1;
-    constructor(private groupService: GroupService) { }
+    routeSubscription: any;
+    constructor(private groupService: GroupService, private router: Router,private route: ActivatedRoute) { }
 
     ngOnInit() {
-        this.getGroup();
+        this.getGroups();
+        this.routeSubscription = this.route.params.subscribe(params => {
+            if (params['id']) {
+                this.groupService.getGroup(params['id'])
+                .then((group: Group) => {
+                    this.selectedGroup = group;
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+            }
+        });
     }
-    private getGroup() {
-        this.groupService.getGroup(this.groupID)
-            .then(group => this.group = group)
+    GroupClicked(group: Group) {
+        this.router.navigate(['dashboard/group', group._id]);
+    }
+    private getGroups() {
+        this.groupService.getAllGroups()
+            .then(groups => {
+                this.groups = groups['groupList'];
+            })
             .catch(error => console.log(error));
     }
     changeTab(event: Event) {

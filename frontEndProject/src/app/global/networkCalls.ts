@@ -33,4 +33,7 @@ export class NetworkCalls {
     public getUser() {
         return '/api/user/';
     }
+    public socketConnect() {
+        return 'http://localhost:80';
+    }
 }

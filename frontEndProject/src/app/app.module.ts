@@ -1,3 +1,4 @@
+import { NetworkCalls } from './global/networkCalls';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 // components
@@ -23,6 +24,7 @@ import {GroupService} from './services/group.service';
 import {UserService} from './services/user.service';
 import { FbService } from './services/fb.service';
 import {StoreUserInfo} from './global/storeUserInfo';
+import { SocketService } from './services/socket.service';
 
 // Modules
 import {CustomHttpModule} from './../coreClasses/CustomHttpModule';
@@ -65,7 +67,9 @@ import {FormsModule} from '@angular/forms';
         GroupService,
         UserService,
         FbService,
-        StoreUserInfo
+        StoreUserInfo,
+        SocketService,
+        NetworkCalls
     ],
     bootstrap: [AppComponent]
 })

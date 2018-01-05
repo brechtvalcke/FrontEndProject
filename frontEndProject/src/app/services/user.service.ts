@@ -19,7 +19,7 @@ export class UserService {
             .catch(this.handleError);
     }
 
-    getUserInfo(): Promise<User>{
+    getUserInfo(): Promise<User> {
         return this.http
             .get(this.networkCalls.getUser())
             .toPromise()

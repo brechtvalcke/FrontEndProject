@@ -12,15 +12,10 @@ import {StoreUserInfo} from '../../../global/storeUserInfo';
 
 export class NavigationLoggedOutComponent {
     constructor(private fbService: FbService,
-                private userService: UserService,
-                private storeUserInfo: StoreUserInfo,
                 private router: Router) {}
 
     LogInClicked(event: any): void {
         this.fbService.login().then(result => {
-            this.userService.getUserInfo()
-                .then(user => this.storeUserInfo.MyUser = user)
-                .catch(error => console.log(error));
             this.router.navigate(['']);
         });
     }

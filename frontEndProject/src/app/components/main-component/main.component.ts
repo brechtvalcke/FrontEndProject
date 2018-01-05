@@ -8,7 +8,7 @@ import {Component, OnInit} from '@angular/core';
 })
 
 export class MainComponent implements OnInit {
-    constructor(private socketService: SocketService){}
+    constructor(private socketService: SocketService) {}
     ngOnInit() {
         this.socketService.connect();
     }

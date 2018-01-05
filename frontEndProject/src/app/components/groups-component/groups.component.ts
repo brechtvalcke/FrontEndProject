@@ -1,4 +1,4 @@
-import { Router , ActivatedRoute} from '@angular/router';
+import { Router , ActivatedRoute, ActivatedRouteSnapshot} from '@angular/router';
 import { Group } from './../../models/group';
 import {Component, OnInit} from '@angular/core';
 import {GroupService} from '../../services/group.service';
@@ -14,7 +14,7 @@ export class GroupsComponent implements OnInit {
     selectedGroup: Group = new Group();
     activeTab = 1;
     routeSubscription: any;
-    constructor(private groupService: GroupService, private router: Router,private route: ActivatedRoute) { }
+    constructor(private groupService: GroupService, private router: Router, private route: ActivatedRoute) { }
 
     ngOnInit() {
         this.getGroups();
@@ -23,6 +23,7 @@ export class GroupsComponent implements OnInit {
                 this.groupService.getGroup(params['id'])
                 .then((group: Group) => {
                     this.selectedGroup = group;
+                    
                 })
                 .catch((err) => {
                     console.log(err);
@@ -37,6 +38,11 @@ export class GroupsComponent implements OnInit {
         this.groupService.getAllGroups()
             .then(groups => {
                 this.groups = groups['groupList'];
+                const activatedRouteSnapshot: ActivatedRouteSnapshot = this.route.snapshot;
+                if (activatedRouteSnapshot.params['id'] === undefined) {
+                    this.router.navigate(['dashboard/group', this.groups[0]._id]);
+                }
+
             })
             .catch(error => console.log(error));
     }

@@ -10,7 +10,7 @@ export class Group {
     public createBy: String;
     public createdOn: String;
     public messages: [Message];
-    public users: [User];
+    public users: User[];
     public timeSlots: [TimeSlot];
     public activities: [Activity];
 }

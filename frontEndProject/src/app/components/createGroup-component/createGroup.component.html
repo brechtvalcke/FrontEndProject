@@ -3,17 +3,17 @@
         <article class="header">
             <h2>Start event</h2>
         </article>
-        <form>
+        <form #groupForm="ngForm" novalidate (submit)="createGroup()">
             <article>
                 <h3>Select friends</h3>
                 <div *ngFor="let user of users">
                     <figure>
                         <img [src]="user.photoUrl" [alt]="user.name" />
                     </figure>
-                    <label for="checkBox_{{user.id}}">
+                    <label for="checkBox_{{user._id}}">
                         {{user.name}}
                     </label>
-                    <input type="checkbox" id="checkBox_{{user.id}}"/>
+                    <input type="checkbox" id="checkBox_{{user._id}}" (change)="changedSelectState(user._id)"/>
                 </div>
             </article>
 

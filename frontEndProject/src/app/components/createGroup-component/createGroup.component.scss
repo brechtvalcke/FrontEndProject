@@ -32,6 +32,7 @@ main {
     article.header{
       width: $boxWidth;
       height: $subHeaderHeight;
+      z-index: 50;
       left: calc(50% - (#{$boxWidth} / 2));
       position: fixed;
 
@@ -75,6 +76,7 @@ main section form article{
     }
 
     input[type=checkbox]{
+      //@extend %checkBox;
       @include squareSize($checkBoxSize);
     }
 

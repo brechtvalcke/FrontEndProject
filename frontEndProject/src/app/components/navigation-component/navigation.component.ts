@@ -10,8 +10,12 @@ import {LoginService} from '../../services/login.service';
 
 export class NavigationComponent implements OnInit {
     isLoggedIn: Boolean = false;
+    isDropped: Boolean = false;
     constructor(private fbService: FbService) {}
     ngOnInit() {
         this.isLoggedIn = this.fbService.isLoggedIn();
+    }
+    showDropDown() {
+        this.isDropped = !this.isDropped;
     }
 }

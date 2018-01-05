@@ -15,4 +15,7 @@ export class NavigationPlatformComponent implements OnInit{
     ngOnInit() {
         this.user = this.storeUserInfo.MyUser;
     }
+    logOut() {
+        // TODO log out
+    }
 }

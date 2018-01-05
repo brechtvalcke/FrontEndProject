@@ -9,6 +9,7 @@ import { Group } from '../../../models/group';
 
 export class ChatHeaderComponent implements OnInit {
     windowSize: number;
+    isDropped: Boolean = false;
     @Input() group;
     ngOnInit() {
         this.windowSize = window.screen.width;
@@ -17,5 +18,8 @@ export class ChatHeaderComponent implements OnInit {
     @HostListener('window:resize', ['$event'])
     onResize(event) {
         this.windowSize = window.screen.width;
+    }
+    showDropDown() {
+        this.isDropped = !this.isDropped;
     }
 }

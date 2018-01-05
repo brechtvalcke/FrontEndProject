@@ -49,6 +49,10 @@ $boxShadow: 0 0 7px 1px transparentize($black, 0.9);
   }
 }
 
+%checkBox{
+
+}
+
 %buttons{
   padding: $smallPadding;
   border-radius: $smallBorderRadius;

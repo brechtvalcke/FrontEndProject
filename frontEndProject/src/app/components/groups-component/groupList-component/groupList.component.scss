@@ -12,6 +12,7 @@ main{
 section {
   width: 100%;
   padding: $smallPadding;
+  cursor: pointer;
 
   &:not(:nth-last-child(1)){
     border-bottom: 1px solid $pinkishGrey;

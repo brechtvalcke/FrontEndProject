@@ -2,6 +2,9 @@
 
 $headerHeight: 50px;
 $iconSize: 30px;
+$dropDownWidth: 200px;
+$dropDownHeight: 100px;
+
 
 header{
   width: 100%;
@@ -17,13 +20,22 @@ header{
 
   figure{
     @include squareSize($iconSize);
-
     cursor: pointer;
 
     img{
       height: 100%;
     }
   }
+}
+
+section{
+  width: $dropDownWidth;
+  height: $dropDownHeight;
+  margin-right: $defaultMargin;
+  z-index: 80;
+  float: right;
+  background-color: $lightBlue;
+
 }
 
 @media all and (min-width: $tablet){

@@ -7,11 +7,17 @@ $imgSize: 30px;
 $dropDownSize: 20px;
 
 main, main section, main section article{
-  @include flexBox(row,space-between)
+  @include flexBox(column,space-between)
 }
 
 main{
   width: 100%;
+  padding: $defaultPadding;
+  margin-top: $headerHeight;
+  z-index: 1000;
+  background-color: $dodgerBlue;
+  position: fixed;
+
   section{
 
     &:nth-child(1){
@@ -20,20 +26,24 @@ main{
 
     &:nth-child(2){
       width: $userWidth;
-
+      display: none;
     }
 
     article{
       width: 100%;
       a{
         font-size: 1.8rem;
+        height: $headerHeight;
         color: $white;
+        &.active:after{
+          border: none;
+        }
       }
     }
 
-
     figure{
       @include squareSize($imgSize);
+      display: none;
       position: relative;
       cursor: pointer;
 
@@ -52,7 +62,6 @@ main{
     }
   }
 }
-
 main section article{
   width: 75%;
   color: $white;
@@ -73,5 +82,44 @@ main section article{
       @extend %userImage;
     }
   }
+}
 
+@media all and (min-width: $smallDesktop){
+  main, main section, main section article{
+    flex-flow: row;
+  }
+
+  main{
+    height: $headerHeight;
+    padding: 0;
+    margin-top: 0;
+    position: relative;
+
+    section{
+      &:nth-child(1){
+        height: 100%;
+        @include flexBox(row,center);
+        article a{
+          height: 100%;
+        }
+      }
+      &:nth-child(2){
+        display: flex;
+      }
+      &:nth-child(3){
+        display: none;
+      }
+
+      article a{
+        height: $headerHeight;
+        &.active:after{
+          border-bottom: 2px;
+        }
+      }
+
+      figure{
+        display: flex;
+      }
+    }
+  }
 }

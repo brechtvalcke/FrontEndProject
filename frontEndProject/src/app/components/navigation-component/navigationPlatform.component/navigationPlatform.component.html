@@ -8,20 +8,28 @@
     <section>
         <figure>
             <a routerLink="/dashboard/invite">
-                <img src="https://png.icons8.com/android/50/ffffff/appointment-reminders.png" alt="notifications" />
+                <img src="https://png.icons8.com/android/50/ffffff/appointment-reminders.png" alt="notifications"/>
                 <figcaption *ngIf="notifications">
                     <p>{{notifications}}</p>
                 </figcaption>
             </a>
         </figure>
+
         <article *ngIf="user">
-            <figure >
-                <img [src]="user.photoUrl" alt="{{user.name}}" />
+            <figure>
+                <img [src]="user.photoUrl" alt="{{user.name}}"/>
             </figure>
             <p>{{user.name}}</p>
             <figure>
-                <img src="https://png.icons8.com/android/50/ffffff/expand-arrow.png" alt="drop down arrow" />
+                <img src="https://png.icons8.com/android/50/ffffff/expand-arrow.png" alt="drop down arrow"/>
             </figure>
+        </article>
+    </section>
+
+    <section>
+        <article>
+            <a routerLink="/dashboard/invite">notification</a>
+            <a (click)="logOut()">Log out</a>
         </article>
     </section>
 </main>

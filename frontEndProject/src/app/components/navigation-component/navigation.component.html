@@ -4,6 +4,9 @@
             <img src="../../../assets/png/meetMeLogoWhite.png" alt="Meet Me logo"/>
         </a>
     </figure>
-    <navigation-platform-component *ngIf="isLoggedIn"></navigation-platform-component>
+    <navigation-platform-component *ngIf="isLoggedIn" [ngClass]="{'dropped':  isDropped}"></navigation-platform-component>
     <navigation-logged-out-component *ngIf="!isLoggedIn"></navigation-logged-out-component>
+    <figure *ngIf="isLoggedIn" (click)="showDropDown()">
+        <img src="https://png.icons8.com/ios/50/ffffff/menu.png" alt="menu" />
+    </figure>
 </header>

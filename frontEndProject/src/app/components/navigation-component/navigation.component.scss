@@ -1,6 +1,7 @@
 @import "../../global/style/MMStyle";
 
-$logoHeight: 100%;
+$logoHeight: calc(100% - (#{$smallPadding} * 2));
+$menuSize: 40px;
 
 header, article {
   @include flexBox(row, space-between);
@@ -9,16 +10,47 @@ header, article {
 header {
   width: 100%;
   height: $headerHeight;
-  padding: $defaultPadding;
+  padding: 0 $defaultPadding;
+  z-index: 100;
   background-color: $dodgerBlue;
   position: fixed;
 
   figure, &:nth-child(1) figure a, &:nth-child(1) figure a img {
     height: $logoHeight;
+    margin-top: $smallPadding;
   }
 
-  navigation-platform-component{
+  figure:nth-child(3) {
+    @include squareSize($menuSize);
+    top: $defaultPadding;
+    left: 90%;
+    cursor: pointer;
+
+    img{
+      @include squareSize($menuSize);
+    }
+  }
+
+  navigation-platform-component {
     width: 90%;
     height: 100%;
+    z-index: 100;
+    display: none;
+
+    &.dropped {
+      display: flex;
+    }
+  }
+}
+
+@media all and (min-width: $smallDesktop) {
+  header {
+    navigation-platform-component {
+      display: flex;
+    }
+
+    figure:nth-child(3) {
+      display: none;
+    }
   }
 }

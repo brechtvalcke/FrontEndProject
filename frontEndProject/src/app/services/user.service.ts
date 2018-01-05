@@ -19,6 +19,13 @@ export class UserService {
             .catch(this.handleError);
     }
 
+    getUserInfo(): Promise<User>{
+        return this.http
+            .get(this.networkCalls.getUser())
+            .toPromise()
+            .then(res => res.json())
+            .catch(this.handleError);
+    }
     handleError(error: any): Promise < any > {
         console.error('An error occurred', error); // TODO remove console
         return Promise.reject(error.message || error);

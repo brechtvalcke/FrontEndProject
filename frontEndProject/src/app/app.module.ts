@@ -22,6 +22,7 @@ import {LoginService} from './services/login.service';
 import {GroupService} from './services/group.service';
 import {UserService} from './services/user.service';
 import { FbService } from './services/fb.service';
+import {StoreUserInfo} from './global/storeUserInfo';
 
 // Modules
 import {CustomHttpModule} from './../coreClasses/CustomHttpModule';
@@ -63,7 +64,8 @@ import {FormsModule} from '@angular/forms';
         LoggedInGuard,
         GroupService,
         UserService,
-        FbService
+        FbService,
+        StoreUserInfo
     ],
     bootstrap: [AppComponent]
 })

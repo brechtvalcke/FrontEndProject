@@ -10,10 +10,10 @@
                     <figure>
                         <img [src]="user.photoUrl" [alt]="user.name" />
                     </figure>
-                    <label for="checkBox_{{user.id}}">
+                    <label for="checkBox_{{user._id}}">
                         {{user.name}}
                     </label>
-                    <input type="checkbox" id="checkBox_{{user.id}}" (change)="changedSelectState(user.id)"/>
+                    <input type="checkbox" id="checkBox_{{user._id}}" (change)="changedSelectState(user._id)"/>
                 </div>
             </article>
 
@@ -24,7 +24,7 @@
                 </div>
             </article>
             <article>
-                <input type="submit" value="Create event" [disabled]="selectedUsers !== null && selectedUsers.length > 0" />
+                <input type="submit" value="Create event"/>
             </article>
         </form>
     </section>

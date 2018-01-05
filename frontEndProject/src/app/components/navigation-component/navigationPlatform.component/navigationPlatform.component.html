@@ -12,8 +12,8 @@
                 <p>{{notifications}}</p>
             </figcaption>
         </figure>
-        <article>
-            <figure>
+        <article *ngIf="user">
+            <figure >
                 <img [src]="user.image" alt="{{user.name}}" />
             </figure>
             <p>{{user.name}}</p>

@@ -27,4 +27,10 @@ export class NetworkCalls {
     public declineInvite(id: String) {
         return 'api/group/invites/' + id + '/decline';
     }
+    public creatGroup() {
+        return '/api/group/';
+    }
+    public getUser() {
+        return '/api/user/';
+    }
 }

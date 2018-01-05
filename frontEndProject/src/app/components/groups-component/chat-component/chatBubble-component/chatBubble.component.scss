@@ -22,6 +22,7 @@ main {
 }
 
 main section{
+  width: 100%;
   margin-top: $smallPadding;
   @include flexBox(row,flex-start);
   align-items: flex-start;
@@ -34,6 +35,7 @@ main section{
   }
 
   article{
+    width: 100%;
     margin:0 $defaultPadding;
     @include flexBox(column,flex-start);
     align-items: flex-start;

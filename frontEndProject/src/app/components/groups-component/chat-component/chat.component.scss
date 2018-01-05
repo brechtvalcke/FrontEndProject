@@ -36,6 +36,10 @@ main {
 
 main section:nth-child(1){
   position: relative;
+  chat-bubble-component{
+    width: 100%;
+  }
+
   article{
     height: $isTypingHeight;
     padding: $smallPadding;

@@ -6,7 +6,7 @@ import {NavigationPlatformComponent} from '../components/navigation-component/na
 
 export const PROTECTED_ROUTES: Routes = [
     {path: 'group/:id', component : GroupsComponent},
-    {path: '', component : GroupsComponent},
+    {path: 'group', component : GroupsComponent},
     {path: 'create', component : CreateGroupComponent},
     {path: 'invite', component : InviteComponent},
 ];

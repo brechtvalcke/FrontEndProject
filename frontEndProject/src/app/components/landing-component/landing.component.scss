@@ -71,11 +71,12 @@ main section:nth-child(1) {
 
   article:nth-child(2) {
     figure, figure img {
-      width: $logoWidth;
-      height: $logoHeight;
+      width: calc(#{$logoWidth} / 1.5);
+      height: calc(#{$logoHeight} / 1.5);
     }
 
     h1 {
+      font-size: 2.5rem;
       margin-top: $defaultMargin;
     }
   }
@@ -103,11 +104,14 @@ main section:nth-child(1) {
 
 main section:nth-child(2) {
   padding: 2.5% 5%;
+  @include transition(0.6s);
 
   article {
     width: 100%;
     max-height: $howToArticleHeight;
     margin: $defaultMargin 0;
+
+    @include transition(0.6s);
 
     @include flexBox(column, space-between);
     flex-wrap: wrap;
@@ -157,14 +161,14 @@ main section:nth-child(3) {
     @include flexBox(column, space-between);
 
     h2, p {
-      width: 80%;
+      width: 90%;
       text-align: center;
     }
 
     figure {
-      @include squareSize($planIconsSize);
+      @include squareSize(calc(#{$planIconsSize} / 1.2));
       img {
-        @include squareSize($planIconsSize);
+        @include squareSize(calc(#{$planIconsSize} / 1.2));
       }
     }
   }
@@ -177,6 +181,10 @@ main section:nth-child(4) {
 
   h1 {
     margin-bottom: $defaultMargin;
+  }
+
+  h3{
+    font-size: 1.8rem;
   }
 
   article a {
@@ -197,11 +205,41 @@ main section:nth-child(4) {
 
   main section:nth-child(1) {
     height: $primarySectionHeight;
+
+    article:nth-child(2) {
+      figure, figure img {
+        width: $logoWidth;
+        height: $logoHeight;
+      }
+
+      h1{
+        font-size: 4rem;
+      }
+    }
   }
 
   main section:nth-child(2) article {
     figure {
       width: $howToImageWidth;
+    }
+  }
+
+  main section:nth-child(3) article{
+    h2, p {
+      width: 80%;
+    }
+    figure{
+      @include squareSize($planIconsSize);
+      img {
+        @include squareSize($planIconsSize);
+      }
+    }
+  }
+
+  main section:nth-child(4) {
+    h3{
+      font-size: 2rem;
+
     }
   }
 }

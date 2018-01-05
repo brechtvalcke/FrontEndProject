@@ -1,6 +1,6 @@
 <main *ngIf="1==1">
     <group-list-component [ngClass]="{'active':  activeTab == 0}" [groups]='groups' (groupClicked)='GroupClicked($event)'></group-list-component>
-    <section >
+    <section [ngClass]="{'active':  activeTab != 0}">
         <article>
             <chat-header-component [group]="selectedGroup"></chat-header-component>
             <chat-tab-component (selectedTab)="changeTab($event)"></chat-tab-component>

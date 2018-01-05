@@ -1,8 +1,7 @@
 <main>
     <section *ngFor="let group of groups" (click)='groupClicked.emit(group)'>
-        <article >
+        <article>
             <h3>{{group.name}}</h3>
-            <p>members</p>
         </article>
         <article>
             <figure *ngFor="let user of group.users">

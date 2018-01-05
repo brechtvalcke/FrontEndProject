@@ -23,11 +23,14 @@ export class GroupsComponent implements OnInit {
                 this.groupService.getGroup(params['id'])
                 .then((group: Group) => {
                     this.selectedGroup = group;
-                    
                 })
                 .catch((err) => {
                     console.log(err);
                 });
+            }else {
+                if (window.screen.width <= 450) {
+                    this.activeTab = 0;
+                }
             }
         });
     }
@@ -39,13 +42,24 @@ export class GroupsComponent implements OnInit {
             .then(groups => {
                 this.groups = groups['groupList'];
                 const activatedRouteSnapshot: ActivatedRouteSnapshot = this.route.snapshot;
-                if (activatedRouteSnapshot.params['id'] === undefined) {
+                if (activatedRouteSnapshot.params['id'] === undefined && window.screen.width > 450) {
                     this.router.navigate(['dashboard/group', this.groups[0]._id]);
                 }
 
             })
             .catch(error => console.log(error));
     }
-    changeTab(event: Event) {
+    changeTab(event: String) {
+        switch (event) {
+            case 'chat' :
+                this.activeTab = 1;
+                break;
+            case 'detail' :
+                this.activeTab = 2;
+                break;
+            default:
+                this.activeTab = 0;
+                break;
+        }
     }
 }

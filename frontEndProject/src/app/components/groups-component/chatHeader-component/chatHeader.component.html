@@ -1,5 +1,6 @@
 <header>
-    <h3>{{group.name}}</h3>
+    <h3 *ngIf="windowSize < 475">{{group.name | truncate: 30}}</h3>
+    <h3 *ngIf="windowSize > 475">{{group.name | truncate}}</h3>
     <figure>
         <img src="../../../../assets/png/optionMore.png" alt="more options" />
     </figure>

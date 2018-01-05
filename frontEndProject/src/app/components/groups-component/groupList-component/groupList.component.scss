@@ -1,26 +1,31 @@
 @import "../../../global/style/MMStyle";
 
-$sectionHeight: 140px;
 $imgSize: 40px;
 
 main{
+  width: 100%;
+  height: 100%;
+  border-right: 1px solid $pinkishGrey;
   @include flexBox(column,flex-start);
 }
 
 section {
   width: 100%;
-  height: $sectionHeight;
   padding: $smallPadding;
-  border-bottom: 1px solid $pinkishGrey;
+
+  &:not(:nth-last-child(1)){
+    border-bottom: 1px solid $pinkishGrey;
+  }
 
   article {
     width: 100%;
-    height: 50%;
+    height: 55%;
+    overflow: hidden;
 
     &:nth-child(2) {
       width: 100%;
+      margin-top: $defaultMargin;
       @include flexBox(row, center);
-      overflow: scroll;
     }
 
     h2 {
@@ -38,5 +43,11 @@ section {
         @extend %userImage;
       }
     }
+  }
+}
+
+@media all and (min-width: $desktop){
+  main{
+    border-right: none;
   }
 }

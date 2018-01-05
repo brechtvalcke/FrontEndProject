@@ -12,6 +12,7 @@ header{
 
   h3{
     color: $white;
+    font-size: 1.6rem;
   }
 
   figure{
@@ -22,5 +23,11 @@ header{
     img{
       height: 100%;
     }
+  }
+}
+
+@media all and (min-width: $tablet){
+  h3{
+    font-size: 2rem;
   }
 }

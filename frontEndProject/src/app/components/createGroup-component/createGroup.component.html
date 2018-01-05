@@ -3,12 +3,13 @@
         <article class="header">
             <h2>Start event</h2>
         </article>
+
         <form #groupForm="ngForm" novalidate (submit)="createGroup()">
             <article>
                 <h3>Select friends</h3>
                 <div *ngFor="let user of users">
                     <figure>
-                        <img [src]="user.photoUrl" [alt]="user.name" />
+                        <img [src]="user.photoUrl" [alt]="user.name"/>
                     </figure>
                     <label for="checkBox_{{user._id}}">
                         {{user.name}}
@@ -23,6 +24,7 @@
                     <button>Share</button>
                 </div>
             </article>
+
             <article>
                 <input type="submit" value="Create event"/>
             </article>

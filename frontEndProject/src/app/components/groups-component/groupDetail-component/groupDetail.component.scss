@@ -1,7 +1,7 @@
 @import "../../../global/style/MMStyle";
 
 $usersBoxSize: 100px;
-$userImageSize: 40px;
+$userImageSize: 60px;
 $timeSlotBoxSize: 80px;
 $activityBoxHeight: 25px;
 $timeSlotVoteSize:20px;
@@ -34,7 +34,6 @@ main {
 
     &:nth-child(1) article, &:nth-child(3) article {
       width: 100%;
-      overflow: scroll;
     }
 
     &:nth-child(1) article div, &:nth-child(2) article div, &:nth-child(3) article div {
@@ -66,10 +65,6 @@ main section:nth-child(1) article div {
   &:nth-last-child(1){
     border-radius: 100%;
     background-color: $pinkishGrey;
-
-    button{
-      color: $white;
-    }
   }
 }
 
@@ -118,7 +113,6 @@ main section:nth-child(3) article{
     &:nth-last-child(1){
       width: 200px;
       background-color: $lightBlue;
-
     }
   }
 }

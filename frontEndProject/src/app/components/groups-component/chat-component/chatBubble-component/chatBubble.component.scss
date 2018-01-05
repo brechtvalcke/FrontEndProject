@@ -20,7 +20,6 @@ main {
   }
 
 }
-
 main section{
   width: 100%;
   margin-top: $smallPadding;
@@ -31,6 +30,7 @@ main section{
     @include squareSize($imgSize);
     img {
       @extend %userImage;
+      @include squareSize($imgSize);
     }
   }
 
@@ -81,4 +81,8 @@ main section{
     }
 
   }
+}
+
+@media all and (min-width: $tablet){
+
 }

@@ -1,50 +1,97 @@
 @import "../../global/style/MMStyle";
 
-$boxWidht: 500px;
+$boxWidth: 550px;
 $boxHeight: 80%;
-$userImageSize: 50px;
-main{
+$subHeaderHeight: 50px;
+$itemHeight: 100px;
+$buttonWidth: 45%;
+$buttonDivWidth: 100%;
+
+main {
   width: 100%;
   height: 100%;
   padding-top: $headerHeight;
 
-  @include flexBox(column,center);
+  @include transition(0.6s);
+  @include flexBox(column, center);
 
   section{
-    width: $boxWidht;
-    height: $boxHeight;
-    padding: $defaultPadding;
-    overflow: scroll;
+    width: 100%;
+    height: calc(#{100vh} - #{$headerHeight});
     box-shadow: $boxShadow;
+    position: relative;
 
-    h2{
+    @include transition(0.6s);
+
+    h2 {
       width: 100%;
       text-align: center;
     }
+
+    article.header{
+      width: $boxWidth;
+      height: $subHeaderHeight;
+      left: calc(50% - (#{$boxWidth} / 2));
+      position: fixed;
+
+      color: $white;
+      background-color: $dodgerBlue;
+    }
+
+    article.body{
+      width: 100%;
+      height: calc(100% - #{$subHeaderHeight});
+      margin-top: $subHeaderHeight;
+    }
+
   }
 }
-main section article{
-  padding: $defaultPadding 0;
-  @include flexBox(row,space-between);
 
-  figure{
-    @include squareSize($userImageSize);
-    img{
-      @include squareSize($userImageSize);
-      @extend %userImage;
-    }
-  }
+
+main section article.body div{
+  width: 100%;
+  height: $itemHeight;
+  padding: $defaultPadding;
+  @include flexBox(column,space-between);
 
   h3{
-    width: 60%;
+    width: calc(100% - (#{$buttonDivWidth} + #{s$smallPadding}));
     text-align: left;
   }
 
-  button{
-    @extend %buttons;
+  div{
+    width: $buttonDivWidth;
+    padding: 0;
+    flex-flow: row;
+    button{
+      @extend %buttons;
+      width: $buttonWidth;
+    }
   }
 
   &:not(:nth-last-child(1)){
     border-bottom: 1px solid $pinkishGrey;
+  }
+}
+
+@media all and (min-width: $tablet){
+  $itemHeight: 50px;
+  $buttonWidth: 80px;
+  $buttonDivWidth: calc((#{$buttonWidth} * 2) + #{$smallPadding});
+
+  main{
+    padding-top: $headerHeight;
+    section {
+      width: $boxWidth;
+      height: $boxHeight;
+    }
+  }
+
+  main section article.body div{
+    height: $itemHeight;
+    flex-flow: row;
+    div{
+      width: $buttonDivWidth;
+    }
   }
 }

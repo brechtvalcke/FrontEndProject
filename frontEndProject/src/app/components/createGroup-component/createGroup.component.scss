@@ -1,32 +1,53 @@
 @import "../../global/style/MMStyle";
 
-$boxWidht: 500px;
+$boxWidth: 500px;
 $boxHeight: 80%;
+$subHeaderHeight: 50px;
+$userArticleHeight: 70%;
 $userImageSize: 50px;
 $checkBoxSize: 40px;
-main{
+
+main {
   width: 100%;
   height: 100%;
   padding-top: $headerHeight;
 
-  @include flexBox(column,center);
+  @include transition(0.6s);
+  @include flexBox(column, center);
 
   section{
-    width: $boxWidht;
-    height: $boxHeight;
-    padding: $defaultPadding;
-    overflow: scroll;
+    width: 100%;
+    height: calc(#{100vh} - #{$headerHeight});
     box-shadow: $boxShadow;
 
-    h2{
+    position: relative;
+
+    @include transition(0.6s);
+
+    h2 {
       width: 100%;
       text-align: center;
     }
+
+    article.header{
+      width: $boxWidth;
+      height: $subHeaderHeight;
+      left: calc(50% - (#{$boxWidth} / 2));
+      position: fixed;
+
+      color: $white;
+      background-color: $dodgerBlue;
+    }
+
+    form{
+      @include squareSize(100%);
+    }
   }
 }
-main section article{
+
+main section form article{
   width: 100%;
-  padding: $defaultPadding 0;
+  padding: $defaultPadding;
   @include flexBox(column,space-between);
 
   figure{
@@ -65,14 +86,33 @@ main section article{
     }
   }
 
+  &:nth-child(1){
+    height: $userArticleHeight;
+    overflow: scroll;
 
+    justify-content: flex-start;
+  }
+
+  &:nth-child(2),&:nth-child(3){
+    height: calc((100% - #{$userArticleHeight}) / 2);
+  }
 
   &:not(:nth-last-child(1)){
-    border-bottom: 1px solid $pinkishGrey;
+    align-self: flex-end;
   }
 
   input[type=submit]{
     @extend %buttons;
     align-self: flex-end;
+  }
+}
+
+@media all and (min-width: $tablet){
+  main{
+    padding-top: $headerHeight;
+    section {
+      width: $boxWidth;
+      height: $boxHeight;
+    }
   }
 }

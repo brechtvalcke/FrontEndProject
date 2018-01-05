@@ -1,6 +1,7 @@
 @import "../../global/style/MMStyle";
 
-$desktop: 1000px;
+$desktop: 1200px;
+$smallDesktop: 1000px;
 $tablet: 700px;
 $chatHeaderHeight:50px;
 
@@ -8,6 +9,7 @@ main {
   width: 100%;
   height: 100%;
   padding-top: $headerHeight;
+
   @include flexBox(row, flex-start);
 
   group-list-component, section {
@@ -17,15 +19,6 @@ main {
 
   group-list-component {
     width: 20%;
-  }
-
-  group-list-component, chat-component, group-detail-component{
-    width: 100%;
-    display: none;
-
-    &.active{
-      display: flex;
-    }
   }
 
   chat-component ,group-detail-component {
@@ -51,12 +44,23 @@ main {
       }
     }
   }
+
+  group-list-component, section, chat-component, group-detail-component{
+    width: 100%;
+    display: none;
+
+    &.active{
+      display: flex;
+    }
+  }
 }
 
 @media all and (min-width: $tablet) {
+  main group-list-component,main section{
+    display: flex;
+  }
   main group-list-component{
     width: 40%;
-    display: flex;
   }
 
   section{
@@ -65,13 +69,16 @@ main {
 
 }
 
-@media all and (min-width: $desktop) {
-
+@media all and (min-width: $smallDesktop) {
   main{
     chat-component, group-detail-component {
       width: 50%;
       height: calc(100% - #{$chatHeaderHeight});
       display: flex;
+    }
+
+    group-detail-component{
+      width: 40%;
     }
 
     section article{
@@ -82,5 +89,10 @@ main {
       }
     }
   }
+}
 
+@media all and (min-width: $desktop) {
+  main chat-component, group-detail-component {
+    width: 50%;
+  }
 }

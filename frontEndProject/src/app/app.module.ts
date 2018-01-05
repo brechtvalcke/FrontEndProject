@@ -32,6 +32,7 @@ import {AppRoutingModule} from './routing/app.routing.module';
 import {HttpModule} from '@angular/http';
 import { FacebookModule } from 'ngx-facebook';
 import {FormsModule} from '@angular/forms';
+import {TruncateModule} from 'ng2-truncate';
 
 @NgModule({
     declarations: [
@@ -56,7 +57,8 @@ import {FormsModule} from '@angular/forms';
         HttpModule,
         AppRoutingModule,
         FormsModule,
-        FacebookModule.forRoot()
+        FacebookModule.forRoot(),
+        TruncateModule
     ],
     providers: [
         {

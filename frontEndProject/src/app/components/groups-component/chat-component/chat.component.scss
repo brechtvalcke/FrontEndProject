@@ -19,9 +19,7 @@ main {
     &:nth-child(1) {
       height: calc(100% - #{$inputBoxHeight});
       padding: $defaultPadding;
-      border-left: 1px solid $pinkishGrey;
-      border-right: 1px solid $pinkishGrey;
-
+      border: none;
       overflow-y: auto;
     }
 
@@ -34,27 +32,28 @@ main {
   }
 }
 
-main section:nth-child(1){
-  position: relative;
-  chat-bubble-component{
+main section:nth-child(1) {
+  chat-bubble-component {
     width: 100%;
   }
 
-  article{
+  article {
     height: $isTypingHeight;
     padding: $smallPadding;
 
-    top: calc(100% - (#{$isTypingHeight} * 1.5));
+    top: calc(100% - (#{$isTypingHeight} * 1.5) - #{$submitSize});
     left: 50%;
-    position: absolute;
+    position: fixed;
 
     border-radius: $defaultBorderRadius;
     background-color: $white-two;
 
-    @include flexBox(column,center);
+    box-shadow: $boxShadow;
+
+    @include flexBox(column, center);
     @include browserAccessibility(transform, translate(-50%, 0));
 
-    p{
+    p {
       font-size: 1.2rem;
     }
   }
@@ -75,5 +74,22 @@ main section:nth-child(2) form {
     @extend %buttons;
     @include squareSize($submitSize);
   }
+}
 
+@media all and (min-width: $tablet) {
+  main section:nth-child(1) {
+    article {
+      left: 65%;
+    }
+  }
+}
+
+@media all and (min-width: $smallDesktop) {
+  main section:nth-child(1) {
+    border-left: 1px solid $pinkishGrey;
+    border-right: 1px solid $pinkishGrey;
+    article {
+      left: 45%;
+    }
+  }
 }

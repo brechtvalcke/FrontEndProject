@@ -1,8 +1,12 @@
 @import "MMFunction";
 @import url('https://fonts.googleapis.com/css?family=Lato|Open+Sans');
 
-/* Color palette */
+/* responsive */
+$tablet: 450px;
+$smallDesktop: 800px;
+$desktop: 1200px;
 
+/* Color palette */
 $dodgerBlue: #32b6fc;
 $lightBlue: #69c5f6;
 $white: #ffffff;

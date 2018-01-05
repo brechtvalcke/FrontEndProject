@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, HostListener, Input, OnInit} from '@angular/core';
 import { Group } from '../../../models/group';
 
 @Component({
@@ -8,7 +8,14 @@ import { Group } from '../../../models/group';
 })
 
 export class ChatHeaderComponent implements OnInit {
+    windowSize: number;
     @Input() group;
     ngOnInit() {
+        this.windowSize = window.screen.width;
+    }
+
+    @HostListener('window:resize', ['$event'])
+    onResize(event) {
+        this.windowSize = window.screen.width;
     }
 }

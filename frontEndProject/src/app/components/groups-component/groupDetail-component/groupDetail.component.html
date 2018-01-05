@@ -16,12 +16,12 @@
     <section>
         <h2>Time slots</h2>
         <article>
-            <div *ngFor="let timeSlot of group.timeSlot">
+            <div *ngFor="let timeSlot of group.timeSlot" (click)='voteTimeslot(timeSlot)'>
                 <h3>{{timeSlot.time | date:'hh:mm'}}</h3>
                 <p>{{timeSlot.votes.length}}</p>
             </div>
             <div>
-                <button>Add</button>
+                <button (click)='addTimeSlot()'>Add</button>
             </div>
         </article>
 
@@ -30,12 +30,12 @@
     <section>
         <h2>Activities</h2>
         <article>
-            <div *ngFor="let activity of group.activity">
+            <div *ngFor="let activity of group.activity" (click)='voteActivity(activity)'>
                 <h3>{{activity.name}}</h3>
                 <p>{{activity.votes.length}}</p>
             </div>
             <div>
-                <button>Add</button>
+                <button (click)='addActivity()'>Add</button>
             </div>
         </article>
     </section>

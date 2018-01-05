@@ -1,5 +1,6 @@
 <main>
-    <section #chatContainer>
+    <section #chatContainer
+    [scrollTop]="scrollDownIfNeeded(chatContainer)" >
         <chat-bubble-component *ngFor='let message of group.messages' [message]='message' [users]='group.users' [showTime]='showTimeAboveMessage(message)'></chat-bubble-component>
         <article>
             <p>john doe is typing</p>

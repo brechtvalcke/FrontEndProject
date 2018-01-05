@@ -12,10 +12,12 @@ import {Group} from '../../../models/group';
 export class ChatComponent implements OnInit {
     constructor(private socketService: SocketService) {}
     private _group: Group;
+    private nextTimeScrollDown: Boolean;
+    private prevScrollHeight: number;
     @Input() set group(value: Group) {
         this._group = value;
         this.MessageSendString = '';
-        this.chatContainer.scrollTop = this.chatContainer.scrollHeight;
+        this.nextTimeScrollDown = true;
     }
     get group(): Group {
         return this._group;
@@ -42,10 +44,27 @@ export class ChatComponent implements OnInit {
         }
         return show;
     }
+
+    scrollDownIfNeeded(chatContainer): number {
+        if (this.nextTimeScrollDown) {
+            this.nextTimeScrollDown = false;
+            this.prevScrollHeight = chatContainer.scrollHeight;
+            return chatContainer.scrollHeight;
+        }
+        if (this.prevScrollHeight) {
+            const scrollDiff = this.prevScrollHeight - chatContainer.scrollHeight;
+            this.prevScrollHeight = chatContainer.scrollHeight;
+            const newScrollPosition = chatContainer.scrollTop - scrollDiff;
+            return newScrollPosition;
+        }
+        this.prevScrollHeight = chatContainer.scrollHeight;
+        return chatContainer.scrollTop;
+    }
     sendMessage(): void {
         console.log(this.MessageSendString);
         this.socketService.sendMesage(this.group._id, this.MessageSendString);
         this.MessageSendString = '';
+        this.nextTimeScrollDown = true;
     }
 
     ngOnInit() {

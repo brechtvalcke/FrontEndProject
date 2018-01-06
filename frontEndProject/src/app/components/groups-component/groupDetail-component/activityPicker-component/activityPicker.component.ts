@@ -9,7 +9,7 @@ import {FormsModule} from '@angular/forms';
 })
 
 export class ActivityPickerComponent implements OnInit {
-    value = '';
+    activityName = '';
     @Output() close = new EventEmitter();
     @Output() activity = new EventEmitter();
     ngOnInit() {}
@@ -17,7 +17,7 @@ export class ActivityPickerComponent implements OnInit {
         this.close.emit(true);
     }
     saveActivity() {
-        this.activity.emit(this.value);
+        this.activity.emit(this.activityName);
         this.closePopUp();
     }
 }

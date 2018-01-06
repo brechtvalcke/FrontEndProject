@@ -50,7 +50,7 @@ $boxShadow: 0 0 7px 1px transparentize($black, 0.9);
 }
 
 %checkBox{
-
+  @include squareSize(40px);
 }
 
 %buttons{
@@ -72,7 +72,7 @@ $boxShadow: 0 0 7px 1px transparentize($black, 0.9);
   }
 
   &:disabled{
-    background-color: red;
+    background-color: $pinkishGrey;
   }
 }
 

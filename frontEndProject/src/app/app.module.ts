@@ -35,6 +35,8 @@ import {HttpModule} from '@angular/http';
 import { FacebookModule } from 'ngx-facebook';
 import {FormsModule} from '@angular/forms';
 import {TruncateModule} from 'ng2-truncate';
+import { ClickOutsideModule } from 'ng-click-outside';
+
 
 @NgModule({
     declarations: [
@@ -62,7 +64,8 @@ import {TruncateModule} from 'ng2-truncate';
         AppRoutingModule,
         FormsModule,
         FacebookModule.forRoot(),
-        TruncateModule
+        TruncateModule,
+        ClickOutsideModule
     ],
     providers: [
         {

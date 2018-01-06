@@ -22,4 +22,7 @@ export class ChatHeaderComponent implements OnInit {
     showDropDown() {
         this.isDropped = !this.isDropped;
     }
+    onClickedOutside() {
+        this.isDropped = false;
+    }
 }

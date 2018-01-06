@@ -1,10 +1,10 @@
 <main>
-    <form #activityForm="ngForm" ngModel (ngSubmit)="saveActivity()">
+    <form #activityForm="ngForm" (ngSubmit)="saveActivity()">
         <section>
 
             <article>
                 <h2>Enter an activity</h2>
-                <input placeholder="bowling" name="activityName" required minlength="3" />
+                <input placeholder="bowling" name="activityName"  [(ngModel)]="activityName" required minlength="3" />
                 <div></div>
             </article>
             <article>

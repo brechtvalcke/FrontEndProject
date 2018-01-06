@@ -1,0 +1,49 @@
+@import "../../../../global/style/MMStyle";
+
+$sectionWidth: 400px;
+$sectionHeight: 200px;
+
+main{
+  @include squareSize(100%);
+  background-color: transparentize($black,0.6);
+  @include flexBox(column,center);
+
+  section{
+    width: $sectionWidth;
+    height: $sectionHeight;
+    padding: $defaultPadding;
+
+    @include flexBox(column,space-between);
+
+    h2{
+      color: $white;
+    }
+
+    article{
+      width: 100%;
+    }
+  }
+}
+
+main section article:nth-child(1){
+  height: 80%;
+  @include flexBox(column,space-between);
+
+  input{
+    width: 100%;
+    @extend %input;
+  }
+}
+
+main section article:nth-child(2){
+  @include flexBox(row,space-between);
+
+  button:nth-child(1){
+    @extend %smallButton;
+    color: $white;
+  }
+  button:nth-child(2){
+    @extend %buttons;
+    width: 80px;
+  }
+}

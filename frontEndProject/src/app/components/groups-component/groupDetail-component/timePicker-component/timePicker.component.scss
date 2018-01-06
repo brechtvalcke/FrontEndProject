@@ -1,0 +1,10 @@
+@import "../../../../global/style/MMStyle";
+
+$sectionWidth: 400px;
+$sectionHeight: 200px;
+
+main {
+  @include squareSize(100%);
+  background-color: transparentize($black, 0.6);
+  @include flexBox(column, center);
+}

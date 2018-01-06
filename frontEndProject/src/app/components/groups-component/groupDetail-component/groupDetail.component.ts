@@ -9,13 +9,26 @@ import { TimeSlot } from '../../../models/timeSlot';
 })
 
 export class GroupDetailComponent implements OnInit {
+    showActivity = false;
+    showTime = false;
     @Input() group: Group;
     voteTimeslot(timeslot: TimeSlot): void {
 
     }
-    addTimeslot(): void {
-
-    }
     ngOnInit() {
+    }
+    openActivity() {
+        this.showActivity = true;
+    }
+    closeActivity() {
+        this.showActivity = false;
+    }
+    newActivity(name: string) {
+    }
+    openTime() {
+        this.showTime = true;
+    }
+    closeTime() {
+        this.showTime = false;
     }
 }

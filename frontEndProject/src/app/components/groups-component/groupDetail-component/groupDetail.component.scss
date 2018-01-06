@@ -6,8 +6,13 @@ $timeSlotBoxSize: 80px;
 $activityBoxHeight: 25px;
 $timeSlotVoteSize:20px;
 
-main {
+main,main form{
   @include squareSize(100%);
+}
+
+main {
+
+  position: relative;
 
   section {
     width: 100%;
@@ -48,6 +53,19 @@ main {
         margin-right: $smallPadding;
         margin-bottom: $smallPadding;
       }
+    }
+  }
+
+  activity-picker-component, timer-picker-component{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: none;
+
+    &.active{
+      display: flex;
     }
   }
 }

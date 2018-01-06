@@ -92,7 +92,7 @@ main {
 }
 
 @media all and (min-width: $desktop) {
-  main chat-component, group-detail-component {
+  main chat-component, main group-detail-component {
     width: 50%;
   }
 }

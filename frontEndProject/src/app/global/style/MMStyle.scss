@@ -70,11 +70,16 @@ $boxShadow: 0 0 7px 1px transparentize($black, 0.9);
   &:active{
     box-shadow: 0 1px 7px 0 transparentize($black, 0.8);
   }
+
+  &:disabled{
+    background-color: red;
+  }
 }
 
 %smallButton{
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 /* Text styles */

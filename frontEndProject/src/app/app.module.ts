@@ -15,6 +15,8 @@ import {ChatBubbleComponent} from './components/groups-component/chat-component/
 import {ChatHeaderComponent} from './components/groups-component/chatHeader-component/chatHeader.component';
 import {ChatTabComponent} from './components/groups-component/chatTab-component/chatTab.component';
 import {GroupDetailComponent} from './components/groups-component/groupDetail-component/groupDetail.component';
+import {TimePickerComponent} from './components/groups-component/groupDetail-component/timePicker-component/timePicker.component';
+import {ActivityPickerComponent} from './components/groups-component/groupDetail-component/activityPicker-component/activityPicker.component';
 import {CreateGroupComponent} from './components/createGroup-component/createGroup.component';
 import {InviteComponent} from './components/invite-component/invite.component';
 
@@ -24,7 +26,7 @@ import {GroupService} from './services/group.service';
 import {UserService} from './services/user.service';
 import { FbService } from './services/fb.service';
 import {StoreUserInfo} from './global/storeUserInfo';
-import {SocketService} from './services/socket.service'
+import {SocketService} from './services/socket.service';
 
 // Modules
 import {CustomHttpModule} from './../coreClasses/CustomHttpModule';
@@ -49,6 +51,8 @@ import {TruncateModule} from 'ng2-truncate';
         ChatHeaderComponent,
         ChatTabComponent,
         GroupDetailComponent,
+        TimePickerComponent,
+        ActivityPickerComponent,
         CreateGroupComponent,
         InviteComponent
     ],

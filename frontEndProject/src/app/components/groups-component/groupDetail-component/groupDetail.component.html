@@ -18,7 +18,7 @@
                 <p>{{timeSlot.votes.length}}</p>
             </div>
             <div>
-                <button (click)='addTimeSlot()'>Add</button>
+                <button (click)='openTime()'>Add</button>
             </div>
         </article>
 
@@ -32,8 +32,11 @@
                 <p>{{activity.votes.length}}</p>
             </div>
             <div>
-                <button (click)='addActivity()'>Add</button>
+                <button (click)='openActivity()'>Add</button>
             </div>
         </article>
     </section>
+
+    <timer-picker-component [ngClass]="{'active':showTime}" (close)="closeTime()"></timer-picker-component>
+    <activity-picker-component (close)="closeActivity()" (activity)="newActivity($event)" [ngClass]="{'active':showActivity}"></activity-picker-component>
 </main>

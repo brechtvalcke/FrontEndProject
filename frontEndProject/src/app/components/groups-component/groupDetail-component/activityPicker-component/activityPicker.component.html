@@ -1,0 +1,17 @@
+<main>
+    <form #activityForm="ngForm" ngModel (ngSubmit)="saveActivity()">
+        <section>
+
+            <article>
+                <h2>Enter an activity</h2>
+                <input placeholder="bowling" name="activityName" required minlength="3" />
+                <div></div>
+            </article>
+            <article>
+                <button (click)="closePopUp()">cancel</button>
+                <button [disabled]="activityForm.invalid">add</button>
+            </article>
+
+        </section>
+    </form>
+</main>

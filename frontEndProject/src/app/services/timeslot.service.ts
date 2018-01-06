@@ -5,14 +5,14 @@ import {Group} from '../models/group';
 import {NetworkCalls} from '../global/networkCalls';
 
 @Injectable()
-export class ActivityService {
+export class TimeslotService {
     private networkCalls = new NetworkCalls();
     private headers = new Headers({ 'Content-Type' : 'application/json' });
     constructor(private http: CustomHttpModule, private router: Router ) {}
 
-    voteActivity(groupId: String, activityId: String): Promise<[Group]> {
+    voteTimeslot(groupId: String, timeslotId: String): Promise<[Group]> {
         return this.http
-            .put(this.networkCalls.voteActivity(groupId, activityId), {})
+            .put(this.networkCalls.voteTimeslot(groupId, timeslotId), {})
             .toPromise()
             .then(res => res.json())
             .catch(this.handleError);

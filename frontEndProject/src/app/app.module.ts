@@ -1,3 +1,4 @@
+
 import { NetworkCalls } from './global/networkCalls';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
@@ -26,7 +27,9 @@ import {GroupService} from './services/group.service';
 import {UserService} from './services/user.service';
 import { FbService } from './services/fb.service';
 import {StoreUserInfo} from './global/storeUserInfo';
-import {SocketService} from './services/socket.service';
+import {SocketService} from './services/socket.service'
+import { ActivityService } from './services/activity.service';
+import { TimeslotService } from './services/timeslot.service';
 
 // Modules
 import {CustomHttpModule} from './../coreClasses/CustomHttpModule';
@@ -35,6 +38,7 @@ import {HttpModule} from '@angular/http';
 import { FacebookModule } from 'ngx-facebook';
 import {FormsModule} from '@angular/forms';
 import {TruncateModule} from 'ng2-truncate';
+
 
 @NgModule({
     declarations: [
@@ -75,7 +79,9 @@ import {TruncateModule} from 'ng2-truncate';
         FbService,
         StoreUserInfo,
         SocketService,
-        NetworkCalls
+        NetworkCalls,
+        ActivityService,
+        TimeslotService
     ],
     bootstrap: [AppComponent]
 })

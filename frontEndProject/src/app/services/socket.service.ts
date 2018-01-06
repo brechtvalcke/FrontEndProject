@@ -1,3 +1,4 @@
+import { ActivityVoteEvent } from './../models/activityVoteEvent';
 import { Observable } from 'rxjs/Observable';
 import { Message } from './../models/message';
 import { NetworkCalls } from './../global/networkCalls';
@@ -13,9 +14,15 @@ export class SocketService {
     MessageObservable: Observable<Message>;
     private _messageObserver: Observer<Message>;
 
+    ActivityVoteObservable: Observable<ActivityVoteEvent>;
+    private _activityVoteObserver: Observer<ActivityVoteEvent>;
+
     constructor(private networkCalls: NetworkCalls) {
         this.MessageObservable = new Observable<Message>(observer =>
         this._messageObserver = observer).share();
+
+        this.ActivityVoteObservable = new Observable<any>(observer =>
+        this._activityVoteObserver = observer).share();
     }
     connect(): void {
         this.socket = io(this.networkCalls.socketConnect());
@@ -35,6 +42,9 @@ export class SocketService {
         this.socket.on('message', (message: Message, groupId: String) => {
             this.onMessage(message, groupId);
         });
+        this.socket.on('activityVoted', (groupId: String, timeslotId: String, userId) => {
+            this.onActivityVoted(groupId, timeslotId, userId);
+        });
     }
     private sendAuthCredentials(): void {
         this.socket.emit('auth', {acces_token: localStorage.getItem('access_token')});
@@ -45,5 +55,12 @@ export class SocketService {
     }
     public sendMesage(groupId: String, messageContentText: String){
         this.socket.emit('message', groupId, messageContentText);
+    }
+    private onActivityVoted(groupId: String, timeslotId: String, userId): void {
+        const event: ActivityVoteEvent = new ActivityVoteEvent();
+        event.groupId = groupId;
+        event.timeslotId = timeslotId;
+        event.userId = userId;
+        this._activityVoteObserver.next(event)
     }
 }

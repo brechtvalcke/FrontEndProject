@@ -66,6 +66,10 @@ main section article{
   width: 75%;
   color: $white;
 
+  &:nth-child(2){
+    cursor: pointer;
+  }
+
   figure{
     &:nth-child(1){
       @include squareSize($imgSize);
@@ -106,14 +110,46 @@ main section article{
       &:nth-child(2){
         display: flex;
       }
+
       &:nth-child(3){
+        $dropDownWidth: 200px;
+        width: $dropDownWidth;
+        height: 30px;
+        top: $headerHeight;
+        left: calc(100% - #{$dropDownWidth});
+        z-index: 400;
+        position: absolute;
         display: none;
+        background-color: $dodgerBlue;
+        border-radius: 0 0 5px 5px;
+
+        &.active{
+          @include flexBox(column,center);
+        }
+
+        article, article a{
+          width: 100%;
+          height: 100%;
+        }
+
+        a:nth-child(1){
+          display: none;
+        }
       }
 
       article a{
         height: $headerHeight;
-        &.active:after{
-          border-bottom: 2px;
+        &.active{
+          position: relative;
+
+          &:after {
+            width: 150%;
+            left: -25%;
+            bottom: -5px;
+            position: absolute;
+            content: ' ';
+            border-bottom: solid 2px;
+          }
         }
       }
 

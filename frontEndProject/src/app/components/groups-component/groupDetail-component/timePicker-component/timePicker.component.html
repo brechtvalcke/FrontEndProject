@@ -1,3 +1,17 @@
 <main>
+    <form #timePickerForm="ngForm" (ngSubmit)="saveTime()">
+        <section>
 
+            <article>
+                <h2>Select a Time</h2>
+                <input type="time" name="timePicker" [(ngModel)]="value" required />
+                <div></div>
+            </article>
+            <article>
+                <button (click)="closePopUp()">cancel</button>
+                <button [disabled]="timePickerForm.invalid">add</button>
+            </article>
+
+        </section>
+    </form>
 </main>

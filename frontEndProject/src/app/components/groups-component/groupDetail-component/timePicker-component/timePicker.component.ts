@@ -1,5 +1,6 @@
 import { Router , ActivatedRoute, ActivatedRouteSnapshot} from '@angular/router';
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 
 @Component({
     selector: 'timer-picker-component',
@@ -8,7 +9,19 @@ import {Component, OnInit} from '@angular/core';
 })
 
 export class TimePickerComponent implements OnInit {
+    value: any;
+    @Output() close = new EventEmitter();
+    @Output() time = new EventEmitter();
     ngOnInit() {}
+
+    saveTime() {
+        console.log(this.value);
+        this.time.emit(this.value);
+        this.closePopUp();
+    }
+    closePopUp() {
+        this.close.emit(true);
+    }
 }
 
 

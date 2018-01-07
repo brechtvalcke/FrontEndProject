@@ -52,6 +52,7 @@ main section form article{
   @include flexBox(column,space-between);
 
   figure{
+    margin-right: $smallPadding;
     @include squareSize($userImageSize);
     img{
       @include squareSize($userImageSize);

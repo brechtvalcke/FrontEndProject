@@ -1,10 +1,10 @@
 <header>
     <h3 *ngIf="windowSize < 475">{{group.name | truncate: 30}}</h3>
     <h3 *ngIf="windowSize > 475">{{group.name | truncate}}</h3>
-    <figure (click)="showDropDown()">
+    <figure id="MoreOptions" (click)="showDropDown()">
         <img src="../../../../assets/png/optionMore.png" alt="more options" />
     </figure>
 </header>
-<section *ngIf="isDropped">
+<section (clickOutside)="onClickedOutside($event)"  *ngIf="isDropped" [exclude]="'#MoreOptions'">
 
 </section>

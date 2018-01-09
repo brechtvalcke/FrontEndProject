@@ -10,6 +10,7 @@ import { Group } from '../../../models/group';
 export class ChatHeaderComponent implements OnInit {
     windowSize: number;
     isDropped: Boolean = false;
+    isChangeName: Boolean = false;
     @Input() group;
     ngOnInit() {
         this.windowSize = window.screen.width;
@@ -24,5 +25,10 @@ export class ChatHeaderComponent implements OnInit {
     }
     onClickedOutside() {
         this.isDropped = false;
+    }
+    changeName() {
+        this.isChangeName = true;
+    }
+    saveName(name: String) {
     }
 }

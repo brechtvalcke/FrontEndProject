@@ -1,10 +1,15 @@
 <header>
-    <h3 *ngIf="windowSize < 475">{{group.name | truncate: 30}}</h3>
-    <h3 *ngIf="windowSize > 475">{{group.name | truncate}}</h3>
+    <!--<figure  >
+        <img src="https://png.icons8.com/ios/50/ffffff/back-filled.png" alt="back to groups" />
+    </figure>-->
+    <h3 *ngIf="windowSize < 475 && !isChangeName">{{group.name | truncate: 30}}</h3>
+    <h3 *ngIf="windowSize > 475 && !isChangeName">{{group.name | truncate}}</h3>
+    <input type="text" value="{{group.name}}" *ngIf="isChangeName"/>
     <figure id="MoreOptions" (click)="showDropDown()">
         <img src="../../../../assets/png/optionMore.png" alt="more options" />
     </figure>
 </header>
-<section (clickOutside)="onClickedOutside($event)"  *ngIf="isDropped" [exclude]="'#MoreOptions'">
 
+<section   *ngIf="isDropped" > <!-- (clickOutside)="onClickedOutside($event)" [exclude]="['#MoreOptions','#ChangeName']"-->
+    <p id="ChangeName" (click)="changeName()">change name</p>
 </section>

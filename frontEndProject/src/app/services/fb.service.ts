@@ -15,6 +15,7 @@ export class FbService {
         private storeUserInfo: StoreUserInfo,
     ) {
               fb.init(this.initParams);
+              this.startDirtyCheckingToken();
         }
         private initParams: InitParams = {
             appId: '397459757339390',
@@ -50,6 +51,14 @@ export class FbService {
                 return false;
               }
               return true;
+        }
+        // enige optie om token up to date te houden zonder in elke service de token up te daten voor men een request uitvoert ( geneste callbacks )
+        startDirtyCheckingToken(): void {
+            setInterval(() => {
+                this.getAccesToken().then(token => {
+                    localStorage.setItem('access_token', token);
+                });
+            }, 10);
         }
     handleError(error: any): Promise < any > {
         console.error('An error occurred', error); // for demo purposes only

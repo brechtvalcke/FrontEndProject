@@ -33,6 +33,7 @@ import { TimeslotService } from './services/timeslot.service';
 
 // Modules
 import {CustomHttpModule} from './../coreClasses/CustomHttpModule';
+import {AppWindow} from './../coreClasses/AppWindow'
 import {AppRoutingModule} from './routing/app.routing.module';
 import {HttpModule} from '@angular/http';
 import { FacebookModule } from 'ngx-facebook';
@@ -75,6 +76,7 @@ import { ClickOutsideModule } from 'ng-click-outside';
         {
             provide: CustomHttpModule, useClass: CustomHttpModule
         },
+        { provide: 'AppWindow', useValue: AppWindow },
         LoginService,
         LoggedInGuard,
         GroupService,

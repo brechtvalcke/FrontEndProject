@@ -47,6 +47,17 @@ section {
   }
 }
 
+.noGroups{
+  height: 100vh;
+  @include flexBox(column,center);
+  p,a{
+    color: $pinkishGrey;
+  }
+  a{
+    text-decoration: underline;
+  }
+}
+
 @media all and (min-width: $desktop){
   main{
     border-right: none;

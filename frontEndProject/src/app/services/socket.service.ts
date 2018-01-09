@@ -1,3 +1,4 @@
+import { TimeslotVoteEvent } from './../models/timeslotVoteEvent';
 import { TimeSlot } from './../models/timeSlot';
 import { ActivityVoteEvent } from './../models/activityVoteEvent';
 import { Observable } from 'rxjs/Observable';
@@ -7,8 +8,8 @@ import {Injectable} from '@angular/core';
 import * as io from 'socket.io-client';
 import { Observer } from 'rxjs/Observer';
 import 'rxjs/add/operator/share';
-import { TimeslotVoteEvent } from '../models/timeslotVoteEvent';
 import { Activity } from '../models/activity';
+import { TimeslotAddEvent } from '../models/timeslotAddEvent';
 
 @Injectable()
 export class SocketService {
@@ -22,6 +23,9 @@ export class SocketService {
 
     TimeslotVoteObservable: Observable<TimeslotVoteEvent>;
     private _timeslotVoteObserver: Observer<TimeslotVoteEvent>;
+
+    TimeslotAddObservable: Observable<TimeslotAddEvent>;
+    private _timeslotAddEvent: Observer<TimeslotVoteEvent>;
 
     constructor(private networkCalls: NetworkCalls) {
         this.MessageObservable = new Observable<Message>(observer =>

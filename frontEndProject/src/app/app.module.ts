@@ -1,3 +1,4 @@
+
 import { NetworkCalls } from './global/networkCalls';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
@@ -27,15 +28,18 @@ import {UserService} from './services/user.service';
 import { FbService } from './services/fb.service';
 import {StoreUserInfo} from './global/storeUserInfo';
 import {SocketService} from './services/socket.service';
+import {TimeslotService} from './services/timeslot.service';
+import {ActivityService} from './services/activity.service';
 
 // Modules
-import {CustomHttpModule} from './../coreClasses/CustomHttpModule';
+import {CustomHttpModule} from '../coreClasses/CustomHttpModule';
 import {AppRoutingModule} from './routing/app.routing.module';
 import {HttpModule} from '@angular/http';
 import { FacebookModule } from 'ngx-facebook';
 import {FormsModule} from '@angular/forms';
 import {TruncateModule} from 'ng2-truncate';
 import { ClickOutsideModule } from 'ng-click-outside';
+
 
 
 @NgModule({
@@ -78,7 +82,9 @@ import { ClickOutsideModule } from 'ng-click-outside';
         FbService,
         StoreUserInfo,
         SocketService,
-        NetworkCalls
+        NetworkCalls,
+        ActivityService,
+        TimeslotService
     ],
     bootstrap: [AppComponent]
 })

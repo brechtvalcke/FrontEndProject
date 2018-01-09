@@ -14,7 +14,6 @@ main {
 
   group-list-component, section {
     height: 100%;
-    overflow: scroll;
   }
 
   group-list-component {
@@ -23,7 +22,6 @@ main {
 
   chat-component ,group-detail-component {
     height: calc(100% - (#{$chatHeaderHeight} * 2));
-    overflow: scroll;
   }
 
   section {

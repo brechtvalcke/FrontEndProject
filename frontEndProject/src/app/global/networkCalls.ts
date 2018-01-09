@@ -8,7 +8,12 @@ export class NetworkCalls {
         headers.append('Content-Type', 'application/json');
         return {'headers': headers};
     };
-
+    public voteActivity(groupId: String, activityId: String) {
+        return `api/group/activity/vote/${groupId}/${activityId}`;
+    }
+    public voteTimeslot(groupId: String, timeslotId: String){
+        return `api/group/timeslot/vote/${groupId}/${timeslotId}`;
+    }
     public getGroups() {
         return '/api/group';
     }

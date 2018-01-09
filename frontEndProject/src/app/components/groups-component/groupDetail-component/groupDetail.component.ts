@@ -1,3 +1,6 @@
+import { TimeslotService } from './../../../services/timeslot.service';
+import { ActivityService } from './../../../services/activity.service';
+import { Activity } from './../../../models/activity';
 import { Group } from './../../../models/group';
 import { Component, Input, OnInit } from '@angular/core';
 import { TimeSlot } from '../../../models/timeSlot';
@@ -9,11 +12,18 @@ import { TimeSlot } from '../../../models/timeSlot';
 })
 
 export class GroupDetailComponent implements OnInit {
+    constructor(private activityService: ActivityService, private timeslotService: TimeslotService){}
     showActivity = false;
     showTime = false;
     @Input() group: Group;
     voteTimeslot(timeslot: TimeSlot): void {
-
+        this.timeslotService.voteTimeslot(this.group._id, timeslot._id);
+    }
+    voteActivity(activity: Activity): void {
+        this.activityService.voteActivity(this.group._id, activity._id);
+    }
+    addActivity(): void {
+        console.log('add activity');
     }
     ngOnInit() {
     }

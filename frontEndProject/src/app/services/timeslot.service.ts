@@ -1,3 +1,4 @@
+import { TimeSlot } from './../models/timeSlot';
 import {Injectable} from '@angular/core';
 import {CustomHttpModule} from '../../coreClasses/CustomHttpModule';
 import {Router} from '@angular/router';
@@ -17,7 +18,13 @@ export class TimeslotService {
             .then(res => res.json())
             .catch(this.handleError);
     }
-
+    addTimeslot(timeslot: TimeSlot, groupId: String) {
+        return this.http
+            .post(this.networkCalls.addTimeslot(groupId), timeslot)
+            .toPromise()
+            .then(res => res.json())
+            .catch(this.handleError);
+    }
 
     handleError(error: any): Promise < any > {
         console.error('An error occurred', error); // TODO remove console

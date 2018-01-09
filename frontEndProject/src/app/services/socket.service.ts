@@ -1,3 +1,4 @@
+import { TimeSlot } from './../models/timeSlot';
 import { ActivityVoteEvent } from './../models/activityVoteEvent';
 import { Observable } from 'rxjs/Observable';
 import { Message } from './../models/message';
@@ -7,6 +8,7 @@ import * as io from 'socket.io-client';
 import { Observer } from 'rxjs/Observer';
 import 'rxjs/add/operator/share';
 import { TimeslotVoteEvent } from '../models/timeslotVoteEvent';
+import { Activity } from '../models/activity';
 
 @Injectable()
 export class SocketService {
@@ -54,6 +56,12 @@ export class SocketService {
         });
         this.socket.on('timeslotVoted', (groupId: String, timeslotId: String, userId: String) => {
             this.onTimeslotVoted(groupId, timeslotId, userId);
+        });
+        this.socket.on('timeslotAdded', (groupId: String, timeslot: TimeSlot) => {
+            console.log(timeslot);
+        });
+        this.socket.on('activityAdded',(groupId: String, activity: Activity) => {
+            console.log(activity);
         });
     }
     private sendAuthCredentials(): void {

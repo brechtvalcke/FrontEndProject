@@ -5,6 +5,7 @@ import {InviteComponent} from '../components/invite-component/invite.component';
 import {NavigationPlatformComponent} from '../components/navigation-component/navigationPlatform.component/navigationPlatform.component';
 
 export const PROTECTED_ROUTES: Routes = [
+    {path: '', component: GroupsComponent},
     {path: 'group/:id', component : GroupsComponent},
     {path: 'group', component : GroupsComponent},
     {path: 'create', component : CreateGroupComponent},

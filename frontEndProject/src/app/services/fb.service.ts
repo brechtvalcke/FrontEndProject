@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { StoreUserInfo } from './../global/storeUserInfo';
 import { UserService } from './user.service';
 import { FacebookService, InitParams, LoginResponse, LoginStatus, LoginOptions } from 'ngx-facebook';
@@ -8,11 +9,13 @@ import {CustomHttpModule} from '../../coreClasses/CustomHttpModule';
 @Injectable()
 export class FbService {
     private headers = new Headers({ 'Content-Type' : 'application/json' });
+    private dirtyChecker: any;
     constructor(
         private http: CustomHttpModule,
         private fb: FacebookService,
         private userService: UserService,
         private storeUserInfo: StoreUserInfo,
+        private router: Router
     ) {
               fb.init(this.initParams);
               this.startDirtyCheckingToken();
@@ -33,10 +36,18 @@ export class FbService {
                     this.userService.getUserInfo()
                     .then(user => this.storeUserInfo.MyUser = user)
                     .catch(error => console.log(error));
+                    clearInterval(this.dirtyChecker);
+                    this.startDirtyCheckingToken();
                     resolve(response);
                 })
                 .catch(error => reject(error));
             });
+        }
+        logout(): void {
+            clearInterval(this.dirtyChecker);
+            localStorage.removeItem('access_token');
+            this.router.navigate(['landing']);
+            this.fb.logout();
         }
         getAccesToken(): Promise<any> {
             return new Promise<any>((resolve, reject) => {
@@ -52,9 +63,10 @@ export class FbService {
               }
               return true;
         }
+
         // enige optie om token up to date te houden zonder in elke service de token up te daten voor men een request uitvoert ( geneste callbacks )
         startDirtyCheckingToken(): void {
-            setInterval(() => {
+            this.dirtyChecker = setInterval(() => {
                 this.getAccesToken().then(token => {
                     localStorage.setItem('access_token', token);
                 });

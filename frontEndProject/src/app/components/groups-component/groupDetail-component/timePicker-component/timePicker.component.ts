@@ -15,7 +15,6 @@ export class TimePickerComponent implements OnInit {
     ngOnInit() {}
 
     saveTime() {
-        console.log(this.value);
         this.time.emit(this.value);
         this.closePopUp();
     }

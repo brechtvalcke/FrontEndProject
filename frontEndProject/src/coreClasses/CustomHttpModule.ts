@@ -33,6 +33,7 @@ export class CustomHttpModule extends Http {
     return (res: Response) => {
       switch (res.status) {
         case 401:
+        this.router.navigate(['landing']);
         break;
         case 403:
         break;

@@ -17,7 +17,7 @@
                 <h3>{{timeSlot.time | date:'hh:mm'}}</h3>
                 <p>{{timeSlot.votes.length}}</p>
             </div>
-            <div (click)='addTimeslot()'>
+            <div (click)='openTime()'>
                 <button >Add</button>
             </div>
         </article>
@@ -32,7 +32,7 @@
                 <p>{{activity.votes.length}}</p>
             </div>
 
-            <div (click)='addActivity()'>
+            <div (click)='openActivity()'>
                 <button >Add</button>
             </div>
         </article>

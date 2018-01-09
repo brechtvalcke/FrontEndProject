@@ -1,3 +1,4 @@
+import { FbService } from './fb.service';
 import {Injectable} from '@angular/core';
 import {CustomHttpModule} from '../../coreClasses/CustomHttpModule';
 import {Router} from '@angular/router';
@@ -8,9 +9,10 @@ import {NetworkCalls} from '../global/networkCalls';
 export class GroupService {
     private networkCalls = new NetworkCalls();
     private headers = new Headers({ 'Content-Type' : 'application/json' });
-    constructor(private http: CustomHttpModule, private router: Router ) {}
+    constructor(private http: CustomHttpModule, private router: Router, private fbService: FbService) {}
 
     getAllGroups(): Promise<[Group]> {
+        
         return this.http
             .get(this.networkCalls.getGroups())
             .toPromise()

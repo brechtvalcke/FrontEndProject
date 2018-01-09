@@ -22,9 +22,6 @@ export class GroupDetailComponent implements OnInit {
     voteActivity(activity: Activity): void {
         this.activityService.voteActivity(this.group._id, activity._id);
     }
-    addActivity(): void {
-        console.log('add activity');
-    }
     ngOnInit() {
     }
     openActivity() {

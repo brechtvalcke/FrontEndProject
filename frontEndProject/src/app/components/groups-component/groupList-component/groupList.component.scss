@@ -7,6 +7,8 @@ main{
   height: 100%;
   border-right: 1px solid $pinkishGrey;
   @include flexBox(column,flex-start);
+  overflow-x:scroll;
+  overflow-y: hidden;
 }
 
 section {
@@ -44,6 +46,17 @@ section {
         @extend %userImage;
       }
     }
+  }
+}
+
+.noGroups{
+  height: 100vh;
+  @include flexBox(column,center);
+  p,a{
+    color: $pinkishGrey;
+  }
+  a{
+    text-decoration: underline;
   }
 }
 

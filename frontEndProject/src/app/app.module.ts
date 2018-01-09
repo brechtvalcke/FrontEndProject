@@ -27,13 +27,12 @@ import {GroupService} from './services/group.service';
 import {UserService} from './services/user.service';
 import { FbService } from './services/fb.service';
 import {StoreUserInfo} from './global/storeUserInfo';
-import {SocketService} from './services/socket.service'
-import { ActivityService } from './services/activity.service';
-import { TimeslotService } from './services/timeslot.service';
+import {SocketService} from './services/socket.service';
+import {TimeslotService} from './services/timeslot.service';
+import {ActivityService} from './services/activity.service';
 
 // Modules
-import {CustomHttpModule} from './../coreClasses/CustomHttpModule';
-import {AppWindow} from './../coreClasses/AppWindow'
+import {CustomHttpModule} from '../coreClasses/CustomHttpModule';
 import {AppRoutingModule} from './routing/app.routing.module';
 import {HttpModule} from '@angular/http';
 import { FacebookModule } from 'ngx-facebook';
@@ -76,7 +75,6 @@ import { ClickOutsideModule } from 'ng-click-outside';
         {
             provide: CustomHttpModule, useClass: CustomHttpModule
         },
-        { provide: 'AppWindow', useValue: AppWindow },
         LoginService,
         LoggedInGuard,
         GroupService,

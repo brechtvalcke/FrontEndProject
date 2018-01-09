@@ -1,10 +1,10 @@
 <main>
     <section>
         <article class="header">
-            <h2>Start event</h2>
+            <h2>Group invites</h2>
         </article>
 
-        <article class="body" >
+        <article class="body" [ngClass]="{'noGroups':!groups || groups.length === 0}" >
             <div *ngFor="let group of groups">
                 <h3>{{group.name | truncate: 25}}</h3>
                 <div>
@@ -12,6 +12,8 @@
                     <button (click)="declineInvite(group._id)">decline</button>
                 </div>
             </div>
+            <p *ngIf="!groups || groups.length === 0">you have no invites</p>
         </article>
+
     </section>
 </main>

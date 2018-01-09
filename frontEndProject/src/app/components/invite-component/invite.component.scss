@@ -43,6 +43,12 @@ main {
       width: 100%;
       height: calc(100% - #{$subHeaderHeight});
       margin-top: $subHeaderHeight;
+      &.noGroups{
+        @include flexBox(column,center);
+        p{
+          color: $pinkishGrey;
+        }
+      }
     }
 
   }

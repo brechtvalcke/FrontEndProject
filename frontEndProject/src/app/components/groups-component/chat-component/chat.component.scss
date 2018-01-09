@@ -12,6 +12,8 @@ main {
   height: 100%;
   position: relative;
   @include squareSize(100%);
+  overflow-x:scroll;
+  overflow-y: hidden;
 
   section {
     width: 100%;

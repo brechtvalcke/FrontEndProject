@@ -47,6 +47,7 @@ main {
 
       button {
         @extend %smallButton;
+        @include squareSize(100%);
       }
 
       &:not(:nth-last-child(1)) {
@@ -132,5 +133,6 @@ main section:nth-child(3) article{
       width: 200px;
       background-color: $lightBlue;
     }
+
   }
 }

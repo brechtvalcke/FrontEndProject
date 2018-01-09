@@ -9,6 +9,7 @@ main {
   width: 100%;
   height: 100%;
   padding-top: $headerHeight;
+  overflow: hidden;
 
   @include flexBox(row, flex-start);
 
@@ -18,10 +19,14 @@ main {
 
   group-list-component {
     width: 20%;
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
 
   chat-component ,group-detail-component {
     height: calc(100% - (#{$chatHeaderHeight} * 2));
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
 
   section {

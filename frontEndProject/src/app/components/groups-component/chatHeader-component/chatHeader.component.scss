@@ -3,7 +3,7 @@
 $headerHeight: 50px;
 $iconSize: 30px;
 $dropDownWidth: 200px;
-$dropDownHeight: 100px;
+$dropDownHeight: 30px;
 
 
 header{
@@ -16,6 +16,10 @@ header{
   h3{
     color: $white;
     font-size: 1.6rem;
+  }
+
+  input{
+    @extend %input;
   }
 
   figure{
@@ -36,7 +40,12 @@ section{
   float: right;
   background-color: $lightBlue;
   border-radius: 0 0 5px 5px;
+  cursor: crosshair;
 
+  p{
+    color: $white;
+    cursor: pointer;
+  }
 }
 
 @media all and (min-width: $tablet){

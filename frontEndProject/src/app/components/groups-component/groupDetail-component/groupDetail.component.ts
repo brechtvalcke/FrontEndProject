@@ -1,3 +1,5 @@
+import { ActivityVoteEvent } from './../../../models/activityVoteEvent';
+import { SocketService } from './../../../services/socket.service';
 import { TimeslotService } from './../../../services/timeslot.service';
 import { ActivityService } from './../../../services/activity.service';
 import { Activity } from './../../../models/activity';
@@ -16,6 +18,9 @@ export class GroupDetailComponent implements OnInit {
     showActivity = false;
     showTime = false;
     @Input() group: Group;
+
+
+
     voteTimeslot(timeslot: TimeSlot): void {
         this.timeslotService.voteTimeslot(this.group._id, timeslot._id);
     }
@@ -23,6 +28,7 @@ export class GroupDetailComponent implements OnInit {
         this.activityService.voteActivity(this.group._id, activity._id);
     }
     ngOnInit() {
+
     }
     openActivity() {
         this.showActivity = true;

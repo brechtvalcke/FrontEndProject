@@ -1,7 +1,12 @@
+import { TimeSlot } from './../../models/timeSlot';
+import { ActivityVoteEvent } from './../../models/activityVoteEvent';
+import { SocketService } from './../../services/socket.service';
 import { Router , ActivatedRoute, ActivatedRouteSnapshot} from '@angular/router';
 import { Group } from './../../models/group';
 import {Component, OnInit} from '@angular/core';
 import {GroupService} from '../../services/group.service';
+import { Activity } from '../../models/activity';
+import { TimeslotVoteEvent } from '../../models/timeslotVoteEvent';
 
 @Component({
     selector: 'groups-component',
@@ -14,7 +19,15 @@ export class GroupsComponent implements OnInit {
     selectedGroup: Group = new Group();
     activeTab = 1;
     routeSubscription: any;
-    constructor(private groupService: GroupService, private router: Router, private route: ActivatedRoute) { }
+
+    activityVoteSubscription: any;
+    timeslotVoteSubscription: any;
+
+    constructor(private groupService: GroupService,
+        private router: Router,
+        private route: ActivatedRoute,
+        private socketService: SocketService
+        ) {}
 
     ngOnInit() {
         this.getGroups();
@@ -31,6 +44,38 @@ export class GroupsComponent implements OnInit {
                 if (window.screen.width <= 450) {
                     this.activeTab = 0;
                 }
+            }
+        });
+        this.activityVoteSubscription = this.socketService.ActivityVoteObservable.subscribe((event: ActivityVoteEvent) => {
+                if (this.selectedGroup._id === event.groupId) {
+                    console.log(event);
+                    this.selectedGroup.activity.forEach((activity: Activity) => {
+                        if (activity._id === event.activityId) {
+                            console.log(activity.votes.includes(event.userId));
+                            if (activity.votes.includes(event.userId)) {
+                                activity.votes.splice(activity.votes.indexOf( event.userId), 1);
+                            }else {
+                                activity.votes.push(event.userId);
+                            }
+                            console.log(activity.votes);
+                        }
+                    });
+                }
+            });
+        this.timeslotVoteSubscription = this.socketService.TimeslotVoteObservable.subscribe((event: TimeslotVoteEvent) => {
+            if (this.selectedGroup._id === event.groupId) {
+                console.log(event);
+                this.selectedGroup.timeSlot.forEach((timeslot: TimeSlot) => {
+                    if (timeslot._id === event.timeslotId) {
+                        console.log(timeslot.votes.includes(event.userId));
+                        if (timeslot.votes.includes(event.userId)) {
+                            timeslot.votes.splice(timeslot.votes.indexOf(event.userId), 1);
+                        }else {
+                            timeslot.votes.push(event.userId);
+                        }
+                        console.log(timeslot.votes);
+                    }
+                });
             }
         });
     }

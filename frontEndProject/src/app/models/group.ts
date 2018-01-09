@@ -11,6 +11,6 @@ export class Group {
     public createdOn: String;
     public messages: [Message];
     public users: User[];
-    public timeSlots: [TimeSlot];
-    public activities: [Activity];
+    public timeSlot: [TimeSlot];
+    public activity: [Activity];
 }

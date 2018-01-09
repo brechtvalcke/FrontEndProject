@@ -1,5 +1,5 @@
 export class ActivityVoteEvent {
     public groupId: String;
-    public timeslotId: String;
+    public activityId: String;
     public userId: String;
 }

@@ -6,6 +6,7 @@ import {Injectable} from '@angular/core';
 import * as io from 'socket.io-client';
 import { Observer } from 'rxjs/Observer';
 import 'rxjs/add/operator/share';
+import { TimeslotVoteEvent } from '../models/timeslotVoteEvent';
 
 @Injectable()
 export class SocketService {
@@ -17,12 +18,18 @@ export class SocketService {
     ActivityVoteObservable: Observable<ActivityVoteEvent>;
     private _activityVoteObserver: Observer<ActivityVoteEvent>;
 
+    TimeslotVoteObservable: Observable<TimeslotVoteEvent>;
+    private _timeslotVoteObserver: Observer<TimeslotVoteEvent>;
+
     constructor(private networkCalls: NetworkCalls) {
         this.MessageObservable = new Observable<Message>(observer =>
         this._messageObserver = observer).share();
 
-        this.ActivityVoteObservable = new Observable<any>(observer =>
+        this.ActivityVoteObservable = new Observable<ActivityVoteEvent>(observer =>
         this._activityVoteObserver = observer).share();
+
+        this.TimeslotVoteObservable = new Observable<TimeslotVoteEvent>(observer =>
+        this._timeslotVoteObserver = observer).share();
     }
     connect(): void {
         this.socket = io(this.networkCalls.socketConnect());
@@ -42,8 +49,11 @@ export class SocketService {
         this.socket.on('message', (message: Message, groupId: String) => {
             this.onMessage(message, groupId);
         });
-        this.socket.on('activityVoted', (groupId: String, timeslotId: String, userId) => {
+        this.socket.on('activityVoted', (groupId: String, timeslotId: String, userId: String) => {
             this.onActivityVoted(groupId, timeslotId, userId);
+        });
+        this.socket.on('timeslotVoted', (groupId: String, timeslotId: String, userId: String) => {
+            this.onTimeslotVoted(groupId, timeslotId, userId);
         });
     }
     private sendAuthCredentials(): void {
@@ -56,11 +66,18 @@ export class SocketService {
     public sendMesage(groupId: String, messageContentText: String){
         this.socket.emit('message', groupId, messageContentText);
     }
-    private onActivityVoted(groupId: String, timeslotId: String, userId): void {
+    private onActivityVoted(groupId: String, activityId: String, userId: String): void {
         const event: ActivityVoteEvent = new ActivityVoteEvent();
+        event.groupId = groupId;
+        event.activityId = activityId;
+        event.userId = userId;
+        this._activityVoteObserver.next(event)
+    }
+    private onTimeslotVoted(groupId: String, timeslotId: String, userId: String) {
+        const event: TimeslotVoteEvent = new TimeslotVoteEvent();
         event.groupId = groupId;
         event.timeslotId = timeslotId;
         event.userId = userId;
-        this._activityVoteObserver.next(event)
+        this._timeslotVoteObserver.next(event);
     }
 }

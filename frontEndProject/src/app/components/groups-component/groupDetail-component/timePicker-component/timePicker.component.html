@@ -8,8 +8,8 @@
                 <div></div>
             </article>
             <article>
-                <button (click)="closePopUp()">cancel</button>
-                <button [disabled]="timePickerForm.invalid">add</button>
+                <button type="button" (click)="closePopUp()">cancel</button>
+                <button type="submit" [disabled]="timePickerForm.invalid">add</button>
             </article>
 
         </section>

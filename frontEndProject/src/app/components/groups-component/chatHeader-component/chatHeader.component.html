@@ -1,7 +1,7 @@
-<header>
+<!--<header>
     <!--<figure  >
         <img src="https://png.icons8.com/ios/50/ffffff/back-filled.png" alt="back to groups" />
-    </figure>-->
+    </figure>->
     <h3 *ngIf="windowSize < 475 && !isChangeName">{{group.name | truncate: 30}}</h3>
     <h3 *ngIf="windowSize > 475 && !isChangeName">{{group.name | truncate}}</h3>
     <input type="text" value="{{group.name}}" *ngIf="isChangeName"/>
@@ -10,6 +10,7 @@
     </figure>
 </header>
 
-<section   *ngIf="isDropped" > <!-- (clickOutside)="onClickedOutside($event)" [exclude]="['#MoreOptions','#ChangeName']"-->
+<section   *ngIf="isDropped" > <!-- (clickOutside)="onClickedOutside($event)" [exclude]="['#MoreOptions','#ChangeName']"->
     <p id="ChangeName" (click)="changeName()">change name</p>
 </section>
+-->

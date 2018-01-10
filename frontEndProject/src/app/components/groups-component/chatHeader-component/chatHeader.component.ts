@@ -1,5 +1,5 @@
 import {Component, HostListener, Input, OnInit} from '@angular/core';
-import { Group } from '../../../models/group';
+import {Group} from '../../../models/group';
 
 @Component({
     selector: 'chat-header-component',
@@ -8,7 +8,13 @@ import { Group } from '../../../models/group';
 })
 
 export class ChatHeaderComponent implements OnInit {
-    windowSize: number;
+    @Input() group;
+
+    ngOnInit() {
+
+    }
+
+    /*windowSize: number;
     isDropped: Boolean = false;
     isChangeName: Boolean = false;
     @Input() group;
@@ -30,5 +36,5 @@ export class ChatHeaderComponent implements OnInit {
         this.isChangeName = true;
     }
     saveName(name: String) {
-    }
+    }*/
 }

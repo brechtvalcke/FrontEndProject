@@ -14,6 +14,7 @@ export class ActivityPickerComponent implements OnInit {
     @Output() activity = new EventEmitter();
     ngOnInit() {}
     closePopUp() {
+        this.activityName = '';
         this.close.emit(true);
     }
     saveActivity() {

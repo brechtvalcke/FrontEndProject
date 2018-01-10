@@ -8,8 +8,8 @@
                 <div></div>
             </article>
             <article>
-                <button (click)="closePopUp()">cancel</button>
-                <button [disabled]="activityForm.invalid">add</button>
+                <button type="button" (click)="closePopUp()">cancel</button>
+                <button type="submit" [disabled]="activityForm.invalid">add</button>
             </article>
 
         </section>

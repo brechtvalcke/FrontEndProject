@@ -114,7 +114,7 @@ main section article{
       &:nth-child(3){
         $dropDownWidth: 200px;
         width: $dropDownWidth;
-        height: 30px;
+        height: 80px;
         top: $headerHeight;
         left: calc(100% - #{$dropDownWidth});
         z-index: 400;
@@ -123,7 +123,7 @@ main section article{
         background-color: $dodgerBlue;
         border-radius: 0 0 5px 5px;
 
-        &.active{
+        &.active, article, article a{
           @include flexBox(column,center);
         }
 
@@ -132,13 +132,22 @@ main section article{
           height: 100%;
         }
 
-        a:nth-child(1){
+        article a {
+          padding: $smallPadding;
+        }
+
+        article a:nth-child(1){
           display: none;
+        }
+
+        a:nth-child(2){
+          border-bottom: 1px solid $white;
         }
       }
 
       article a{
         height: $headerHeight;
+
         &.active{
           position: relative;
 

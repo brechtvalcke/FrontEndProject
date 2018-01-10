@@ -19,12 +19,13 @@ export class NavigationPlatformComponent implements OnInit{
     }
     logOut() {
         this.fbService.logout();
-        
     }
     toggleDropDown() {
         this.showDropDown = !this.showDropDown;
     }
     onClickedOutside(e: Event) {
         this.showDropDown = false;
+    }
+    inviteFriends() {
     }
 }

@@ -46,7 +46,7 @@ export class GroupsComponent implements OnInit {
                     console.log(err);
                 });
             }else {
-                if (window.screen.width <= 450) {
+                if (window.innerWidth <= 700) {
                     this.activeTab = 0;
                 }
             }
@@ -100,7 +100,7 @@ export class GroupsComponent implements OnInit {
             .then(groups => {
                 this.groups = groups['groupList'];
                 const activatedRouteSnapshot: ActivatedRouteSnapshot = this.route.snapshot;
-                if (activatedRouteSnapshot.params['id'] === undefined && window.screen.width > 450) {
+                if (activatedRouteSnapshot.params['id'] === undefined && window.innerWidth > 700) {
                     this.router.navigate(['dashboard/group', this.groups[0]._id]);
                 }
 

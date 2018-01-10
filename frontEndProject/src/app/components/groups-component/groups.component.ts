@@ -1,3 +1,4 @@
+import { ActivityAddEvent } from './../../models/activityAddEvent';
 import { TimeSlot } from './../../models/timeSlot';
 import { ActivityVoteEvent } from './../../models/activityVoteEvent';
 import { SocketService } from './../../services/socket.service';
@@ -7,6 +8,7 @@ import {Component, OnInit} from '@angular/core';
 import {GroupService} from '../../services/group.service';
 import { Activity } from '../../models/activity';
 import { TimeslotVoteEvent } from '../../models/timeslotVoteEvent';
+import { TimeslotAddEvent } from '../../models/timeslotAddEvent';
 
 @Component({
     selector: 'groups-component',
@@ -22,6 +24,9 @@ export class GroupsComponent implements OnInit {
 
     activityVoteSubscription: any;
     timeslotVoteSubscription: any;
+
+    activityAddSubscription: any;
+    timeslotAddSubscription: any;
 
     constructor(private groupService: GroupService,
         private router: Router,
@@ -48,7 +53,6 @@ export class GroupsComponent implements OnInit {
         });
         this.activityVoteSubscription = this.socketService.ActivityVoteObservable.subscribe((event: ActivityVoteEvent) => {
                 if (this.selectedGroup._id === event.groupId) {
-                    console.log(event);
                     this.selectedGroup.activity.forEach((activity: Activity) => {
                         if (activity._id === event.activityId) {
                             console.log(activity.votes.includes(event.userId));
@@ -64,7 +68,6 @@ export class GroupsComponent implements OnInit {
             });
         this.timeslotVoteSubscription = this.socketService.TimeslotVoteObservable.subscribe((event: TimeslotVoteEvent) => {
             if (this.selectedGroup._id === event.groupId) {
-                console.log(event);
                 this.selectedGroup.timeSlot.forEach((timeslot: TimeSlot) => {
                     if (timeslot._id === event.timeslotId) {
                         console.log(timeslot.votes.includes(event.userId));
@@ -76,6 +79,16 @@ export class GroupsComponent implements OnInit {
                         console.log(timeslot.votes);
                     }
                 });
+            }
+        });
+        this.activityAddSubscription = this.socketService.ActivityAddObservable.subscribe((event: ActivityAddEvent) => {
+            if (this.selectedGroup._id === event.groupId) {
+                this.selectedGroup.activity.push(event.activity);
+            }
+        });
+        this.timeslotAddSubscription = this.socketService.TimeslotAddObservable.subscribe((event: TimeslotAddEvent) => {
+            if (this.selectedGroup._id === event.groupId) {
+                this.selectedGroup.timeSlot.push(event.timeslot);
             }
         });
     }

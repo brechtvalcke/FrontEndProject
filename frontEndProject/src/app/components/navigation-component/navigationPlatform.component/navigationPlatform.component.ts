@@ -1,3 +1,4 @@
+import { FbService } from './../../../services/fb.service';
 import {Component, OnInit} from '@angular/core';
 import {User} from '../../../models/user';
 import {StoreUserInfo} from '../../../global/storeUserInfo';
@@ -12,12 +13,13 @@ export class NavigationPlatformComponent implements OnInit{
     user: User;
     notifications: number;
     showDropDown = false;
-    constructor(private storeUserInfo: StoreUserInfo) {}
+    constructor(private storeUserInfo: StoreUserInfo, private fbService: FbService) {}
     ngOnInit() {
         this.user = this.storeUserInfo.MyUser;
     }
     logOut() {
-        // TODO log out
+        this.fbService.logout();
+        
     }
     toggleDropDown() {
         this.showDropDown = !this.showDropDown;

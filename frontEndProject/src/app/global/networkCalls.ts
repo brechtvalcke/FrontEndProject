@@ -11,8 +11,14 @@ export class NetworkCalls {
     public voteActivity(groupId: String, activityId: String) {
         return `api/group/activity/vote/${groupId}/${activityId}`;
     }
+    public addActivity(groupId: String) {
+        return `api/group/activity/${groupId}`;
+    }
     public voteTimeslot(groupId: String, timeslotId: String){
         return `api/group/timeslot/vote/${groupId}/${timeslotId}`;
+    }
+    public addTimeslot(groupId: String) {
+        return `api/group/timeslot/${groupId}`;
     }
     public getGroups() {
         return '/api/group';

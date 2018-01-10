@@ -19,8 +19,6 @@ export class GroupDetailComponent implements OnInit {
     showTime = false;
     @Input() group: Group;
 
-
-
     voteTimeslot(timeslot: TimeSlot): void {
         this.timeslotService.voteTimeslot(this.group._id, timeslot._id);
     }
@@ -37,6 +35,23 @@ export class GroupDetailComponent implements OnInit {
         this.showActivity = false;
     }
     newActivity(name: string) {
+        console.log(name);
+        const a: Activity = new Activity();
+        a.name = name;
+        this.activityService.addActivity(a, this.group._id);
+    }
+    newTime(time): void {
+        const timeSplit = time.split(':');
+        const hours = timeSplit[0];
+        const minutes = timeSplit[1];
+        const dateWithTime = new Date();
+        dateWithTime.setHours(hours);
+        dateWithTime.setMinutes(minutes);
+        dateWithTime.setSeconds(0);
+        dateWithTime.setMilliseconds(0);
+        const t: TimeSlot = new TimeSlot();
+        t.time = dateWithTime;
+        this.timeslotService.addTimeslot(t, this.group._id);
     }
     openTime() {
         this.showTime = true;

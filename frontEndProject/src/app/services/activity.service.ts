@@ -3,6 +3,7 @@ import {CustomHttpModule} from '../../coreClasses/CustomHttpModule';
 import {Router} from '@angular/router';
 import {Group} from '../models/group';
 import {NetworkCalls} from '../global/networkCalls';
+import { Activity } from '../models/activity';
 
 @Injectable()
 export class ActivityService {
@@ -13,6 +14,13 @@ export class ActivityService {
     voteActivity(groupId: String, activityId: String): Promise<[Group]> {
         return this.http
             .put(this.networkCalls.voteActivity(groupId, activityId), {})
+            .toPromise()
+            .then(res => res.json())
+            .catch(this.handleError);
+    }
+    addActivity(activity: Activity, groupId: String) {
+        return this.http
+            .post(this.networkCalls.addActivity(groupId), activity)
             .toPromise()
             .then(res => res.json())
             .catch(this.handleError);

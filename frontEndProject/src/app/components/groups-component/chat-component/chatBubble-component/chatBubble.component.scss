@@ -12,6 +12,7 @@ main {
 
   time,section{
     width: 100%;
+    margin-top: $smallPadding;
   }
 
   time {
@@ -22,7 +23,6 @@ main {
 }
 main section{
   width: 100%;
-  margin-top: $smallPadding;
   @include flexBox(row,flex-start);
   align-items: flex-start;
 

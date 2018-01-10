@@ -37,6 +37,6 @@
         </article>
     </section>
 
-    <timer-picker-component (close)="closeTime()" [ngClass]="{'active':showTime}" (time)="newTime($event)"></timer-picker-component>
-    <activity-picker-component (close)="closeActivity()" (activity)="newActivity($event)" [ngClass]="{'active':showActivity}"></activity-picker-component>
 </main>
+<timer-picker-component (close)="closeTime()" [ngClass]="{'active':showTime}" (time)="newTime($event)"></timer-picker-component>
+<activity-picker-component (close)="closeActivity()" (activity)="newActivity($event)" [ngClass]="{'active':showActivity}"></activity-picker-component>

@@ -4,6 +4,7 @@
     </figure>
     <h3 *ngIf="!isChangeName">{{group.name | truncate}}</h3>
     <input #changeNameInput type="text" value="{{group.name}}" *ngIf="isChangeName" [(ngModel)]="newName" (keydown.enter)="saveName()" />
+    <button (click)="saveName()" *ngIf="isChangeName">save</button>
     <figure id="MoreOptions" (click)="showDropDown()">
         <img src="../../../../assets/png/optionMore.png" alt="more options" />
     </figure>

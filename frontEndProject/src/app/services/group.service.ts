@@ -12,7 +12,6 @@ export class GroupService {
     constructor(private http: CustomHttpModule, private router: Router, private fbService: FbService) {}
 
     getAllGroups(): Promise<[Group]> {
-        
         return this.http
             .get(this.networkCalls.getGroups())
             .toPromise()

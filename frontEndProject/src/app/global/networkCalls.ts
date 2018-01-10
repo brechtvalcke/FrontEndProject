@@ -8,6 +8,9 @@ export class NetworkCalls {
         headers.append('Content-Type', 'application/json');
         return {'headers': headers};
     };
+    public changeGroupName(groupId: String) {
+        return `api/group/changeName/${groupId}`;
+    }
     public voteActivity(groupId: String, activityId: String) {
         return `api/group/activity/vote/${groupId}/${activityId}`;
     }

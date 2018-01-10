@@ -28,6 +28,8 @@ export class GroupsComponent implements OnInit {
     activityAddSubscription: any;
     timeslotAddSubscription: any;
 
+    groupNameChangeSubscription: any;
+
     constructor(private groupService: GroupService,
         private router: Router,
         private route: ActivatedRoute,
@@ -89,6 +91,16 @@ export class GroupsComponent implements OnInit {
         this.timeslotAddSubscription = this.socketService.TimeslotAddObservable.subscribe((event: TimeslotAddEvent) => {
             if (this.selectedGroup._id === event.groupId) {
                 this.selectedGroup.timeSlot.push(event.timeslot);
+            }
+        });
+        this.groupNameChangeSubscription = this.socketService.GroupNameChangedObservable.subscribe((group: Group) => {
+            this.groups.forEach((groupElem) => {
+                if (groupElem._id === group._id ) {
+                    groupElem.name = group.name;
+                }
+            });
+            if (this.selectedGroup._id === group._id) {
+                this.selectedGroup.name = group.name;
             }
         });
     }

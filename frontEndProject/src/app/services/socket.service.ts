@@ -1,3 +1,5 @@
+import { UserTyping } from './../models/UserTyping';
+import { Group } from './../models/group';
 import { ActivityAddEvent } from './../models/activityAddEvent';
 import { TimeslotVoteEvent } from './../models/timeslotVoteEvent';
 import { TimeSlot } from './../models/timeSlot';
@@ -31,6 +33,14 @@ export class SocketService {
     ActivityAddObservable: Observable<ActivityAddEvent>;
     private _activityAddObserver: Observer<ActivityAddEvent>;
 
+    GroupNameChangedObservable: Observable<Group>;
+    private _groupNameChangedObserver: Observer<Group>;
+
+    UsersTyping: [UserTyping] = [new UserTyping()];
+
+    UsersTypingObservable: Observable<[UserTyping]>;
+    private _usersTypingObserver: Observer<[UserTyping]>;
+
     constructor(private networkCalls: NetworkCalls) {
         this.MessageObservable = new Observable<Message>(observer =>
         this._messageObserver = observer).share();
@@ -44,8 +54,14 @@ export class SocketService {
         this.TimeslotAddObservable = new Observable<TimeslotAddEvent>(observer =>
         this._timeslotAddObserver = observer).share();
 
-        this.ActivityAddObservable = new Observable<ActivityAddEvent>(observer => 
+        this.ActivityAddObservable = new Observable<ActivityAddEvent>(observer =>
         this._activityAddObserver = observer).share();
+
+        this.GroupNameChangedObservable = new Observable<Group>(observer =>
+        this._groupNameChangedObserver = observer).share();
+
+        this.UsersTypingObservable = new Observable<[UserTyping]>(observer =>
+            this._usersTypingObserver = observer).share();
 
 
     }
@@ -79,6 +95,21 @@ export class SocketService {
         this.socket.on('activityAdded', (groupId: String, activity: Activity) => {
             this.onActivityAdded(groupId, activity);
         });
+        this.socket.on('groupNameChanged', (group: Group) => {
+            this._groupNameChangedObserver.next(group);
+        });
+        this.socket.on('userStartedTyping', (groupId: String, UserId: String) => {
+            this.onUserStartedTyping(groupId, UserId);
+        });
+        this.socket.on('userStoppedTyping', (groupId: String, UserId: String) => {
+            this.onUserStoppedTyping(groupId, UserId);
+        });
+    }
+    sendStartedTyping(GroupId) {
+        this.socket.emit('startedTyping', GroupId);
+    }
+    sendStopTyping(GroupId) {
+        this.socket.emit('stoppedTyping', GroupId);
     }
     private sendAuthCredentials(): void {
         this.socket.emit('auth', {acces_token: localStorage.getItem('access_token')});
@@ -115,5 +146,33 @@ export class SocketService {
         event.groupId = groupId;
         event.activity = activity;
         this._activityAddObserver.next(event);
+    }
+    private onUserStartedTyping(groupId: String, UserId: String) {
+        const alreadyTyping = this.alreadyTyping(groupId, UserId);
+        if (!alreadyTyping) {
+            const ut = new UserTyping();
+            ut.groupId = groupId;
+            ut.userId = UserId;
+            this.UsersTyping.push(ut);
+            this._usersTypingObserver.next(this.UsersTyping);
+        }
+    }
+    private alreadyTyping(groupId: String , UserId: String ) {
+        let alreadyTyping = false;
+        this.UsersTyping.forEach((userTyping: UserTyping) => {
+            if (userTyping.groupId === groupId && userTyping.userId === UserId) {
+                // match found
+                alreadyTyping = true;
+            }
+        });
+        return alreadyTyping;
+    }
+    private onUserStoppedTyping(groupId: String, UserId: String) {
+        for (let i = 0 ; i <= this.UsersTyping.length - 1; i++) {
+            if (this.UsersTyping[i].groupId === groupId && this.UsersTyping[i].userId === UserId) {
+                this.UsersTyping.splice(i, 1);
+            }
+        }
+        this._usersTypingObserver.next(this.UsersTyping);
     }
 }

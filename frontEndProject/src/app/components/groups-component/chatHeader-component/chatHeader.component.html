@@ -3,7 +3,7 @@
         <img src="https://png.icons8.com/ios/50/ffffff/back-filled.png" alt="back to groups" />
     </figure>
     <h3 *ngIf="!isChangeName">{{group.name | truncate}}</h3>
-    <input type="text" value="{{group.name}}" *ngIf="isChangeName" [(ngModel)]="newName" (keydown.enter)="saveName()"/>
+    <input #changeNameInput type="text" value="{{group.name}}" *ngIf="isChangeName" [(ngModel)]="newName" (keydown.enter)="saveName()" />
     <figure id="MoreOptions" (click)="showDropDown()">
         <img src="../../../../assets/png/optionMore.png" alt="more options" />
     </figure>
@@ -11,7 +11,7 @@
 
     <section *ngIf="isDropped" (clickOutside)="onClickedOutside($event)" [exclude]="['#MoreOptions']">
         <article>
-            <p (click)="changeName()"> change name</p>
+            <p (click)="changeName(changeNameInput)"> change name</p>
         </article>
     </section>
 </header>

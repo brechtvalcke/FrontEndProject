@@ -54,7 +54,13 @@ export class GroupService {
             .then(res => res.json())
             .catch(this.handleError);
     }
-
+    changeName(groupId: String, name: String): Promise<any> {
+        return this.http
+        .put(this.networkCalls.changeGroupName(groupId), {name: name})
+        .toPromise()
+        .then(res => res.json())
+        .catch(this.handleError);
+    }
     handleError(error: any): Promise < any > {
         console.error('An error occurred', error); // TODO remove console
         return Promise.reject(error.message || error);

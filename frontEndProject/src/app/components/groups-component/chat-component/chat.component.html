@@ -2,13 +2,15 @@
     <section #chatContainer
     [scrollTop]="scrollDownIfNeeded(chatContainer)" >
         <chat-bubble-component *ngFor='let message of group.messages' [message]='message' [users]='group.users' [showTime]='showTimeAboveMessage(message)'></chat-bubble-component>
-        <article>
-            <p>john doe is typing</p>
-        </article>
+        <ng-container *ngFor='let user of UsersTyping'>
+            <article *ngIf='user.userId && user.groupId === group._id && user.userId !== myUser._id' >
+                <p>{{getUserById(user.userId).name}} is typing</p>
+            </article>
+        </ng-container>
     </section>
     <section class="chatBox">
         <form>
-            <input placeholder="Type a message ..." type="text" [value]="MessageSendString" (input)="MessageSendString = $event.target.value" (keydown.enter)="sendMessage()"/>
+            <input placeholder="Type a message ..." type="text" [value]="MessageSendString" (input)="MessageSendString = $event.target.value;OnInput();" (keydown.enter)="sendMessage()" (focusout)='OnLostFocus()'/>
             <input type="submit" value="send" (click)='sendMessage()' />
         </form>
     </section>

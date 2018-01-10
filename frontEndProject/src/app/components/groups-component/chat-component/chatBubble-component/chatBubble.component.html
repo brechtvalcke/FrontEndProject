@@ -1,5 +1,5 @@
 <main>
-    <time *ngIf='showTime'>{{message.dateSent | date:'hh:mm dd/mm/yyyy'}}</time>
+    <time *ngIf='showTime'>{{message.dateSent | date:'hh:mm dd/MM/yyyy'}}</time>
 
     <section [ngClass]="{'me': message.senderId == myUser._id}">
         <figure>

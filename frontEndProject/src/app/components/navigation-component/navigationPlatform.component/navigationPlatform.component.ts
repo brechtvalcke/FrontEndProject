@@ -27,5 +27,6 @@ export class NavigationPlatformComponent implements OnInit{
         this.showDropDown = false;
     }
     inviteFriends() {
+        this.fbService.shareSite();
     }
 }

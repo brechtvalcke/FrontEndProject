@@ -7,6 +7,7 @@ import {GroupService} from '../../services/group.service';
 import {Router} from '@angular/router';
 import {isUndefined} from 'util';
 import {StoreUserInfo} from '../../global/storeUserInfo';
+import { FbService } from '../../services/fb.service';
 
 @Component({
     selector: 'create-group-component',
@@ -20,7 +21,8 @@ export class CreateGroupComponent implements OnInit {
     constructor(private userService: UserService,
                 private groupService: GroupService,
                 private storeUserInfo: StoreUserInfo,
-                private router: Router) {}
+                private router: Router,
+                private fbService: FbService) {}
     ngOnInit() {
         this.getUsers();
     }
@@ -43,6 +45,9 @@ export class CreateGroupComponent implements OnInit {
         }else {
             this.selectedUsers.splice(this.selectedUsers.indexOf(userId), 1);
         }
+    }
+    shareClicked(): void {
+        this.fbService.shareSite();
     }
     private getSelectedUsers(): User[] {
         return this.selectedUsers.map( id => {

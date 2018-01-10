@@ -25,6 +25,10 @@ export class FbService {
             xfbml: true,
             version: 'v2.11'
         };
+        private shareParams = {
+            href: 'https://howestmeetme.herokuapp.com/',
+            method: 'share',
+        }
         private loginOptions: LoginOptions = {
             scope: 'email,user_friends'
         };
@@ -64,6 +68,9 @@ export class FbService {
               return true;
         }
 
+        shareSite(): void {
+            this.fb.ui(this.shareParams);
+        }
         // enige optie om token up to date te houden zonder in elke service de token up te daten voor men een request uitvoert ( geneste callbacks )
         startDirtyCheckingToken(): void {
             this.dirtyChecker = setInterval(() => {

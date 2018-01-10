@@ -1,3 +1,4 @@
+import { Group } from './../models/group';
 import { ActivityAddEvent } from './../models/activityAddEvent';
 import { TimeslotVoteEvent } from './../models/timeslotVoteEvent';
 import { TimeSlot } from './../models/timeSlot';
@@ -31,6 +32,9 @@ export class SocketService {
     ActivityAddObservable: Observable<ActivityAddEvent>;
     private _activityAddObserver: Observer<ActivityAddEvent>;
 
+    GroupNameChangedObservable: Observable<Group>;
+    private _groupNameChangedObserver: Observer<Group>;
+
     constructor(private networkCalls: NetworkCalls) {
         this.MessageObservable = new Observable<Message>(observer =>
         this._messageObserver = observer).share();
@@ -44,8 +48,11 @@ export class SocketService {
         this.TimeslotAddObservable = new Observable<TimeslotAddEvent>(observer =>
         this._timeslotAddObserver = observer).share();
 
-        this.ActivityAddObservable = new Observable<ActivityAddEvent>(observer => 
+        this.ActivityAddObservable = new Observable<ActivityAddEvent>(observer =>
         this._activityAddObserver = observer).share();
+
+        this.GroupNameChangedObservable = new Observable<Group>(observer =>
+        this._groupNameChangedObserver = observer).share();
 
 
     }
@@ -78,6 +85,9 @@ export class SocketService {
         });
         this.socket.on('activityAdded', (groupId: String, activity: Activity) => {
             this.onActivityAdded(groupId, activity);
+        });
+        this.socket.on('groupNameChanged', (group: Group) => {
+            this._groupNameChangedObserver.next(group);
         });
     }
     private sendAuthCredentials(): void {

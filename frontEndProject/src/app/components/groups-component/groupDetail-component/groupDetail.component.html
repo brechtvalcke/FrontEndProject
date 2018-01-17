@@ -4,7 +4,7 @@
         <article>
             <div *ngFor="let user of group.users">
                 <figure>
-                    <img [src]="user.photoUrl" [alt]="user.name" />
+                    <img [src]="user.photoUrl" [alt]="user.name"  [title]="user.name" />
                 </figure>
             </div>
         </article>

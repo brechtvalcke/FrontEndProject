@@ -15,12 +15,12 @@ main {
   @include transition(0.6s);
   @include flexBox(column, center);
 
-  section{
+  section {
     width: 100%;
     height: calc(#{100vh} - #{$headerHeight});
     box-shadow: $boxShadow;
+    border-radius: 5px;
     position: relative;
-
     @include transition(0.6s);
 
     h2 {
@@ -28,24 +28,28 @@ main {
       text-align: center;
     }
 
-    article.header{
-      width: $boxWidth;
-      height: $subHeaderHeight;
-      z-index: 50;
-      left: calc(50% - (#{$boxWidth} / 2));
-      position: fixed;
+    article {
+      &.header {
 
-      color: $white;
-      background-color: $dodgerBlue;
-    }
+        width: $boxWidth;
+        height: $subHeaderHeight;
+        z-index: 50;
+        left: calc(50% - (#{$boxWidth} / 2));
+        position: fixed;
+        border-radius: 5px 5px 0 0;
 
-    article.body{
-      width: 100%;
-      height: calc(100% - #{$subHeaderHeight});
-      margin-top: $subHeaderHeight;
-      &.noGroups{
-        @include flexBox(column,center);
-        p{
+        color: $white;
+        background-color: $dodgerBlue;
+      }
+
+      &.body,&.noGroups {
+        width: 100%;
+        height: calc(100% - #{$subHeaderHeight});
+        margin-top: $subHeaderHeight;
+      }
+      &.noGroups {
+        @include flexBox(column, center);
+        p,a {
           color: $pinkishGrey;
         }
       }
@@ -54,39 +58,38 @@ main {
   }
 }
 
-
-main section article.body div{
+main section article.body div {
   width: 100%;
   height: $itemHeight;
   padding: $defaultPadding;
-  @include flexBox(column,space-between);
+  @include flexBox(column, space-between);
 
-  h3{
+  h3 {
     width: calc(100% - (#{$buttonDivWidth} + #{s$smallPadding}));
     text-align: left;
   }
 
-  div{
+  div {
     width: $buttonDivWidth;
     padding: 0;
     flex-flow: row;
-    button{
+    button {
       @extend %buttons;
       width: $buttonWidth;
     }
   }
 
-  &:not(:nth-last-child(1)){
+  &:not(:nth-last-child(1)) {
     border-bottom: 1px solid $pinkishGrey;
   }
 }
 
-@media all and (min-width: $tablet){
+@media all and (min-width: $tablet) {
   $itemHeight: 50px;
   $buttonWidth: 80px;
   $buttonDivWidth: calc((#{$buttonWidth} * 2) + #{$smallPadding});
 
-  main{
+  main {
     padding-top: $headerHeight;
     section {
       width: $boxWidth;
@@ -94,10 +97,10 @@ main section article.body div{
     }
   }
 
-  main section article.body div{
+  main section article.body div {
     height: $itemHeight;
     flex-flow: row;
-    div{
+    div {
       width: $buttonDivWidth;
     }
   }

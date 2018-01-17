@@ -1,14 +1,14 @@
 <main>
     <section>
         <article>
-            <a routerLink="/dashboard/group" routerLinkActive="active">Groups</a>
-            <a routerLink="/dashboard/create" routerLinkActive="active">Start event</a>
+            <a routerLink="/dashboard/group" routerLinkActive="active" title="go to groups">Groups</a>
+            <a routerLink="/dashboard/create" routerLinkActive="active" title="go to create event">Start event</a>
         </article>
     </section>
     <section>
         <figure>
-            <a routerLink="/dashboard/invite">
-                <img src="https://png.icons8.com/android/50/ffffff/appointment-reminders.png" alt="notifications"/>
+            <a routerLink="/dashboard/invite" title="go to invites">
+                <img src="https://png.icons8.com/android/50/ffffff/appointment-reminders.png" alt="notifications" title="go to invites"/>
                 <figcaption *ngIf="notifications">
                     <p>{{notifications}}</p>
                 </figcaption>
@@ -17,20 +17,20 @@
 
         <article *ngIf="user" id="UserInfo" (click)="toggleDropDown()">
             <figure>
-                <img [src]="user.photoUrl" alt="{{user.name}}"/>
+                <img [src]="user.photoUrl" alt="{{user.name}}" title="{{user.name}}"/>
             </figure>
             <p>{{user.name}}</p>
             <figure>
-                <img src="https://png.icons8.com/android/50/ffffff/expand-arrow.png" alt="drop down arrow"/>
+                <img src="https://png.icons8.com/android/50/ffffff/expand-arrow.png" alt="drop down arrow" title="show extra info"/>
             </figure>
         </article>
     </section>
 
     <section (clickOutside)="onClickedOutside($event)" [ngClass]="{'active': showDropDown}" [exclude]="'#UserInfo'">
         <article>
-            <a routerLink="/dashboard/invite">notification</a>
-            <a (click)="inviteFriends()">Invite friends</a>
-            <a (click)="logOut()">Log out</a>
+            <a routerLink="/dashboard/invite" title="go to invites">notification</a>
+            <a (click)="inviteFriends()" title="invite friends">Invite friends</a>
+            <a (click)="logOut()" title="log out of your account">Log out</a>
         </article>
     </section>
 </main>

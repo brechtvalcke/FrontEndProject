@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Group} from '../../models/group';
 import {GroupService} from '../../services/group.service';
+import {FbService} from '../../services/fb.service';
 
 @Component({
     selector: 'invite-component',
@@ -10,7 +11,7 @@ import {GroupService} from '../../services/group.service';
 
 export class InviteComponent implements OnInit {
     groups: Group[];
-    constructor(private groupService: GroupService) { }
+    constructor(private groupService: GroupService, private fbService: FbService) { }
 
     ngOnInit() {
         this.getInvites();
@@ -32,5 +33,8 @@ export class InviteComponent implements OnInit {
     }
     removeGroup(groupID: String) {
         this.groups = this.groups.filter(group => group._id !== groupID);
+    }
+    inviteFriends() {
+        this.fbService.shareSite();
     }
 }

@@ -6,11 +6,11 @@
     <input #changeNameInput type="text" value="{{group.name}}" *ngIf="isChangeName" [(ngModel)]="newName" (keydown.enter)="saveName()" />
     <button (click)="saveName()" *ngIf="isChangeName">save</button>
     <figure id="MoreOptions" (click)="showDropDown()">
-        <img src="../../../../assets/png/optionMore.png" alt="more options" />
+        <img src="../../../../assets/png/optionMore.png" alt="more options" title="more options"/>
     </figure>
 
 
-    <section *ngIf="isDropped" (clickOutside)="onClickedOutside($event)" [exclude]="['#MoreOptions']">
+    <section *ngIf="isDropped" id="DropDown" (clickOutside)="onClickedOutside($event)" [exclude]="['#MoreOptions']">
         <article>
             <p (click)="changeName(changeNameInput)"> change name</p>
         </article>

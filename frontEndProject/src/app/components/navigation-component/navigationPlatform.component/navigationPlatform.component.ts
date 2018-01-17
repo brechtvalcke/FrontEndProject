@@ -9,7 +9,7 @@ import {StoreUserInfo} from '../../../global/storeUserInfo';
     styleUrls: ['navigationPlatform.component.scss']
 })
 
-export class NavigationPlatformComponent implements OnInit{
+export class NavigationPlatformComponent implements OnInit {
     user: User;
     notifications: number;
     showDropDown = false;

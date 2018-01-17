@@ -3,12 +3,13 @@
 $headerHeight: 50px;
 $iconSize: 30px;
 $dropDownWidth: 200px;
-$dropDownHeight: 30px;
+$dropDownHeight: 40px;
 header{
   width: 100%;
   height: $headerHeight;
   padding: $defaultPadding;
-  background-color: $lightBlue;
+  background-color: $dodgerBlue;
+  border-top: 1px solid $lightBlue;
   position: relative;
   @include flexBox(row,space-between);
 
@@ -31,7 +32,7 @@ header{
   }
 
   button{
-    @extend %buttons;
+    @extend %smallButton;
     position: absolute;
     left: 75%;
     color: $black;
@@ -39,6 +40,10 @@ header{
     border-radius: 5px;
     background-color: $white;
     cursor: pointer;
+
+    &:active{
+      outline: none;
+    }
   }
 
   figure{
@@ -57,8 +62,9 @@ header{
     top: $headerHeight;
     left: calc(100% - (#{$dropDownWidth} + #{$defaultMargin}));
     margin-right: $defaultMargin;
+    padding: $smallPadding;
     z-index: 80;
-    background-color: $lightBlue;
+    background-color: $dodgerBlue;
     border-radius: 0 0 5px 5px;
     box-shadow: 0 5px 7px 1px transparentize($black, 0.9);
 

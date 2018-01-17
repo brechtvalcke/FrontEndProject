@@ -5,17 +5,21 @@
         </article>
 
         <form #groupForm="ngForm" novalidate (submit)="createGroup()">
-            <article>
+            <article *ngIf="users">
                 <h3>Select friends</h3>
                 <div *ngFor="let user of users">
                     <figure>
-                        <img [src]="user.photoUrl" [alt]="user.name"/>
+                        <img [src]="user.photoUrl" [alt]="user.name" [title]="user.name"/>
                     </figure>
                     <label for="checkBox_{{user._id}}">
                         {{user.name}}
                     </label>
-                    <input type="checkbox" id="checkBox_{{user._id}}" (change)="changedSelectState(user._id)"/>
+                    <input type="checkbox" id="checkBox_{{user._id}}" (change)="changedSelectState(user._id)" title="include {{user.name}} in new group"/>
                 </div>
+            </article>
+            <article class="noUsers" *ngIf="!users || users.length === 0">
+                <p>you have no friends on Meet Me</p>
+                <a (click)="shareClicked()" title="to unleash the full potential of Meet Me">invite friends to Meet me</a>
             </article>
 
             <article>
@@ -26,7 +30,7 @@
             </article>
 
             <article>
-                <input type="submit" value="Create event"/>
+                <input type="submit" value="Create event" [disabled]="selectedUsers.length === 0"/>
             </article>
         </form>
     </section>

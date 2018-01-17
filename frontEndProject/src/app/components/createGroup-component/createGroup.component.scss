@@ -19,6 +19,7 @@ main {
     width: 100%;
     height: calc(#{100vh} - #{$headerHeight});
     box-shadow: $boxShadow;
+    border-radius: 5px;
 
     position: relative;
 
@@ -35,6 +36,7 @@ main {
       z-index: 50;
       left: calc(50% - (#{$boxWidth} / 2));
       position: fixed;
+      border-radius: 5px 5px 0 0;
 
       color: $white;
       background-color: $dodgerBlue;
@@ -94,6 +96,13 @@ main section form article{
     overflow: scroll;
 
     justify-content: flex-start;
+
+    &.noUsers{
+      justify-content: center;
+      p,a{
+        color:  $pinkishGrey;
+      }
+    }
   }
 
   &:nth-child(2),&:nth-child(3){

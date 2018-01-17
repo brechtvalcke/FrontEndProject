@@ -5,12 +5,12 @@
         </article>
         <article>
             <figure *ngFor="let user of group.users">
-            <img [src]="user.photoUrl" [alt]="user.name" />
+                <img [src]="user.photoUrl" [alt]="user.name" [title]="user.name" />
             </figure>
         </article>
     </section>
     <section class="noGroups" *ngIf="!groups || groups.length === 0">
         <p>no groups found</p>
-        <a routerLink="/dashboard/create">go create a group</a>
+        <a routerLink="/dashboard/create" title="create a group">go create a group</a>
     </section>
 </main>

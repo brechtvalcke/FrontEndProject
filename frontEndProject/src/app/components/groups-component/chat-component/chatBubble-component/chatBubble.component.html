@@ -3,7 +3,7 @@
 
     <section [ngClass]="{'me': message.senderId == myUser._id}">
         <figure>
-            <img [src]="getUserById(message.senderId).photoUrl" [alt]="getUserById(message.senderId).name" />
+            <img [src]="getUserById(message.senderId).photoUrl" [alt]="getUserById(message.senderId).name"  [title]="getUserById(message.senderId).name" />
         </figure>
         <article>
             <div>

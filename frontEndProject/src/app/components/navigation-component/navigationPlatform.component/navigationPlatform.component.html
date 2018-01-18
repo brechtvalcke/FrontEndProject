@@ -5,7 +5,7 @@
             <a routerLink="/dashboard/create" routerLinkActive="active" title="go to create event">Start event</a>
         </article>
     </section>
-    <section>
+    <section id="UserInfo">
         <figure>
             <a routerLink="/dashboard/invite" title="go to invites">
                 <img src="https://png.icons8.com/android/50/ffffff/appointment-reminders.png" alt="notifications" title="go to invites"/>
@@ -15,7 +15,7 @@
             </a>
         </figure>
 
-        <article *ngIf="user" id="UserInfo" (click)="toggleDropDown()">
+        <article *ngIf="user" (click)="toggleDropDown()">
             <figure>
                 <img [src]="user.photoUrl" alt="{{user.name}}" title="{{user.name}}"/>
             </figure>
@@ -26,7 +26,7 @@
         </article>
     </section>
 
-    <section (clickOutside)="onClickedOutside($event)" [ngClass]="{'active': showDropDown}" [exclude]="'#UserInfo'">
+    <section (clickOutside)="onClickedOutside($event)" [ngClass]="{'active': showDropDown}" [exclude]="['#UserInfo']">
         <article>
             <a routerLink="/dashboard/invite" title="go to invites">notification</a>
             <a (click)="inviteFriends()" title="invite friends">Invite friends</a>

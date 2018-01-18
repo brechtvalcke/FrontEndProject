@@ -10,6 +10,7 @@ export class LoggedInGuard implements CanActivate {
     canActivate(): boolean {
         const LoggedIn = this.fbService.isLoggedIn();
         if (!LoggedIn) {
+            this.fbService.logout();
             this.router.navigate(['landing']);
         }
         return this.fbService.isLoggedIn();

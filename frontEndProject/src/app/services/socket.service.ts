@@ -1,3 +1,4 @@
+import { NetworkCalls } from './../global/networkCalls';
 import { UserTyping } from './../models/UserTyping';
 import { Group } from './../models/group';
 import { ActivityAddEvent } from './../models/activityAddEvent';
@@ -6,7 +7,6 @@ import { TimeSlot } from './../models/timeSlot';
 import { ActivityVoteEvent } from './../models/activityVoteEvent';
 import { Observable } from 'rxjs/Observable';
 import { Message } from './../models/message';
-import { NetworkCalls } from './../global/networkCalls';
 import {Injectable} from '@angular/core';
 import * as io from 'socket.io-client';
 import { Observer } from 'rxjs/Observer';
@@ -16,7 +16,7 @@ import { TimeslotAddEvent } from '../models/timeslotAddEvent';
 
 @Injectable()
 export class SocketService {
-    private socket;
+    socket;
 
     MessageObservable: Observable<Message>;
     private _messageObserver: Observer<Message>;
@@ -41,7 +41,7 @@ export class SocketService {
     UsersTypingObservable: Observable<[UserTyping]>;
     private _usersTypingObserver: Observer<[UserTyping]>;
 
-    constructor(private networkCalls: NetworkCalls) {
+    constructor(private networkCalls:NetworkCalls) {
         this.MessageObservable = new Observable<Message>(observer =>
         this._messageObserver = observer).share();
 

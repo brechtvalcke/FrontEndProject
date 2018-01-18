@@ -56,7 +56,11 @@ export class FbService {
         getAccesToken(): Promise<any> {
             return new Promise<any>((resolve, reject) => {
                 this.fb.getLoginStatus()
-                .then( (status: LoginStatus) => resolve(status.authResponse.accessToken))
+                .then( (status: LoginStatus) => {
+                    if (status.status === 'connected') {
+                        resolve(status.authResponse.accessToken);
+                    }
+                })
                 .catch(error => reject(error));
             });
         }
@@ -77,7 +81,7 @@ export class FbService {
                 this.getAccesToken().then(token => {
                     localStorage.setItem('access_token', token);
                 });
-            }, 10);
+            }, 100);
         }
     handleError(error: any): Promise < any > {
         console.error('An error occurred', error); // for demo purposes only

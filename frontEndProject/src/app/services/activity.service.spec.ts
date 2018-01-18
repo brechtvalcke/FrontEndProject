@@ -1,11 +1,12 @@
+import { ActivityService } from './activity.service';
 import { TestBed, async } from '@angular/core/testing';
-import { AppComponent } from './app.component';
-
-describe('AppComponent', () => {
+import { CustomHttpModule } from '../../coreClasses/CustomHttpModule';
+describe('ActivityService', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
+        imports: [CustomHttpModule],
+      providers: [
+        ActivityService
       ],
     }).compileComponents();
   }));

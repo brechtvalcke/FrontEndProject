@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { ActivityPickerComponent } from './groupDetail-component/activityPicker-component/activityPicker.component';
 import { SocketService } from './../../services/socket.service';
 import { GroupService } from './../../services/group.service';
@@ -22,10 +23,12 @@ class FakeGroupService {
     }
 }
 class FakeRouter {
+    navigate(...params): void {
 
+    }
 }
 class FakeActivatedRoute {
-
+    params = new Observable<{[key: string]: any}>();
 }
 class FakeSocketService {
 

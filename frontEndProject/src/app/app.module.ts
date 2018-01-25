@@ -39,6 +39,7 @@ import { FacebookModule } from 'ngx-facebook';
 import {FormsModule} from '@angular/forms';
 import {TruncateModule} from 'ng2-truncate';
 import { ClickOutsideModule } from 'ng-click-outside';
+import { InterComponentCommunicationService } from './services/interComponentCommunication.service';
 
 
 
@@ -69,7 +70,7 @@ import { ClickOutsideModule } from 'ng-click-outside';
         FormsModule,
         FacebookModule.forRoot(),
         TruncateModule,
-        ClickOutsideModule
+        ClickOutsideModule,
     ],
     providers: [
         {
@@ -84,7 +85,8 @@ import { ClickOutsideModule } from 'ng-click-outside';
         SocketService,
         NetworkCalls,
         ActivityService,
-        TimeslotService
+        TimeslotService,
+        InterComponentCommunicationService
     ],
     bootstrap: [AppComponent]
 })

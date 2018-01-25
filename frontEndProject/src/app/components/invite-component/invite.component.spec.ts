@@ -5,6 +5,7 @@ import { InviteComponent } from './invite.component';
 
 import { TestBed, async } from '@angular/core/testing';
 import { Group } from '../../models/group';
+import { InterComponentCommunicationService } from '../../services/interComponentCommunication.service';
 
 let InviteFriendsTriggered = false;
 let AcceptInviteTriggered = false;
@@ -44,7 +45,8 @@ describe('InviteComponent', () => {
             ],
             providers: [
                 { provide: FbService, useClass: FakeFbService},
-                { provide: GroupService, useClass: FakeGroupService}
+                { provide: GroupService, useClass: FakeGroupService},
+                InterComponentCommunicationService
             ],
             imports: [
                 TruncateModule

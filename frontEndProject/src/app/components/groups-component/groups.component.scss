@@ -19,13 +19,12 @@ main {
 
   group-list-component {
     width: 20%;
-    overflow-y: scroll;
+    overflow-y: hidden;
     overflow-x: hidden;
   }
 
   chat-component ,group-detail-component {
     height: calc(100% - (#{$chatHeaderHeight} * 2));
-    overflow-y: scroll;
     overflow-x: hidden;
   }
 

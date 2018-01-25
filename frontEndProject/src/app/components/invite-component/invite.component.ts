@@ -1,3 +1,4 @@
+import { InterComponentCommunicationService } from './../../services/interComponentCommunication.service';
 import {Component, OnInit} from '@angular/core';
 import {Group} from '../../models/group';
 import {GroupService} from '../../services/group.service';
@@ -11,7 +12,7 @@ import {FbService} from '../../services/fb.service';
 
 export class InviteComponent implements OnInit {
     groups: Group[];
-    constructor(private groupService: GroupService, private fbService: FbService) { }
+    constructor(private groupService: GroupService, private fbService: FbService, private interComponentCommunicationService: InterComponentCommunicationService) { }
 
     ngOnInit() {
         this.getInvites();
@@ -23,12 +24,18 @@ export class InviteComponent implements OnInit {
     }
     acceptInvite(groupID: String) {
         this.groupService.acceptInvite(groupID)
-            .then(result => this.removeGroup(groupID))
+            .then(result => {
+                this.removeGroup(groupID);
+                this.interComponentCommunicationService.sendAcceptedOrDeclined(true);
+            })
             .catch(error => {});
     }
     declineInvite(groupID: String) {
         this.groupService.declineInvite(groupID)
-            .then(result => this.removeGroup(groupID))
+            .then(result => {
+                this.removeGroup(groupID);
+                this.interComponentCommunicationService.sendAcceptedOrDeclined(false);
+            })
             .catch(error => {});
     }
     removeGroup(groupID: String) {

@@ -33,6 +33,7 @@ export class CustomHttpModule extends Http {
     return (res: Response) => {
       switch (res.status) {
         case 401:
+        case 500:
         (window as any).FB.logout();
         localStorage.removeItem('access_token');
         this.router.navigate(['landing']);

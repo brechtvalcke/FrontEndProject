@@ -14,7 +14,7 @@
         <h2>Time slots</h2>
         <article>
             <div *ngFor="let timeSlot of group.timeSlot" (click)='voteTimeslot(timeSlot)'>
-                <h3>{{timeSlot.time | date:'hh:mm'}}</h3>
+                <h3>{{timeSlot.time | date:'hh:mm a'}}</h3>
                 <p>{{timeSlot.votes.length}}</p>
             </div>
             <div (click)='openTime()'>

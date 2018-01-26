@@ -101,7 +101,9 @@ main section:nth-child(2) article div, main section:nth-child(3) article div {
 main section:nth-child(2) article div {
   position: relative;
   @include squareSize($timeSlotBoxSize);
-
+  h3{
+    font-size: 1.7rem;
+  }
   p {
     @include squareSize($timeSlotVoteSize);
     text-align: right;

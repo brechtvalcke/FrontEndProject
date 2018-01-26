@@ -41,6 +41,9 @@ export class SocketService {
     UsersTypingObservable: Observable<[UserTyping]>;
     private _usersTypingObserver: Observer<[UserTyping]>;
 
+    InvitedObservable: Observable<any>;
+    private _invitedObservable: Observer<any>;
+
     constructor(private networkCalls:NetworkCalls) {
         this.MessageObservable = new Observable<Message>(observer =>
         this._messageObserver = observer).share();
@@ -61,8 +64,10 @@ export class SocketService {
         this._groupNameChangedObserver = observer).share();
 
         this.UsersTypingObservable = new Observable<[UserTyping]>(observer =>
-            this._usersTypingObserver = observer).share();
+        this._usersTypingObserver = observer).share();
 
+        this.InvitedObservable = new Observable<any>(observer =>
+        this._invitedObservable = observer).share();
 
     }
     connect(): void {
@@ -103,6 +108,9 @@ export class SocketService {
         });
         this.socket.on('userStoppedTyping', (groupId: String, UserId: String) => {
             this.onUserStoppedTyping(groupId, UserId);
+        });
+        this.socket.on('inviteNotification',(userName,userId) => {
+            this._invitedObservable.next(userId);
         });
     }
     sendStartedTyping(GroupId) {

@@ -143,8 +143,8 @@ a.active{
 /**
  accessibility control
  */
-
-img[alt=""], img[alt=" "], img:not([alt]) {
+// development image css to ensure all images have title and alt tag
+/* img[alt=""], img[alt=" "], img:not([alt]) {
   border: 1px solid red;
 }
 /*
@@ -165,5 +165,10 @@ img[title=""], img[title=" "], img:not([title]),a[title=""], a[title=" "], a:not
       background-color: purple;
     }
   }
+<<<<<<< HEAD
 }
 */
+=======
+} */
+
+>>>>>>> 3aedac5713cde7a57202dcd717cc3bc3c7e4d44f
